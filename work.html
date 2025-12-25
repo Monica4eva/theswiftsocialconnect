@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work | The Social Connect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #B8985F;
+            --dark-gold: #8B7355;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gray: #999999;
+            --light-gray: #F5F5F5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--black);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 60px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 400;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 97px;
+            padding: 120px 60px;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 32px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.7;
+        }
+
+        .hero-note {
+            font-size: 16px;
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* Case Studies Grid */
+        .case-studies {
+            padding: 140px 60px;
+            background: var(--white);
+        }
+
+        .studies-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .case-study {
+            margin-bottom: 140px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .case-study:nth-child(even) {
+            direction: rtl;
+        }
+
+        .case-study:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .case-content {
+            padding: 40px 0;
+        }
+
+        .case-tag {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .case-content h2 {
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .case-content p {
+            font-size: 16px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .case-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+            padding: 40px 0;
+            border-top: 1px solid #E0E0E0;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .glide-score {
+            background: var(--light-gray);
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .glide-score h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .glide-pillars {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .pillar-tag {
+            background: var(--white);
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--black);
+            border-left: 3px solid var(--gold);
+        }
+
+        .case-link {
+            display: inline-block;
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .case-link::after {
+            content: ' →';
+            color: var(--gold);
+        }
+
+        .case-link:hover {
+            color: var(--gold);
+        }
+
+        .case-visual {
+            background: var(--light-gray);
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 140px 60px;
+            background: var(--gold);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .cta-container p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--black);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-white:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 60px 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand img {
+            width: 50px;
+            margin-bottom: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-brand p {
+            opacity: 0.6;
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .footer-section h4 {
+            font-size: 13px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 16px;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 15px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+            text-align: center;
+            opacity: 0.5;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .case-study {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .case-study:nth-child(even) {
+                direction: ltr;
+            }
+
+            .case-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container,
+            .hero,
+            .case-studies,
+            .cta-section,
+            footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Connect</a></li>
+                </ul>
+            </div>
+            <img src="https://i.imgur.com/YOUR_LOGO.png" alt="TSC Logo" class="logo">
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Real Businesses. Real Results.</h1>
+            <p>See how we've partnered with leading brands to deliver transformative strategies, sustainable growth, and measurable results—proving why business leaders trust us to solve their most complex challenges.</p>
+            <p class="hero-note">Our most recent work, showcasing how the GLIDE Framework drives systematic growth</p>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies">
+        <div class="studies-container">
+            <!-- Case Study 1: Afro Adventurer -->
+            <div class="case-study">
+                <div class="case-content">
+                    <span class="case-tag">Community Growth</span>
+                    <h2>Scaling a Diaspora Community to 1,010+ Followers</h2>
+                    <div class="case-meta">
+                        <span>Travel & Community</span>
+                        <span>•</span>
+                        <span>2 Months</span>
+                    </div>
+                    <p>Transformed Afro Adventurer from 700 LinkedIn followers with minimal engagement to 1,010+ engaged community members. Executed strategic content framework across multiple platforms, driving 44% growth and 80+ event signups.</p>
+
+                    <div class="case-stats">
+                        <div class="stat">
+                            <div class="stat-number">44%</div>
+                            <div class="stat-label">Follower Growth</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">622%</div>
+                            <div class="stat-label">Growth Rate Increase</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">80+</div>
+                            <div class="stat-label">Event Signups</div>
+                        </div>
+                    </div>
+
+                    <div class="glide-score">
+                        <h4>GLIDE Focus Areas</h4>
+                        <div class="glide-pillars">
+                            <span class="pillar-tag">L - Leadership Presence</span>
+                            <span class="pillar-tag">D - Demand Engine</span>
+                            <span class="pillar-tag">I - Infrastructure</span>
+                        </div>
+                    </div>
+
+                    <a href="https://monicadubesekhwela.com/afroadventurer" class="case-link">View Full Case Study</a>
+                </div>
+                <div class="case-visual">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 50 350 L 150 250 L 250 200 L 350 100" stroke="#B8985F" stroke-width="4" fill="none"/>
+                        <circle cx="50" cy="350" r="12" fill="#B8985F"/>
+                        <circle cx="150" cy="250" r="12" fill="#B8985F"/>
+                        <circle cx="250" cy="200" r="12" fill="#B8985F"/>
+                        <circle cx="350" cy="100" r="12" fill="#B8985F"/>
+                        <text x="200" y="380" font-size="14" fill="#999" text-anchor="middle">44% Growth in 60 Days</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Case Study 2: Professional Development Brand -->
+            <div class="case-study">
+                <div class="case-content">
+                    <span class="case-tag">Corporate Conversion</span>
+                    <h2>Driving Corporate Contracts Through Strategic Content</h2>
+                    <div class="case-meta">
+                        <span>Professional Development</span>
+                        <span>•</span>
+                        <span>9 Months</span>
+                    </div>
+                    <p>Built a complete content ecosystem (120+ strategic pieces) that transformed limited visibility into 2 major corporate contracts and 1 ministry speaking engagement. Established national authority through 9 recurring content series.</p>
+
+                    <div class="case-stats">
+                        <div class="stat">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Corporate Contracts</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">120+</div>
+                            <div class="stat-label">Content Pieces</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Revenue Streams</div>
+                        </div>
+                    </div>
+
+                    <div class="glide-score">
+                        <h4>GLIDE Focus Areas</h4>
+                        <div class="glide-pillars">
+                            <span class="pillar-tag">L - Leadership Presence</span>
+                            <span class="pillar-tag">G - Growth Strategy</span>
+                            <span class="pillar-tag">D - Demand Engine</span>
+                        </div>
+                    </div>
+
+                    <a href="https://monicadubesekhwela.com/professionaldevelopment" class="case-link">View Full Case Study</a>
+                </div>
+                <div class="case-visual">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="200" cy="200" r="120" fill="none" stroke="#B8985F" stroke-width="3"/>
+                        <circle cx="200" cy="200" r="80" fill="none" stroke="#E0E0E0" stroke-width="2"/>
+                        <circle cx="200" cy="200" r="40" fill="#B8985F" opacity="0.2"/>
+                        <line x1="200" y1="80" x2="200" y2="120" stroke="#B8985F" stroke-width="2"/>
+                        <line x1="320" y1="200" x2="280" y2="200" stroke="#B8985F" stroke-width="2"/>
+                        <line x1="200" y1="320" x2="200" y2="280" stroke="#B8985F" stroke-width="2"/>
+                        <line x1="80" y1="200" x2="120" y2="200" stroke="#B8985F" stroke-width="2"/>
+                        <text x="200" y="380" font-size="14" fill="#999" text-anchor="middle">National Authority Established</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Case Study 3: B Agro Crop -->
+            <div class="case-study">
+                <div class="case-content">
+                    <span class="case-tag">Exponential Growth</span>
+                    <h2>10,444% Impression Growth for AgriTech Startup</h2>
+                    <div class="case-meta">
+                        <span>Agricultural Technology</span>
+                        <span>•</span>
+                        <span>16 Months</span>
+                    </div>
+                    <p>Transformed B Agro Crop from zero social presence to recognized player in sustainable agriculture. Created investor-ready materials, achieved 12-20% engagement rates (3-10x industry standard), and positioned company for international expansion.</p>
+
+                    <div class="case-stats">
+                        <div class="stat">
+                            <div class="stat-number">10,444%</div>
+                            <div class="stat-label">Impression Growth</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">35%</div>
+                            <div class="stat-label">Follower Growth</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Women Farmers Impacted</div>
+                        </div>
+                    </div>
+
+                    <div class="glide-score">
+                        <h4>GLIDE Focus Areas</h4>
+                        <div class="glide-pillars">
+                            <span class="pillar-tag">G - Growth Strategy</span>
+                            <span class="pillar-tag">L - Leadership Presence</span>
+                            <span class="pillar-tag">E - Expansion Readiness</span>
+                        </div>
+                    </div>
+
+                    <a href="https://monicadubesekhwela.com/bagrocrop" class="case-link">View Full Case Study</a>
+                </div>
+                <div class="case-visual">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="80" y="300" width="60" height="20" fill="#E0E0E0"/>
+                        <rect x="160" y="250" width="60" height="70" fill="#E0E0E0"/>
+                        <rect x="240" y="150" width="60" height="170" fill="#B8985F" opacity="0.5"/>
+                        <rect x="320" y="50" width="60" height="270" fill="#B8985F"/>
+                        <text x="200" y="380" font-size="14" fill="#999" text-anchor="middle">Exponential Impact Growth</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Case Study 4: University Enrollment -->
+            <div class="case-study">
+                <div class="case-content">
+                    <span class="case-tag">EdTech Success</span>
+                    <h2>40% Enrollment Increase for International University</h2>
+                    <div class="case-meta">
+                        <span>Higher Education</span>
+                        <span>•</span>
+                        <span>Partnership Campaign</span>
+                    </div>
+                    <p>Drove strategic marketing initiatives that resulted in 40% enrollment increase through targeted digital campaigns, improved conversion rates, and systematic lead nurturing processes.</p>
+
+                    <div class="case-stats">
+                        <div class="stat">
+                            <div class="stat-number">40%</div>
+                            <div class="stat-label">Enrollment Increase</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">150%</div>
+                            <div class="stat-label">Engagement Growth</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">3x</div>
+                            <div class="stat-label">Lead Quality</div>
+                        </div>
+                    </div>
+
+                    <div class="glide-score">
+                        <h4>GLIDE Focus Areas</h4>
+                        <div class="glide-pillars">
+                            <span class="pillar-tag">D - Demand Engine</span>
+                            <span class="pillar-tag">I - Infrastructure</span>
+                            <span class="pillar-tag">G - Growth Strategy</span>
+                        </div>
+                    </div>
+
+                    <a href="https://monicadubesekhwela.com/unicaf" class="case-link">View Full Case Study</a>
+                </div>
+                <div class="case-visual">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 100 300 Q 150 200 200 200 T 300 100" stroke="#B8985F" stroke-width="3" fill="none"/>
+                        <circle cx="100" cy="300" r="8" fill="#B8985F"/>
+                        <circle cx="150" cy="240" r="8" fill="#B8985F"/>
+                        <circle cx="200" cy="200" r="8" fill="#B8985F"/>
+                        <circle cx="250" cy="160" r="8" fill="#B8985F"/>
+                        <circle cx="300" cy="100" r="8" fill="#B8985F"/>
+                        <text x="200" y="380" font-size="14" fill="#999" text-anchor="middle">Sustained Enrollment Growth</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Case Study 5: Government Initiative -->
+            <div class="case-study">
+                <div class="case-content">
+                    <span class="case-tag">Public Sector Impact</span>
+                    <h2>National Campaign Driving Community Engagement</h2>
+                    <div class="case-meta">
+                        <span>Government Initiative</span>
+                        <span>•</span>
+                        <span>Strategic Campaign</span>
+                    </div>
+                    <p>Executed comprehensive government initiative campaign achieving nationwide reach, community participation, and policy awareness through multi-channel strategic communications.</p>
+
+                    <div class="case-stats">
+                        <div class="stat">
+                            <div class="stat-number">National</div>
+                            <div class="stat-label">Campaign Reach</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">Multi-Channel</div>
+                            <div class="stat-label">Distribution</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">High</div>
+                            <div class="stat-label">Community Impact</div>
+                        </div>
+                    </div>
+
+                    <div class="glide-score">
+                        <h4>GLIDE Focus Areas</h4>
+                        <div class="glide-pillars">
+                            <span class="pillar-tag">L - Leadership Presence</span>
+                            <span class="pillar-tag">G - Growth Strategy</span>
+                            <span class="pillar-tag">D - Demand Engine</span>
+                        </div>
+                    </div>
+
+                    <a href="https://monicadubesekhwela.com/governmentinitiative" class="case-link">View Full Case Study</a>
+                </div>
+                <div class="case-visual">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="120" cy="150" r="50" fill="none" stroke="#B8985F" stroke-width="2"/>
+                        <circle cx="280" cy="150" r="50" fill="none" stroke="#E0E0E0" stroke-width="2"/>
+                        <circle cx="200" cy="280" r="50" fill="none" stroke="#E0E0E0" stroke-width="2"/>
+                        <line x1="150" y1="180" x2="180" y2="250" stroke="#B8985F" stroke-width="2"/>
+                        <line x1="250" y1="180" x2="220" y2="250" stroke="#B8985F" stroke-width="2"/>
+                        <line x1="170" y1="150" x2="230" y2="150" stroke="#B8985F" stroke-width="2"/>
+                        <text x="200" y="380" font-size="14" fill="#999" text-anchor="middle">Nationwide Network Impact</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready for Your Success Story?</h2>
+            <p>Let's build the systems that turn your ambition into measurable results. Start with a free GLIDE assessment to see where you stand.</p>
+            <div class="cta-buttons">
+                <a href="glide-assessment.html" class="btn-white">Get Your GLIDE Score</a>
+                <a href="contact.html" class="btn-white">Start a Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="tselogo.png" alt="TSC">
+                <p>Building systematic business growth across Africa.</p>
+                <p><strong>Gaborone, Botswana</strong></p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="work.html">Digital Presence</a></li>
+                    <li><a href="work.html">Content & Authority</a></li>
+                    <li><a href="work.html">Cross-Border Growth</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="work.html">Our Work</a></li>
+                    <li><a href="glide-framework.html">GLIDE Framework</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://www.linkedin.com/company/the-social-connect/">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/theswiftsocialconnect/">Instagram</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The Social Connect</p>
+        </div>
+    </footer>
+</body>
+</html>
