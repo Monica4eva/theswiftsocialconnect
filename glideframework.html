@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLIDE Assessment | The Social Connect</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --gold: #B8985F; --dark-gold: #8B7355; --white: #FFFFFF;
+            --black: #000000; --gray: #999999; --light-gray: #F5F5F5;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; color: var(--black); background: var(--black); line-height: 1.5; }
+        nav { border-bottom: 1px solid rgba(255,255,255,0.1); background: var(--black); }
+        .nav-container { max-width: 1600px; margin: 0 auto; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { width: 50px; height: 50px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px; }
+        .back-link { color: var(--gold); text-decoration: none; font-size: 15px; transition: color 0.3s ease; }
+        .back-link:hover { color: var(--white); }
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+        .card { background: var(--white); border-radius: 0; padding: 60px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .text-center { text-align: center; }
+        h1 { font-size: 48px; font-weight: 300; letter-spacing: -1px; margin-bottom: 20px; color: var(--black); }
+        .subtitle { font-size: 18px; color: var(--gray); margin-bottom: 40px; }
+        .badge { display: inline-block; background: rgba(184, 152, 95, 0.1); color: var(--gold); padding: 12px 24px; margin-bottom: 40px; font-size: 14px; font-weight: 500; }
+        .form-group { margin-bottom: 24px; }
+        label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--black); }
+        input, select { width: 100%; padding: 14px 16px; border: 1px solid #E0E0E0; font-size: 15px; transition: border-color 0.3s ease; font-family: inherit; }
+        input:focus, select:focus { outline: none; border-color: var(--gold); }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .info-box { background: var(--light-gray); padding: 24px; margin-top: 30px; }
+        .info-box h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--black); }
+        .info-box ul { list-style: none; }
+        .info-box li { padding: 8px 0; font-size: 14px; color: var(--gray); display: flex; align-items: flex-start; gap: 12px; }
+        .info-box li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+        .btn { width: 100%; padding: 18px; background: var(--black); color: var(--white); border: none; font-size: 16px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; margin-top: 30px; font-family: inherit; }
+        .btn:hover { background: var(--gold); }
+        .small-text { font-size: 12px; color: var(--gray); text-align: center; margin-top: 20px; }
+        .hidden { display: none; }
+        .progress-container { margin-bottom: 40px; }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; font-weight: 500; }
+        .progress-bar-bg { height: 4px; background: #E0E0E0; overflow: hidden; }
+        .progress-bar { height: 100%; background: linear-gradient(to right, var(--gold), var(--dark-gold)); transition: width 0.3s ease; }
+        .pillar-badge { display: inline-block; padding: 6px 16px; background: rgba(184, 152, 95, 0.1); color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+        .question-text { font-size: 28px; font-weight: 300; margin-bottom: 40px; letter-spacing: -0.5px; line-height: 1.3; }
+        .option-btn { width: 100%; text-align: left; padding: 20px; border: 1px solid #E0E0E0; background: var(--white); margin-bottom: 12px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 16px; font-size: 15px; font-family: inherit; }
+        .option-btn:hover { border-color: var(--gold); background: var(--light-gray); }
+        .option-btn.selected { border-color: var(--gold); background: rgba(184, 152, 95, 0.05); }
+        .radio-circle { width: 20px; height: 20px; border: 2px solid #E0E0E0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; }
+        .option-btn.selected .radio-circle { border-color: var(--gold); background: var(--gold); }
+        .radio-circle::after { content: '✓'; color: var(--white); font-size: 12px; font-weight: 700; opacity: 0; }
+        .option-btn.selected .radio-circle::after { opacity: 1; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 40px; }
+        .nav-btn { padding: 14px 32px; border: none; background: transparent; color: var(--gray); font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
+        .nav-btn:hover:not(:disabled) { color: var(--black); }
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .nav-btn.next { background: var(--black); color: var(--white); }
+        .nav-btn.next:hover:not(:disabled) { background: var(--gold); }
+        .nav-btn.next:disabled { background: #E0E0E0; color: var(--gray); }
+        .answered-count { text-align: center; margin-top: 20px; font-size: 14px; color: var(--gray); }
+        .score-badge { display: inline-block; padding: 12px 32px; background: rgba(184, 152, 95, 0.1); color: var(--gold); margin-bottom: 30px; font-weight: 600; font-size: 14px; letter-spacing: 1px; }
+        .score-title { font-size: 72px; font-weight: 300; margin-bottom: 16px; letter-spacing: -2px; }
+        .score-label { font-size: 24px; color: var(--gray); margin-bottom: 40px; }
+        .interpretation-box { background: var(--light-gray); padding: 40px; margin: 40px 0; }
+        .interpretation-box h2 { font-size: 24px; font-weight: 300; margin-bottom: 20px; }
+        .interpretation-box p { font-size: 16px; color: var(--gray); line-height: 1.7; margin-bottom: 12px; }
+        .section-header { font-size: 32px; font-weight: 300; margin: 50px 0 30px; text-align: center; }
+        .pillar-bar { margin-bottom: 30px; }
+        .pillar-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+        .pillar-name { font-weight: 600; }
+        .pillar-score { font-weight: 700; color: var(--gold); }
+        .bar-bg { height: 8px; background: #E0E0E0; overflow: hidden; }
+        .bar-fill { height: 100%; transition: width 1s ease; }
+        .bar-excellent { background: #10B981; }
+        .bar-good { background: var(--gold); }
+        .bar-needs-work { background: #EF4444; }
+        .gap-card { border: 1px solid #E0E0E0; padding: 30px; margin-bottom: 20px; }
+        .gap-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px; }
+        .gap-number { width: 40px; height: 40px; background: var(--gold); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 20px; }
+        .gap-content h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .gap-score { font-size: 14px; color: var(--gray); margin-bottom: 16px; }
+        .gap-desc { font-size: 15px; color: var(--gray); margin-bottom: 20px; line-height: 1.6; }
+        .action-box { background: var(--light-gray); padding: 20px; border-left: 4px solid var(--gold); }
+        .action-box strong { color: var(--black); display: block; margin-bottom: 8px; }
+        .roi-box { background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: var(--white); padding: 40px; margin: 40px 0; text-align: center; }
+        .roi-box h2 { font-size: 28px; font-weight: 300; margin-bottom: 20px; }
+        .roi-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 30px; }
+        .roi-stat { padding: 20px; background: rgba(255,255,255,0.1); }
+        .roi-stat-value { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
+        .roi-stat-label { font-size: 14px; opacity: 0.9; }
+        .cta-box { background: var(--black); color: var(--white); padding: 50px; margin: 40px 0; text-align: center; }
+        .cta-box h2 { font-size: 32px; font-weight: 300; margin-bottom: 16px; }
+        .cta-box p { font-size: 18px; opacity: 0.9; margin-bottom: 30px; }
+        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto; }
+        .cta-link { padding: 24px; border: 2px solid var(--gold); color: var(--white); text-decoration: none; transition: all 0.3s ease; text-align: center; display: block; }
+        .cta-link:hover { background: var(--gold); }
+        .cta-icon { font-size: 32px; margin-bottom: 12px; }
+        .cta-title { font-weight: 600; margin-bottom: 8px; font-size: 16px; }
+        .cta-desc { font-size: 13px; opacity: 0.7; }
+        .download-btn { display: inline-block; margin-top: 20px; padding: 12px 24px; border: 2px solid var(--gold); color: var(--gold); text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+        .download-btn:hover { background: var(--gold); color: var(--white); }
+        @media (max-width: 768px) {
+            .card { padding: 40px 30px; }
+            h1 { font-size: 36px; }
+            .score-title { font-size: 56px; }
+            .grid-2, .cta-grid, .roi-stats { grid-template-columns: 1fr; }
+            .question-text { font-size: 24px; }
+            .nav-container { padding: 20px 24px; }
+            .container { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TSC</div>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="contactForm">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Your GLIDE Assessment</h1>
+                    <p class="subtitle">Discover your business maturity score across 5 critical growth pillars</p>
+                    <div class="badge"><strong>15 strategic questions</strong> • <strong>5 minutes</strong> • Your complete GLIDE scorecard</div>
+                </div>
+                <form id="contactFormElement">
+                    <div class="grid-2">
+                        <div class="form-group"><label>First Name *</label><input type="text" id="firstName" required placeholder="John"></div>
+                        <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" required placeholder="Doe"></div>
+                    </div>
+                    <div class="form-group"><label>Email Address *</label><input type="email" id="email" required placeholder="you@company.com"></div>
+                    <div class="form-group"><label>Company Name *</label><input type="text" id="company" required placeholder="Your Company"></div>
+                    <div class="form-group">
+                        <label>Annual Revenue (Optional)</label>
+                        <select id="revenue">
+                            <option value="">Select range</option>
+                            <option value="<100K">Less than $100K</option>
+                            <option value="100K-500K">$100K - $500K</option>
+                            <option value="500K-1M">$500K - $1M</option>
+                            <option value="1M-5M">$1M - $5M</option>
+                            <option value="5M+">$5M+</option>
+                        </select>
+                    </div>
+                    <div class="info-box">
+                        <h3>Your GLIDE Scorecard Will Reveal:</h3>
+                        <ul>
+                            <li>Your overall GLIDE score (0-100) and maturity level</li>
+                            <li>Breakdown across Growth, Leadership, Infrastructure, Demand, and Expansion</li>
+                            <li>Your top 3 priority gaps with actionable next steps</li>
+                            <li>Estimated ROI impact and recommended package</li>
+                        </ul>
+                    </div>
+                    <button type="submit" class="btn">Start My GLIDE Assessment →</button>
+                    <p class="small-text">Your data is secure. No spam, ever. Unsubscribe anytime.</p>
+                </form>
+            </div>
+        </div>
+        <div id="assessment" class="hidden">
+            <div class="card">
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <span>Question <span id="currentQ">1</span> of <span id="totalQ">15</span></span>
+                        <span style="color: var(--gold);"><span id="progressPercent">7</span>% Complete</span>
+                    </div>
+                    <div class="progress-bar-bg"><div id="progressBar" class="progress-bar" style="width: 7%"></div></div>
+                </div>
+                <div>
+                    <span id="pillarBadge" class="pillar-badge"></span>
+                    <h2 id="questionText" class="question-text"></h2>
+                </div>
+                <div id="optionsContainer"></div>
+                <div class="nav-buttons">
+                    <button id="prevBtn" class="nav-btn">← Previous</button>
+                    <button id="nextBtn" class="nav-btn next" disabled>Next →</button>
+                </div>
+                <div class="answered-count">✓ <span id="answeredCount">0</span> questions answered</div>
+            </div>
+        </div>
+        <div id="results" class="hidden"><div class="card"></div></div>
+    </div>
+    <script>
+        const questions = [
+            {pillar: "Growth Strategy", question: "Do you have a documented growth plan with quarterly goals?", options: [{text: "No formal plan—we figure it out as we go", score: 1}, {text: "We have rough ideas but nothing documented", score: 2}, {text: "We have a plan but it's not consistently reviewed", score: 3}, {text: "Yes, with quarterly check-ins", score: 4}, {text: "Yes, with monthly reviews and adjustments", score: 5}]},
+            {pillar: "Growth Strategy", question: "How do you track and respond to market changes?", options: [{text: "We don't actively monitor the market", score: 1}, {text: "We notice changes when they affect us", score: 2}, {text: "We follow industry news casually", score: 3}, {text: "We monitor competitors and market trends regularly", score: 4}, {text: "We have systems for real-time market intelligence", score: 5}]},
+            {pillar: "Growth Strategy", question: "How clear are your revenue targets for the next 12 months?", options: [{text: "We're hoping to grow but no specific targets", score: 1}, {text: "We have a general revenue goal", score: 2}, {text: "We have targets but no clear path to achieve them", score: 3}, {text: "We have targets with strategies mapped out", score: 4}, {text: "We have detailed forecasts with multiple scenarios", score: 5}]},
+            {pillar: "Leadership Presence", question: "How consistently does your business show up in your market?", options: [{text: "We post randomly when we have time", score: 1}, {text: "We try to post weekly but often miss", score: 2}, {text: "We post 2-3 times per week on one platform", score: 3}, {text: "We post consistently across 2 platforms", score: 4}, {text: "We have daily presence across multiple platforms", score: 5}]},
+            {pillar: "Leadership Presence", question: "Can your target audience clearly explain what makes you different?", options: [{text: "Honestly, we're not sure what makes us unique", score: 1}, {text: "We know what we do but struggle to explain why us", score: 2}, {text: "We have differentiation but communicate it inconsistently", score: 3}, {text: "We have clear messaging used across all channels", score: 4}, {text: "We're known for a specific category or approach", score: 5}]},
+            {pillar: "Leadership Presence", question: "How strategic is your content creation process?", options: [{text: "We create content on the fly with no planning", score: 1}, {text: "We plan a few days ahead", score: 2}, {text: "We plan content monthly", score: 3}, {text: "We have a 90-day content calendar", score: 4}, {text: "We have a systematic content engine with repurposing", score: 5}]},
+            {pillar: "Digital Infrastructure", question: "Does your website actively generate leads for your business?", options: [{text: "No, it's mainly informational", score: 1}, {text: "Sometimes people contact us through it", score: 2}, {text: "Yes, but we don't track the conversion rate", score: 3}, {text: "Yes, and we track basic metrics", score: 4}, {text: "Yes, optimized with high conversion rates (5%+)", score: 5}]},
+            {pillar: "Digital Infrastructure", question: "What happens after someone fills out a form on your website?", options: [{text: "We manually follow up when we see it", score: 1}, {text: "They get a basic confirmation email", score: 2}, {text: "They enter a simple email sequence", score: 3}, {text: "They get personalized follow-up based on their interest", score: 4}, {text: "Fully automated nurturing with behavioral triggers", score: 5}]},
+            {pillar: "Digital Infrastructure", question: "How much of your marketing runs on autopilot?", options: [{text: "Nothing—everything is manual", score: 1}, {text: "Just basic email confirmations", score: 2}, {text: "Email sequences and social scheduling", score: 3}, {text: "Multiple workflows for different customer journeys", score: 4}, {text: "Comprehensive automation with AI personalization", score: 5}]},
+            {pillar: "Demand Engine", question: "How predictable is your lead flow month-to-month?", options: [{text: "Very unpredictable—feast or famine", score: 1}, {text: "We get leads but it varies wildly", score: 2}, {text: "Somewhat consistent but still fluctuates", score: 3}, {text: "Fairly predictable with minor variations", score: 4}, {text: "Highly predictable with multiple reliable sources", score: 5}]},
+            {pillar: "Demand Engine", question: "Do you know which marketing efforts generate actual sales?", options: [{text: "No idea what's working", score: 1}, {text: "We know where leads come from but not which convert", score: 2}, {text: "We track some conversions manually", score: 3}, {text: "We track revenue by major channel", score: 4}, {text: "Full attribution model showing ROI by source", score: 5}]},
+            {pillar: "Demand Engine", question: "How well do your sales and marketing teams work together?", options: [{text: "They operate completely separately", score: 1}, {text: "They talk occasionally about leads", score: 2}, {text: "Monthly meetings but different systems", score: 3}, {text: "Weekly sync with shared dashboards", score: 4}, {text: "Fully aligned with unified revenue operations", score: 5}]},
+            {pillar: "Expansion Readiness", question: "Could you scale to serve 3x more customers tomorrow?", options: [{text: "No, we'd be completely overwhelmed", score: 1}, {text: "We could handle it but barely", score: 2}, {text: "With some scrambling and late nights", score: 3}, {text: "Yes, with minor adjustments", score: 4}, {text: "Yes, our systems are built to scale easily", score: 5}]},
+            {pillar: "Expansion Readiness", question: "Are you considering expanding to new markets or geographies?", options: [{text: "Not on our radar yet", score: 1}, {text: "We're interested but haven't researched", score: 2}, {text: "We're researching potential markets", score: 3}, {text: "We have a preliminary expansion plan", score: 4}, {text: "We're ready with localization and partnerships lined up", score: 5}]},
+            {pillar: "Expansion Readiness", question: "Do you have strategic partnerships that accelerate your growth?", options: [{text: "No partnerships currently", score: 1}, {text: "We've thought about it but haven't acted", score: 2}, {text: "We have one or two informal partnerships", score: 3}, {text: "We have active partnerships with some structure", score: 4}, {text: "We have a formal partner program driving growth", score: 5}]}
+        ];
+
+        let currentStep = 0, answers = {}, userData = {};
+        const contactFormElement = document.getElementById('contactFormElement');
+        const contactForm = document.getElementById('contactForm');
+        const assessment = document.getElementById('assessment');
+        const results = document.getElementById('results');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        contactFormElement.addEventListener('submit', (e) => {
+            e.preventDefault();
+            userData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                revenue: document.getElementById('revenue').value
+            };
+            
+            // Send email in background without waiting
+            sendEmail(userData, null, 'contact').catch(err => console.log('Email send skipped'));
+            
+            // Immediately show assessment
+            contactForm.classList.add('hidden');
+            assessment.classList.remove('hidden');
+            renderQuestion();
+        });
+
+        function renderQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('currentQ').textContent = currentStep + 1;
+            document.getElementById('totalQ').textContent = questions.length;
+            document.getElementById('progressPercent').textContent = Math.round(((currentStep + 1) / questions.length) * 100);
+            document.getElementById('progressBar').style.width = `${((currentStep + 1) / questions.length) * 100}%`;
+            document.getElementById('pillarBadge').textContent = q.pillar;
+            document.getElementById('questionText').textContent = q.question;
+            document.getElementById('answeredCount').textContent = Object.keys(answers).length;
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            q.options.forEach((option) => {
+                const isSelected = answers[currentStep] === option.score;
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = `option-btn ${isSelected ? 'selected' : ''}`;
+                button.innerHTML = `<div class="radio-circle"></div><span>${option.text}</span>`;
+                button.addEventListener('click', () => selectAnswer(option.score));
+                optionsContainer.appendChild(button);
+            });
+            updateNavigation();
+        }
+
+        function selectAnswer(score) {
+            answers[currentStep] = score;
+            renderQuestion();
+        }
+
+        function updateNavigation() {
+            const isAnswered = answers[currentStep] !== undefined;
+            prevBtn.disabled = currentStep === 0;
+            nextBtn.disabled = !isAnswered;
+            nextBtn.textContent = currentStep === questions.length - 1 ? 'See My GLIDE Score →' : 'Next →';
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                renderQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < questions.length - 1) {
+                currentStep++;
+                renderQuestion();
+            } else {
+                const resultsData = calculateResults();
+                // Send email in background without waiting
+                sendEmail(userData, resultsData, 'complete').catch(err => console.log('Email send skipped'));
+                showResults(resultsData);
+            }
+        });
+
+        function calculateResults() {
+            const pillarScores = {}, pillarMaxScores = {};
+            questions.forEach((q, idx) => {
+                const answer = answers[idx];
+                if (!pillarScores[q.pillar]) {
+                    pillarScores[q.pillar] = 0;
+                    pillarMaxScores[q.pillar] = 0;
+                }
+                pillarScores[q.pillar] += answer;
+                pillarMaxScores[q.pillar] += 5;
+            });
+
+            const pillarPercentages = {};
+            Object.keys(pillarScores).forEach(pillar => {
+                pillarPercentages[pillar] = Math.round((pillarScores[pillar] / pillarMaxScores[pillar]) * 100);
+            });
+
+            const totalScore = Math.round(Object.values(pillarPercentages).reduce((a, b) => a + b, 0) / Object.keys(pillarPercentages).length);
+
+            const gaps = Object.entries(pillarPercentages)
+                .map(([pillar, score]) => ({pillar, score}))
+                .sort((a, b) => a.score - b.score)
+                .slice(0, 3);
+
+            return {totalScore, pillarPercentages, gaps};
+        }
+
+        function showResults(data) {
+            assessment.classList.add('hidden');
+            results.classList.remove('hidden');
+
+            let maturityLevel, interpretation;
+            if (data.totalScore >= 80) {
+                maturityLevel = "Scaling Leader";
+                interpretation = "You're operating at an advanced level with strong systems in place. Your focus should be on optimization, expansion, and staying ahead of market trends. With a few strategic refinements, you can dominate your category.";
+            } else if (data.totalScore >= 60) {
+                maturityLevel = "Growing Business";
+                interpretation = "You have solid foundations with room for strategic improvements. Focus on systematizing what works and addressing key gaps to accelerate growth. You're positioned well to make the leap to market leadership.";
+            } else if (data.totalScore >= 40) {
+                maturityLevel = "Building Foundation";
+                interpretation = "You're in growth mode with several areas needing attention. Prioritizing the right investments in systems and strategy will unlock your next level. The good news? You're aware of what needs to change.";
+            } else {
+                maturityLevel = "Early Stage";
+                interpretation = "You're at the beginning of your growth journey. Focus on establishing core systems and clarifying your market position to build sustainable momentum. Small, focused actions now will yield significant returns.";
+            }
+
+            const actionSteps = {
+                "Growth Strategy": {
+                    title: "Growth Strategy Gap",
+                    desc: "Your business lacks strategic clarity and measurable growth targets that align your team.",
+                    action: "Next Action: Schedule a 2-hour strategy session to define your 12-month revenue target, identify 3 key growth drivers, and create a 90-day action plan with weekly milestones."
+                },
+                "Leadership Presence": {
+                    title: "Leadership Presence Gap",
+                    desc: "Your brand visibility is inconsistent and your market positioning isn't breaking through the noise.",
+                    action: "Next Action: Define your unique positioning in one sentence, create a 30-day content calendar, and commit to showing up consistently on your top platform. Focus on thought leadership, not just promotion."
+                },
+                "Digital Infrastructure": {
+                    title: "Digital Infrastructure Gap",
+                    desc: "Your digital systems aren't optimized to capture and convert leads automatically.",
+                    action: "Next Action: Audit your website's lead capture points (forms, CTAs, landing pages). Install heat mapping to see where visitors drop off. Create one automated email sequence for new leads."
+                },
+                "Demand Engine": {
+                    title: "Demand Engine Gap",
+                    desc: "Your lead generation is inconsistent and you can't reliably predict revenue.",
+                    action: "Next Action: Map your current lead sources and conversion rates. Identify your best-performing channel and double down. Set up basic tracking to measure cost per lead and lead-to-customer conversion."
+                },
+                "Expansion Readiness": {
+                    title: "Expansion Readiness Gap",
+                    desc: "Your business isn't prepared to scale operations or enter new markets.",
+                    action: "Next Action: Document your top 5 core processes. Test your capacity by asking: 'If we got 50% more customers next month, what would break?' Fix that first. Then explore one partnership opportunity."
+                }
+            };
+
+            const roiImpact = {
+                low: { leads: "2-3x", cac: "30-40%", roi: "3-4x" },
+                medium: { leads: "3-5x", cac: "40-60%", roi: "4-6x" },
+                high: { leads: "5-8x", cac: "60-70%", roi: "6-10x" }
+            };
+
+            const impact = data.totalScore < 40 ? roiImpact.high : data.totalScore < 70 ? roiImpact.medium : roiImpact.low;
+
+            const resultsCard = results.querySelector('.card');
+            resultsCard.innerHTML = `
+                <div class="text-center">
+                    <div class="score-badge">YOUR GLIDE SCORE</div>
+                    <h1 class="score-title">${data.totalScore}<span style="font-size: 48px; color: var(--gray);">/100</span></h1>
+                    <p class="score-label">${maturityLevel}</p>
+                </div>
+
+                <div class="interpretation-box">
+                    <h2>What This Means For ${userData.company}</h2>
+                    <p>${interpretation}</p>
+                </div>
+
+                <h2 class="section-header">Your GLIDE Breakdown</h2>
+
+                ${Object.entries(data.pillarPercentages).map(([pillar, score]) => {
+                    const barClass = score >= 70 ? 'bar-excellent' : score >= 40 ? 'bar-good' : 'bar-needs-work';
+                    return `
+                        <div class="pillar-bar">
+                            <div class="pillar-header">
+                                <span class="pillar-name">${pillar}</span>
+                                <span class="pillar-score">${score}%</span>
+                            </div>
+                            <div class="bar-bg">
+                                <div class="bar-fill ${barClass}" style="width: ${score}%"></div>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+
+                <h2 class="section-header">Your Top 3 Priority Gaps</h2>
+
+                ${data.gaps.map((gap, idx) => {
+                    const gapInfo = actionSteps[gap.pillar];
+                    return `
+                        <div class="gap-card">
+                            <div class="gap-header">
+                                <div class="gap-number">${idx + 1}</div>
+                                <div class="gap-content">
+                                    <h3>${gapInfo.title}</h3>
+                                    <div class="gap-score">Current Score: ${gap.score}%</div>
+                                </div>
+                            </div>
+                            <p class="gap-desc">${gapInfo.desc}</p>
+                            <div class="action-box">
+                                <strong>Immediate Action Step:</strong>
+                                ${gapInfo.action}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+
+                <div class="roi-box">
+                    <h2>Estimated ROI Impact</h2>
+                    <p style="font-size: 16px; opacity: 0.9; margin-bottom: 10px;">
+                        Based on your gaps, addressing your top 3 priorities could yield:
+                    </p>
+                    <div class="roi-stats">
+                        <div class="roi-stat">
+                            <div class="roi-stat-value">${impact.leads}</div>
+                            <div class="roi-stat-label">Increase in Qualified Leads</div>
+                        </div>
+                        <div class="roi-stat">
+                            <div class="roi-stat-value">${impact.cac}</div>
+                            <div class="roi-stat-label">Reduction in CAC</div>
+                        </div>
+                        <div class="roi-stat">
+                            <div class="roi-stat-value">${impact.roi}</div>
+                            <div class="roi-stat-label">ROI on Investment</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 14px; opacity: 0.8; margin-top: 20px;">
+                        *Based on typical results from businesses at similar maturity levels implementing systematic improvements
+                    </p>
+                </div>
+
+                <div class="cta-box">
+                    <h2>Ready to Build Your GLIDE Framework?</h2>
+                    <p>Let's turn these insights into actionable growth</p>
+                    <div class="cta-grid">
+                        <a href="#contact" class="cta-link">
+                            <div class="cta-icon">📞</div>
+                            <div class="cta-title">Book Strategy Call</div>
+                            <div class="cta-desc">30-min GLIDE consultation</div>
+                        </a>
+                        <a href="#packages" class="cta-link">
+                            <div class="cta-icon">⚡</div>
+                            <div class="cta-title">View Packages</div>
+                            <div class="cta-desc">Custom GLIDE programs</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="text-center" style="margin-top: 40px; padding-top: 40px; border-top: 1px solid #E0E0E0;">
+                    <p style="font-size: 14px; color: var(--gray); margin-bottom: 20px;">
+                        📧 Your complete GLIDE scorecard has been sent to <strong>${userData.email}</strong>
+                    </p>
+                    <button onclick="window.print()" class="download-btn">
+                        Download Your Results
+                    </button>
+                </div>
+            `;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        async function sendEmail(userData, resultsData, stage) {
+            const formData = new FormData();
+            
+            if (stage === 'contact') {
+                formData.append('subject', `🎯 New GLIDE Assessment Started: ${userData.firstName} ${userData.lastName} - ${userData.company}`);
+                formData.append('message', `
+New GLIDE Assessment Started
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Contact Information:
+• Name: ${userData.firstName} ${userData.lastName}
+• Email: ${userData.email}
+• Company: ${userData.company}
+• Revenue: ${userData.revenue || 'Not specified'}
+
+Status: Started assessment (contact details captured)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                `.trim());
+            } else {
+                const maturityLevel = resultsData.totalScore >= 80 ? "Scaling Leader" : 
+                                     resultsData.totalScore >= 60 ? "Growing Business" : 
+                                     resultsData.totalScore >= 40 ? "Building Foundation" : "Early Stage";
+                
+                formData.append('subject', `✅ GLIDE Assessment Completed: ${userData.firstName} ${userData.lastName} - Score ${resultsData.totalScore}/100`);
+                formData.append('message', `
+GLIDE Assessment COMPLETED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Contact Information:
+• Name: ${userData.firstName} ${userData.lastName}
+• Email: ${userData.email}
+• Company: ${userData.company}
+• Revenue: ${userData.revenue || 'Not specified'}
+
+Overall GLIDE Score: ${resultsData.totalScore}/100
+Maturity Level: ${maturityLevel}
+
+GLIDE Breakdown:
+${Object.entries(resultsData.pillarPercentages).map(([pillar, score]) => 
+    `• ${pillar}: ${score}%`
+).join('\n')}
+
+Top 3 Priority Gaps:
+${resultsData.gaps.map((gap, idx) => 
+    `${idx + 1}. ${gap.pillar} (${gap.score}%)`
+).join('\n')}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Next Action: Follow up with personalized GLIDE roadmap and package recommendations
+                `.trim());
+            }
+            
+            formData.append('name', `${userData.firstName} ${userData.lastName}`);
+            formData.append('email', userData.email);
+            formData.append('company', userData.company);
+            
+            try {
+                const response = await fetch('https://formspree.io/f/xpqaeorp', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    console.log('Email notification sent successfully');
+                } else {
+                    console.error('Failed to send email notification');
+                }
+            } catch (error) {
+                console.error('Error sending email:', error);
+            }
+        }
+    </script>
+</body>
+</html>

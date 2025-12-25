@@ -1,0 +1,970 @@
+.hero-visual {
+            width: 100%;
+            max-width: 600px;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Social Connect | Growth Partner for Africa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #B8985F;
+            --dark-gold: #8B7355;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gray: #999999;
+            --light-gray: #F5F5F5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background: var(--black);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--black);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 400;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-right {
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 73px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-image: url('tsemainpic.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .hero-container {
+            width: 100%;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            min-height: calc(100vh - 73px);
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 100px 80px;
+        }
+
+        .hero-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 82px;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            color: var(--white);
+            letter-spacing: -2px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 50px;
+            line-height: 1.7;
+            max-width: 560px;
+        }
+
+        .hero-content p span {
+            color: var(--gold);
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: gap 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            gap: 20px;
+        }
+
+        .hero-cta span {
+            font-size: 20px;
+        }
+
+        .hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--white);
+            padding: 140px 60px;
+        }
+
+        .services-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            color: var(--black);
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 800px;
+            line-height: 1.7;
+        }
+
+        .section-header p span {
+            color: var(--gold);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: #E0E0E0;
+            border: 1px solid #E0E0E0;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 60px 50px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .service-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 24px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .service-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .service-desc {
+            font-size: 16px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .service-card:hover .service-desc {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* GLIDE Section */
+        .glide {
+            background: var(--black);
+            padding: 140px 60px;
+        }
+
+        .glide-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .glide-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .glide-header h2 {
+            font-size: 56px;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .glide-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .glide-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .glide-item {
+            background: rgba(255,255,255,0.03);
+            padding: 50px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: none;
+        }
+
+        .glide-item:hover {
+            background: rgba(184, 152, 95, 0.1);
+        }
+
+        .glide-letter {
+            font-size: 56px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .glide-item h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .glide-item p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Work Section */
+        .work {
+            background: var(--black);
+            padding: 140px 60px;
+        }
+
+        .work-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 80px;
+        }
+
+        .work-title h2 {
+            font-size: 56px;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .work-title p {
+            font-size: 16px;
+            color: var(--gray);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .work-cta {
+            background: var(--gold);
+            color: var(--black);
+            padding: 14px 32px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .work-cta:hover {
+            background: var(--white);
+        }
+
+        .case-study {
+            background: rgba(255,255,255,0.03);
+            padding: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .case-study:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .case-info {
+            color: var(--white);
+        }
+
+        .case-client {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .case-title {
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .case-arrow {
+            display: inline-flex;
+            align-items: center;
+            color: var(--gold);
+            font-size: 32px;
+            transition: transform 0.3s ease;
+        }
+
+        .case-study:hover .case-arrow {
+            transform: translateX(10px);
+        }
+
+        .case-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(184, 152, 95, 0.2) 0%, rgba(184, 152, 95, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Research Section */
+        .research {
+            background: var(--black);
+            padding: 140px 60px;
+        }
+
+        .research-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, #1a1a3e 0%, #0a0a1e 100%);
+            padding: 100px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .research-content {
+            color: var(--white);
+        }
+
+        .research-tag {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .research-title {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .research-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: gap 0.3s ease;
+        }
+
+        .research-cta:hover {
+            gap: 20px;
+        }
+
+        .research-visual {
+            width: 100%;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--white);
+            padding: 140px 60px;
+        }
+
+        .cta-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .cta-content h2 {
+            font-size: 72px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+
+        .cta-content p span {
+            color: var(--gold);
+        }
+
+        .cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--black);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: gap 0.3s ease;
+        }
+
+        .cta-link:hover {
+            gap: 20px;
+            color: var(--gold);
+        }
+
+        .cta-visual {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 100px 60px 60px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 100px;
+            margin-bottom: 80px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-section h4 {
+            font-size: 13px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .footer-newsletter p {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .subscribe-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            border-bottom: 1px solid var(--gold);
+            transition: opacity 0.3s ease;
+        }
+
+        .subscribe-link:hover {
+            opacity: 0.7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 16px;
+        }
+
+        .footer-section ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 15px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .social-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left,
+            .hero-right {
+                min-height: 60vh;
+            }
+
+            .cta-container,
+            .research-card {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .services-grid,
+            .glide-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1,
+            .cta-content h2 {
+                font-size: 56px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="#services">What We Do</a></li>
+                    <li><a href="#monicadubesekhwela.com/projects">Work</a></li>
+                    <li><a href="#glide">GLIDE</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="monicadubesekhwela.com/contact">Connect</a></li>
+                </ul>
+            </div>
+            <img src="tselogo.png" alt="TSC Logo" class="logo">
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-content">
+                    <h1>Systematic Growth for Africa.</h1>
+                    <p>We help brands achieve <span>uncommon growth</span> by staying relentlessly relevant. From uncovering untapped value to delivering transformative strategies, we build systems that <span>work while you sleep</span>.</p>
+                    <a href="#glide" class="hero-cta">
+                        Calculate Your GLIDE Score <span>→</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-visual">
+                    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="heroGrad">
+                                <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0" />
+                            </radialGradient>
+                        </defs>
+                        <!-- Outer rings -->
+                        <g id="heroRings">
+                            <circle cx="300" cy="300" r="280" fill="none" stroke="rgba(184, 152, 95, 0.1)" stroke-width="1"/>
+                            <circle cx="300" cy="300" r="240" fill="none" stroke="rgba(184, 152, 95, 0.15)" stroke-width="1"/>
+                            <circle cx="300" cy="300" r="200" fill="none" stroke="rgba(184, 152, 95, 0.2)" stroke-width="2"/>
+                        </g>
+                        <!-- Dot pattern -->
+                        <g id="heroDots"></g>
+                        <!-- Center circle -->
+                        <circle cx="300" cy="300" r="140" fill="url(#heroGrad)"/>
+                        <circle cx="300" cy="300" r="120" fill="#B8985F" opacity="0.9"/>
+                        <!-- TSC Text -->
+                        <text x="300" y="325" font-size="70" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">TSC</text>
+                        <text x="300" y="355" font-size="14" font-weight="400" fill="rgba(255,255,255,0.8)" text-anchor="middle" font-family="Arial" letter-spacing="3">PLUG INTO SUCCESS</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Generate dots for hero
+        const heroDots = document.getElementById('heroDots');
+        if (heroDots) {
+            for(let ring = 0; ring < 10; ring++) {
+                const radius = 150 + ring * 15;
+                const numDots = 16 + ring * 2;
+                for(let i = 0; i < numDots; i++) {
+                    const angle = (i / numDots) * Math.PI * 2;
+                    const x = 300 + Math.cos(angle) * radius;
+                    const y = 300 + Math.sin(angle) * radius;
+                    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    dot.setAttribute('cx', x);
+                    dot.setAttribute('cy', y);
+                    dot.setAttribute('r', 2);
+                    dot.setAttribute('fill', `rgba(184, 152, 95, ${0.3 - ring * 0.02})`);
+                    heroDots.appendChild(dot);
+                }
+            }
+        }
+    </script>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="section-header">
+                <h2>Solutions for Business Impact</h2>
+                <p>We deliver <span>impactful solutions</span> from strategy to execution. Seamlessly integrating brand and marketing efforts, scaling organizations, and accelerating speed-to-market outcomes.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-tag">01</div>
+                    <h3 class="service-title">Digital Presence</h3>
+                    <p class="service-desc">Websites, automation, and systems that convert 24/7. Your digital infrastructure working while you focus on growth.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-tag">02</div>
+                    <h3 class="service-title">Content & Authority</h3>
+                    <p class="service-desc">Strategic content that delivers impact. Marketing that positions you as the obvious choice in your market.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-tag">03</div>
+                    <h3 class="service-title">Growth Strategy</h3>
+                    <p class="service-desc">In a world of uncertainty, systematic growth isn't optional—it's essential. Clear roadmaps that turn ambition into execution.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-tag">04</div>
+                    <h3 class="service-title">Cross-Border Expansion</h3>
+                    <p class="service-desc">Go-to-market innovation for continental scale. AfCFTA-ready strategies that open doors across Africa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLIDE Section -->
+    <section class="glide" id="glide">
+        <div class="glide-container">
+            <div class="glide-header">
+                <h2>The GLIDE Framework™</h2>
+                <p>Five areas. One clear picture of where you stand and what to build next.</p>
+            </div>
+            
+            <div class="glide-grid">
+                <div class="glide-item">
+                    <div class="glide-letter">G</div>
+                    <h4>Growth</h4>
+                    <p>Strategic clarity that turns ambition into action</p>
+                </div>
+                
+                <div class="glide-item">
+                    <div class="glide-letter">L</div>
+                    <h4>Leadership</h4>
+                    <p>Brand presence that makes you the obvious choice</p>
+                </div>
+                
+                <div class="glide-item">
+                    <div class="glide-letter">I</div>
+                    <h4>Infrastructure</h4>
+                    <p>Digital systems that work while you sleep</p>
+                </div>
+                
+                <div class="glide-item">
+                    <div class="glide-letter">D</div>
+                    <h4>Demand</h4>
+                    <p>Lead generation that fills your pipeline</p>
+                </div>
+                
+                <div class="glide-item">
+                    <div class="glide-letter">E</div>
+                    <h4>Expansion</h4>
+                    <p>Cross-border readiness for continental growth</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work" id="work">
+        <div class="work-container">
+            <div class="work-header">
+                <div class="work-title">
+                    <h2>Our Work</h2>
+                    <p>See how we've partnered with leading brands to deliver transformative strategies, sustainable growth and measurable results—proving why business leaders trust us to solve their most complex challenges.</p>
+                </div>
+                <a href="#" class="work-cta">View All</a>
+            </div>
+
+            <div class="case-study">
+                <div class="case-info">
+                    <div class="case-client">FEATURED ARTICLE</div>
+                    <h3 class="case-title">Building systematic revenue growth for emerging markets</h3>
+                    <div class="case-arrow">→</div>
+                </div>
+                <div class="case-image">
+                    <img src="TSCIMPACT2.png" alt="Case Study" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="research">
+        <div class="research-container">
+            <div class="research-card">
+                <div class="research-content">
+                    <div class="research-tag">NEW FRAMEWORK</div>
+                    <h3 class="research-title">The GLIDE Framework: Systematic Business Growth for Africa</h3>
+                    <a href="glideframework.html" class="research-cta">
+                        Test your businesses ability to GLIDE <span>→</span>
+                    </a>
+                </div>
+                <div class="research-visual">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- GLIDE Pentagon -->
+                        <defs>
+                            <linearGradient id="glideGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.2" />
+                                <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0.05" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Pentagon shape for GLIDE -->
+                        <polygon points="200,50 350,150 300,320 100,320 50,150" fill="url(#glideGrad)" stroke="#B8985F" stroke-width="2"/>
+                        <!-- Inner pentagon -->
+                        <polygon points="200,100 300,170 270,280 130,280 100,170" fill="none" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
+                        <!-- Center -->
+                        <circle cx="200" cy="200" r="40" fill="#B8985F" opacity="0.3"/>
+                        <!-- GLIDE letters at each point -->
+                        <text x="200" y="40" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">G</text>
+                        <text x="360" y="155" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">L</text>
+                        <text x="310" y="340" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">I</text>
+                        <text x="90" y="340" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">D</text>
+                        <text x="40" y="155" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">E</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2>Uncommon Impact.</h2>
+                <p>We deliver powerful <span>growth that is faster, smarter, more sustainable, more human and more actionable.</span> For every client. Every project. Every time.</p>
+                <a href="#" class="cta-link">
+                    Read more <span>→</span>
+                </a>
+            </div>
+            <div class="cta-visual">
+                <img src="tscimpact.png" alt="Growth" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-section footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Stay in the loop. Get the latest insights on growth and transformation.</p>
+                    <a href="#" class="subscribe-link">SUBSCRIBE</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Digital Presence</a></li>
+                        <li><a href="#">Content Strategy</a></li>
+                        <li><a href="#">Growth Strategy</a></li>
+                        <li><a href="#">Cross-Border</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Work</a></li>
+                        <li><a href="#">GLIDE Framework</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© THE SOCIAL CONNECT 2026</p>
+                <div class="social-links">
+                    <a href="#">in</a>
+                    <a href="#">ig</a>
+                    <a href="#">tw</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
