@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | The Social Connect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #B8985F;
+            --dark-gold: #8B7355;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gray: #999999;
+            --light-gray: #F5F5F5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--black);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 60px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 400;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 97px;
+            padding: 100px 60px;
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 60px;
+            background: var(--white);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        /* Form */
+        .form-side h2 {
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .form-side p {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--black);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #E0E0E0;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            margin-top: 12px;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold);
+        }
+
+        /* Info Side */
+        .info-side {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .info-card {
+            background: var(--light-gray);
+            padding: 40px;
+        }
+
+        .info-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .contact-detail {
+            margin-bottom: 32px;
+        }
+
+        .contact-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-detail h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--black);
+        }
+
+        .contact-detail p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .contact-detail a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-detail a:hover {
+            opacity: 0.7;
+        }
+
+        .packages-card {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px;
+        }
+
+        .packages-card h3 {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .packages-card p {
+            font-size: 15px;
+            color: var(--gray);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .packages-list {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .packages-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .packages-list li:last-child {
+            border-bottom: none;
+        }
+
+        .view-packages {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .view-packages:hover {
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px 60px 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand img {
+            width: 50px;
+            margin-bottom: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-brand p {
+            opacity: 0.6;
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .footer-section h4 {
+            font-size: 13px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 16px;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 15px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.5;
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: var(--light-gray);
+            padding: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message p {
+            color: var(--black);
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .contact-container,
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-container,
+            .hero,
+            .contact-section,
+            footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="index.html#services">What We Do</a></li>
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="index.html#glide">GLIDE</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="contact.html">Connect</a></li>
+                </ul>
+            </div>
+            <img src="https://i.imgur.com/YOUR_LOGO.png" alt="TSC Logo" class="logo">
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Let's Build Something Real</h1>
+        <p>Tell us about your business. We'll show you how systematic growth infrastructure can turn exhausting into inevitable.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <!-- Form Side -->
+            <div class="form-side">
+                <h2>Start the Conversation</h2>
+                <p>Whether you're just exploring or ready to build, we're here to help.</p>
+
+                <div class="success-message" id="successMessage">
+                    <p>✓ Message sent! We'll get back to you within 48 hours.</p>
+                </div>
+
+                <form action="https://formspree.io/f/xyzvryvw" method="POST" id="contactForm">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission - The Social Connect">
+                    <input type="hidden" name="_next" value="#success">
+                    
+                    <div class="form-group">
+                        <label class="form-label">Your Name *</label>
+                        <input type="text" name="name" class="form-input" placeholder="Jane Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" name="email" class="form-input" placeholder="jane@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Company Name</label>
+                        <input type="text" name="company" class="form-input" placeholder="Your Company">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">I'm Interested In</label>
+                        <select name="interest" class="form-select">
+                            <option value="">Select an option</option>
+                            <option value="GLIDE Assessment">GLIDE Assessment (Free)</option>
+                            <option value="Foundation Package">Foundation Package</option>
+                            <option value="Momentum Package">Momentum Package</option>
+                            <option value="Dominance Package">Dominance Package</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tell Us About Your Goals *</label>
+                        <textarea name="message" class="form-textarea" placeholder="What challenges are you facing? What are you looking to achieve? The more detail, the better we can help." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Info Side -->
+            <div class="info-side">
+                <div class="info-card">
+                    <h3>Contact Details</h3>
+                    
+                    <div class="contact-detail">
+                        <h4>Email</h4>
+                        <p><a href="mailto:hello@swiftsocialconnect.com">hello@swiftsocialconnect.com</a></p>
+                    </div>
+
+                    <div class="contact-detail">
+                        <h4>Location</h4>
+                        <p>Gaborone, Botswana<br>Serving businesses across Africa</p>
+                    </div>
+
+                    <div class="contact-detail">
+                        <h4>Response Time</h4>
+                        <p>We typically respond within 48 hours on business days.</p>
+                    </div>
+                </div>
+
+                <div class="packages-card">
+                    <h3>Not Sure Which Package?</h3>
+                    <p>Start with a free GLIDE Assessment to see where you stand and what to build next.</p>
+                    
+                    <ul class="packages-list">
+                        <li>Foundation: P4,800/month - Build the fundamentals</li>
+                        <li>Momentum: P8,500/month - Scale with complete systems</li>
+                        <li>Dominance: P15,000/month - Continental leadership</li>
+                    </ul>
+
+                    <a href="glide-assessment.html" class="view-packages">Take Free Assessment →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="https://i.imgur.com/YOUR_LOGO.png" alt="TSC">
+                <p>Building systematic business growth across Africa.</p>
+                <p><strong>Gaborone, Botswana</strong></p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="index.html#services">Digital Presence</a></li>
+                    <li><a href="index.html#services">Content Strategy</a></li>
+                    <li><a href="index.html#services">Cross-Border Growth</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="glide-assessment.html">GLIDE Assessment</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 The Social Connect</p>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            // Let Formspree handle the submission
+            setTimeout(() => {
+                if (window.location.hash === '#success') {
+                    successMessage.classList.add('show');
+                    form.reset();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

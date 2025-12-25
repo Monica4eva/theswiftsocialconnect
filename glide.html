@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLIDE Framework | The Social Connect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #B8985F;
+            --dark-gold: #8B7355;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gray: #999999;
+            --light-gray: #F5F5F5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--black);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 60px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 400;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 97px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: var(--black);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -10%;
+            top: 10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(184, 152, 95, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 100px 60px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 100px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 32px;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--gold);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            background: var(--gold);
+            color: var(--white);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero-cta:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 140px 60px;
+            background: var(--white);
+        }
+
+        .problem-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .problem-container h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .problem-container > p {
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .problem-card {
+            background: var(--light-gray);
+            padding: 50px 40px;
+            text-align: left;
+            transition: all 0.4s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .problem-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        .problem-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .problem-card p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* GLIDE Pillars Section */
+        .pillars-section {
+            padding: 140px 60px;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .pillars-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .pillars-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .pillars-header h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .pillars-header p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .pillar-card {
+            background: rgba(255,255,255,0.03);
+            padding: 60px 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
+        }
+
+        .pillar-card:hover {
+            background: rgba(184, 152, 95, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .pillar-letter {
+            font-size: 64px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        .pillar-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .pillar-card p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Detail Sections */
+        .pillar-detail {
+            padding: 140px 60px;
+        }
+
+        .pillar-detail:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .detail-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .detail-visual {
+            background: var(--white);
+            padding: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
+
+        .pillar-detail:nth-child(even) .detail-visual {
+            background: var(--white);
+        }
+
+        .detail-content .pillar-tag {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .detail-content h2 {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .detail-content > p {
+            font-size: 18px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .detail-list {
+            display: grid;
+            gap: 24px;
+        }
+
+        .detail-item {
+            padding-left: 32px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .detail-item h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .detail-item p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Who Benefits Section */
+        .benefits-section {
+            padding: 140px 60px;
+            background: var(--white);
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .benefits-header h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .benefits-header p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: #E0E0E0;
+            border: 1px solid #E0E0E0;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 50px 40px;
+            transition: all 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .benefit-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .benefit-card p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card:hover p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .benefit-card ul {
+            list-style: none;
+        }
+
+        .benefit-card ul li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: var(--gray);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .benefit-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .benefit-card:hover ul li {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Outcomes Section */
+        .outcomes-section {
+            padding: 140px 60px;
+            background: var(--gold);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .outcomes-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .outcomes-container h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .outcomes-container > p {
+            font-size: 20px;
+            margin-bottom: 80px;
+            opacity: 0.95;
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .outcome-item {
+            background: rgba(255,255,255,0.1);
+            padding: 50px 40px;
+            transition: all 0.4s ease;
+        }
+
+        .outcome-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-8px);
+        }
+
+        .outcome-number {
+            font-size: 56px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .outcome-label {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .outcome-desc {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 140px 60px;
+            background: var(--black);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .cta-container p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--white);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border: 1px solid var(--white);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 60px 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand img {
+            width: 50px;
+            margin-bottom: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-brand p {
+            opacity: 0.6;
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .footer-section h4 {
+            font-size: 13px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 16px;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 15px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+            text-align: center;
+            opacity: 0.5;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-container,
+            .detail-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .problem-grid,
+            .pillars-grid,
+            .benefits-grid,
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container,
+            .hero,
+            .problem-section,
+            .pillars-section,
+            .pillar-detail,
+            .benefits-section,
+            .outcomes-section,
+            .cta-section,
+            footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="glide-framework.html">GLIDE</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Connect</a></li>
+                </ul>
+            </div>
+            <img src="tselogo.png" alt="TSC Logo" class="logo">
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>The <span class="highlight">GLIDE Framework™</span></h1>
+                <p>Your business health check that shows exactly where you stand and what to build next. Five critical areas. One clear score. Real competitive advantage.</p>
+                <a href="glide-assessment.html" class="hero-cta">Take Your Free Assessment</a>
+            </div>
+            <div class="hero-visual">
+                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+                    <circle cx="250" cy="250" r="150" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+                    <circle cx="250" cy="250" r="100" fill="none" stroke="#B8985F" stroke-width="3"/>
+                    <circle cx="250" cy="250" r="80" fill="#B8985F" opacity="0.2"/>
+                    <text x="250" y="275" font-size="56" font-weight="600" fill="#B8985F" text-anchor="middle">GLIDE</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="problem-container">
+            <h2>The Real Problem You're Facing</h2>
+            <p>You're working harder than ever, but growth feels exhausting. You're bleeding money on random tactics that don't stack up. You need a clear picture of where you stand.</p>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">💡</div>
+                    <h3>No Clear Direction</h3>
+                    <p>You're trying everything but have no systematic way to know what's actually working or where to focus next.</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">💸</div>
+                    <h3>Wasted Resources</h3>
+                    <p>Money spent on tactics that don't compound. Effort that doesn't build on itself. Growth that requires constant hustle.</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">⚡</div>
+                    <h3>Missing Infrastructure</h3>
+                    <p>While competitors build systems, you're stuck in execution mode. No time to build the foundation that scales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLIDE Pillars -->
+    <section class="pillars-section">
+        <div class="pillars-container">
+            <div class="pillars-header">
+                <h2>Five Pillars. One Complete Picture.</h2>
+                <p>GLIDE measures your business maturity across the five areas that actually determine competitive advantage. Each pillar reveals where you're crushing it and where you're leaking money.</p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-letter">G</div>
+                    <h3>Growth Strategy</h3>
+                    <p>The clarity that turns "I want to grow" into "here's exactly how we're doing it"</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-letter">L</div>
+                    <h3>Leadership Presence</h3>
+                    <p>The brand and content that makes people choose you over everyone else</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-letter">I</div>
+                    <h3>Infrastructure</h3>
+                    <p>The digital systems and automation that work while you sleep</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-letter">D</div>
+                    <h3>Demand Engine</h3>
+                    <p>The lead generation and conversion setup that fills your pipeline</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-letter">E</div>
+                    <h3>Expansion Readiness</h3>
+                    <p>How prepared you are to scale bigger, broader, or cross-border</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growth Strategy Detail -->
+    <section class="pillar-detail">
+        <div class="detail-container">
+            <div class="detail-content">
+                <span class="pillar-tag">Growth Strategy</span>
+                <h2>Strategic Clarity That Compounds</h2>
+                <p>Most businesses confuse activity with progress. GLIDE measures whether you have the strategic clarity that turns ambition into systematic execution.</p>
+
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <h4>Clear Direction</h4>
+                        <p>Do you have documented goals with quarterly milestones, or are you figuring it out as you go?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Market Intelligence</h4>
+                        <p>Are you tracking competitors and market shifts, or reacting when it's too late?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Future-Ready</h4>
+                        <p>Are you building for next year's opportunities or still using last year's playbook?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-visual">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 50 350 L 150 250 L 250 200 L 350 100" stroke="#B8985F" stroke-width="4" fill="none"/>
+                    <circle cx="50" cy="350" r="12" fill="#B8985F"/>
+                    <circle cx="150" cy="250" r="12" fill="#B8985F"/>
+                    <circle cx="250" cy="200" r="12" fill="#B8985F"/>
+                    <circle cx="350" cy="100" r="12" fill="#B8985F"/>
+                    <path d="M 50 350 L 150 250 L 250 200 L 350 100" stroke="#B8985F" stroke-width="2" fill="none" opacity="0.3" stroke-dasharray="5,5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Presence Detail -->
+    <section class="pillar-detail">
+        <div class="detail-container">
+            <div class="detail-visual">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="200" r="120" fill="none" stroke="#B8985F" stroke-width="3"/>
+                    <circle cx="200" cy="200" r="80" fill="none" stroke="#E0E0E0" stroke-width="2"/>
+                    <circle cx="200" cy="200" r="40" fill="#B8985F" opacity="0.2"/>
+                    <line x1="200" y1="80" x2="200" y2="120" stroke="#B8985F" stroke-width="2"/>
+                    <line x1="320" y1="200" x2="280" y2="200" stroke="#B8985F" stroke-width="2"/>
+                    <line x1="200" y1="320" x2="200" y2="280" stroke="#B8985F" stroke-width="2"/>
+                    <line x1="80" y1="200" x2="120" y2="200" stroke="#B8985F" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="detail-content">
+                <span class="pillar-tag">Leadership Presence</span>
+                <h2>Authority That Opens Doors</h2>
+                <p>In crowded markets, the recognized expert wins. GLIDE measures whether you're building the brand presence and thought leadership that makes you the obvious choice.</p>
+
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <h4>Market Visibility</h4>
+                        <p>Are you consistently showing up where your customers are looking, or invisible when it matters?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Content Strategy</h4>
+                        <p>Is your content random posts or a systematic engine building authority month after month?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Differentiation</h4>
+                        <p>Can customers clearly explain why you're different, or do you blend in with competitors?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure Detail -->
+    <section class="pillar-detail">
+        <div class="detail-container">
+            <div class="detail-content">
+                <span class="pillar-tag">Infrastructure</span>
+                <h2>Systems That Work 24/7</h2>
+                <p>Your website, automation, and digital tools should be your hardest-working employees. GLIDE measures whether you have infrastructure that converts or just digital brochures.</p>
+
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <h4>Active Lead Generation</h4>
+                        <p>Does your website generate qualified leads daily, or is it just sitting there?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Marketing Automation</h4>
+                        <p>Are leads nurtured automatically, or does everything require manual follow-up?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Scalable Systems</h4>
+                        <p>Can you handle 3x growth tomorrow, or would you be completely overwhelmed?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-visual">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="80" y="100" width="240" height="200" fill="none" stroke="#E0E0E0" stroke-width="2"/>
+                    <rect x="120" y="140" width="80" height="60" fill="#F5F5F5"/>
+                    <rect x="220" y="140" width="80" height="60" fill="#B8985F" opacity="0.2"/>
+                    <rect x="120" y="220" width="180" height="40" fill="#F5F5F5"/>
+                    <circle cx="200" cy="340" r="30" fill="#B8985F" opacity="0.3"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demand Engine Detail -->
+    <section class="pillar-detail">
+        <div class="detail-container">
+            <div class="detail-visual">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 100 300 Q 150 200 200 200 T 300 100" stroke="#B8985F" stroke-width="3" fill="none"/>
+                    <circle cx="100" cy="300" r="8" fill="#B8985F"/>
+                    <circle cx="150" cy="240" r="8" fill="#B8985F"/>
+                    <circle cx="200" cy="200" r="8" fill="#B8985F"/>
+                    <circle cx="250" cy="160" r="8" fill="#B8985F"/>
+                    <circle cx="300" cy="100" r="8" fill="#B8985F"/>
+                </svg>
+            </div>
+            <div class="detail-content">
+                <span class="pillar-tag">Demand Engine</span>
+                <h2>Predictable Pipeline, Not Guesswork</h2>
+                <p>Revenue isn't luck—it's systematic. GLIDE measures whether you have a demand engine that consistently fills your pipeline or a feast-or-famine situation.</p>
+
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <h4>Lead Consistency</h4>
+                        <p>Is your pipeline predictable month-to-month, or are you constantly wondering where the next customer comes from?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Revenue Attribution</h4>
+                        <p>Do you know which marketing efforts generate actual sales, or is it all a black box?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Sales Alignment</h4>
+                        <p>Do marketing and sales work as one revenue team, or are they pointing fingers at each other?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expansion Readiness Detail -->
+    <section class="pillar-detail">
+        <div class="detail-container">
+            <div class="detail-content">
+                <span class="pillar-tag">Expansion Readiness</span>
+                <h2>Built to Scale, Not Just Survive</h2>
+                <p>AfCFTA opens unprecedented opportunities across Africa. GLIDE measures whether you're ready to capitalize or stuck in your current market.</p>
+
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <h4>Scalability</h4>
+                        <p>Can your systems handle rapid growth, or would 3x demand break your business?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Market Strategy</h4>
+                        <p>Have you identified and prepared for new markets, or is expansion just wishful thinking?</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Strategic Partnerships</h4>
+                        <p>Do you have partnerships accelerating growth, or are you going it alone?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-visual">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="120" cy="150" r="50" fill="none" stroke="#B8985F" stroke-width="2"/>
+                    <circle cx="280" cy="150" r="50" fill="none" stroke="#E0E0E0" stroke-width="2"/>
+                    <circle cx="200" cy="280" r="50" fill="none" stroke="#E0E0E0" stroke-width="2"/>
+                    <line x1="150" y1="180" x2="180" y2="250" stroke="#B8985F" stroke-width="2"/>
+                    <line x1="250" y1="180" x2="220" y2="250" stroke="#B8985F" stroke-width="2"/>
+                    <line x1="170" y1="150" x2="230" y2="150" stroke="#B8985F" stroke-width="2"/>
+                    <circle cx="200" cy="200" r="15" fill="#B8985F" opacity="0.3"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Benefits Section -->
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <div class="benefits-header">
+                <h2>Who GLIDE Helps Most</h2>
+                <p>GLIDE is built for ambitious businesses ready to move from tactics to systems. If you're serious about building competitive advantage, this is for you.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Growing Businesses (P500K+ Revenue)</h3>
+                    <p>You've proven the concept. Now you need the infrastructure to scale without burning out.</p>
+                    <ul>
+                        <li>Stop guessing what to build next</li>
+                        <li>Prioritize investments that compound</li>
+                        <li>Build foundation before you hit the ceiling</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Professional Services & Consulting</h3>
+                    <p>Move from trading time for money to building a scalable practice with predictable pipeline.</p>
+                    <ul>
+                        <li>Authority positioning that attracts clients</li>
+                        <li>Lead generation that fills your calendar</li>
+                        <li>Systems that work while you deliver</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Tech & SaaS Companies</h3>
+                    <p>You understand systems—now build the marketing and sales infrastructure that scales with your product.</p>
+                    <ul>
+                        <li>Demand generation that compounds</li>
+                        <li>Content that educates and converts</li>
+                        <li>Go-to-market clarity for expansion</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Manufacturing & Export Businesses</h3>
+                    <p>AfCFTA creates opportunity. GLIDE shows if you're ready to capture it with cross-border infrastructure.</p>
+                    <ul>
+                        <li>Export readiness assessment</li>
+                        <li>Market entry strategy clarity</li>
+                        <li>Partnership development frameworks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section class="outcomes-section">
+        <div class="outcomes-container">
+            <h2>What You Get With GLIDE</h2>
+            <p>Your GLIDE score isn't just a number—it's your roadmap to systematic competitive advantage.</p>
+
+            <div class="outcomes-grid">
+                <div class="outcome-item">
+                    <div class="outcome-number">0-100</div>
+                    <div class="outcome-label">Your Overall Score</div>
+                    <p class="outcome-desc">See exactly where you stand compared to market leaders. Score below 60? You're working too hard. Above 75? You're built to dominate.</p>
+                </div>
+
+                <div class="outcome-item">
+                    <div class="outcome-number">5</div>
+                    <div class="outcome-label">Pillar Breakdown</div>
+                    <p class="outcome-desc">Know precisely which areas are strong and which are leaking money. No more guessing where to invest next.</p>
+                </div>
+
+                <div class="outcome-item">
+                    <div class="outcome-number">Top 3</div>
+                    <div class="outcome-label">Priority Gaps</div>
+                    <p class="outcome-desc">Your specific action plan. Not generic advice—exact next steps based on your unique situation.</p>
+                </div>
+
+                <div class="outcome-item">
+                    <div class="outcome-number">90-Day</div>
+                    <div class="outcome-label">Action Roadmap</div>
+                    <p class="outcome-desc">Custom roadmap showing what to build first, second, third. Clear priorities that compound over time.</p>
+                </div>
+
+                <div class="outcome-item">
+                    <div class="outcome-number">ROI</div>
+                    <div class="outcome-label">Impact Estimates</div>
+                    <p class="outcome-desc">See potential returns from closing your gaps. Estimated lead increases, conversion improvements, revenue impact.</p>
+                </div>
+
+                <div class="outcome-item">
+                    <div class="outcome-number">Future</div>
+                    <div class="outcome-label">Proof Metrics</div>
+                    <p class="outcome-desc">GLIDE measures what matters for sustainable growth—not vanity metrics that don't predict success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>See Where You Stand</h2>
+            <p>Take the free GLIDE assessment. 15 questions. 5 minutes. Complete visibility into where you're crushing it and where you're leaving money on the table.</p>
+            <div class="cta-buttons">
+                <a href="glide-assessment.html" class="btn-primary">Take Free Assessment</a>
+                <a href="contact.html" class="btn-secondary">Talk to Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="https://i.imgur.com/YOUR_LOGO.png" alt="TSC">
+                <p>Building systematic business growth across Africa.</p>
+                <p><strong>Gaborone, Botswana</strong></p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html">Digital Presence</a></li>
+                    <li><a href="services.html">Content & Authority</a></li>
+                    <li><a href="services.html">Cross-Border Growth</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="glide-framework.html">GLIDE Framework</a></li>
+                    <li><a href="glide-assessment.html">Take Assessment</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The Social Connect</p>
+        </div>
+    </footer>
+</body>
+</html>

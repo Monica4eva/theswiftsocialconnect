@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | The Social Connect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #B8985F;
+            --dark-gold: #8B7355;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gray: #999999;
+            --light-gray: #F5F5F5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--black);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 60px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 400;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 97px;
+            padding: 140px 60px;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 32px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 140px 60px;
+            background: var(--white);
+        }
+
+        .mission-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .mission-content h2 {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 32px;
+        }
+
+        .mission-content p {
+            font-size: 18px;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .mission-visual {
+            background: var(--light-gray);
+            padding: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 140px 60px;
+            background: var(--light-gray);
+        }
+
+        .values-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .values-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .values-header h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .values-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 50px 40px;
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .value-card p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Approach Section */
+        .approach-section {
+            padding: 140px 60px;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .approach-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .approach-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .approach-header h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .approach-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .approach-list {
+            display: grid;
+            gap: 48px;
+        }
+
+        .approach-item {
+            border-left: 3px solid var(--gold);
+            padding-left: 40px;
+        }
+
+        .approach-item h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .approach-item p {
+            font-size: 16px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 140px 60px;
+            background: var(--white);
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .team-container h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .team-container > p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-content {
+            background: var(--light-gray);
+            padding: 60px;
+            text-align: left;
+        }
+
+        .team-content h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .team-content p {
+            font-size: 16px;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 60px;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        /* Difference Section */
+        .difference-section {
+            padding: 140px 60px;
+            background: var(--light-gray);
+        }
+
+        .difference-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .difference-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .difference-header h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: #E0E0E0;
+            border: 1px solid #E0E0E0;
+        }
+
+        .difference-item {
+            background: var(--white);
+            padding: 50px 40px;
+            transition: all 0.4s ease;
+        }
+
+        .difference-item:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .difference-item h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .difference-item p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .difference-item:hover p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 140px 60px;
+            background: var(--gold);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .cta-container p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--black);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-white:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 60px 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand img {
+            width: 50px;
+            margin-bottom: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-brand p {
+            opacity: 0.6;
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .footer-section h4 {
+            font-size: 13px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 16px;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 15px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+            text-align: center;
+            opacity: 0.5;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .mission-container,
+            .values-grid,
+            .difference-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container,
+            .hero,
+            .mission-section,
+            .values-section,
+            .approach-section,
+            .team-section,
+            .difference-section,
+            .cta-section,
+            footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#packages">Packages</a></li>
+                    <li><a href="contact.html">Connect</a></li>
+                </ul>
+            </div>
+            <img src="https://i.imgur.com/YOUR_LOGO.png" alt="TSC Logo" class="logo">
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>We Build Systems, Not Just Campaigns</h1>
+            <p>While everyone's chasing viral moments, market leaders are building infrastructure. Real systems that keep working even when you're not. That's what we do at The Social Connect.</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="mission-container">
+            <div class="mission-content">
+                <h2>Our Mission</h2>
+                <p>We're obsessed with helping ambitious African businesses build the kind of infrastructure that doesn't require you to be "on" 24/7.</p>
+                <p>Smart growth. Strategic content. Automated processes. Real results.</p>
+                <p>AfCFTA is opening doors, digital is essential, but most businesses don't have the bandwidth to do it all. That's where we come in. We help you build three core systems that actually work together, measured through our GLIDE Framework™.</p>
+            </div>
+            <div class="mission-visual">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="200" r="150" fill="none" stroke="#E0E0E0" stroke-width="2"/>
+                    <circle cx="200" cy="200" r="100" fill="none" stroke="#B8985F" stroke-width="3"/>
+                    <circle cx="200" cy="200" r="50" fill="#B8985F" opacity="0.2"/>
+                    <text x="200" y="215" font-size="32" font-weight="600" fill="#B8985F" text-anchor="middle">GLIDE</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="values-container">
+            <div class="values-header">
+                <h2>What We Believe</h2>
+                <p>Our core values shape everything we do—from how we work with clients to the systems we build.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon"></div>
+                    <h3>Systems Over Hustle</h3>
+                    <p>Working smarter beats working harder. We build infrastructure that compounds, not tactics that expire.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon"></div>
+                    <h3>Measurement Matters</h3>
+                    <p>No vanity metrics. No BS. We track real progress through the GLIDE Framework and actual revenue impact.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon"></div>
+                    <h3>Africa First</h3>
+                    <p>We understand how business actually works across Africa. Local expertise meets global best practices.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Long-Term Thinking</h3>
+                    <p>One-off campaigns get one-off results. We build for compounding returns over time.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon"></div>
+                    <h3>True Partnership</h3>
+                    <p>We're invested in your success. Your wins are our wins. We grow when you grow.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon"></div>
+                    <h3>Execution Excellence</h3>
+                    <p>Strategy without execution is just theory. We combine strategic thinking with hands-on implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach-section">
+        <div class="approach-container">
+            <div class="approach-header">
+                <h2>How We're Different</h2>
+                <p>Most agencies just execute. Most consultants just strategize. We do both, together.</p>
+            </div>
+
+            <div class="approach-list">
+                <div class="approach-item">
+                    <h3>We Start With Measurement</h3>
+                    <p>Every partnership begins with your GLIDE assessment. We need to know where you stand before we can show you where to go. No guessing. No assumptions. Just honest evaluation.</p>
+                </div>
+
+                <div class="approach-item">
+                    <h3>We Build for Compounding</h3>
+                    <p>While others chase quick wins, we're building systems that deliver compounding returns month after month. Your second year should be easier than your first, not harder.</p>
+                </div>
+
+                <div class="approach-item">
+                    <h3>We Stay Ahead</h3>
+                    <p>We're constantly evolving our approaches so you're positioned for tomorrow's opportunities, not yesterday's tactics. What works today won't work forever—we make sure you're ready.</p>
+                </div>
+
+                <div class="approach-item">
+                    <h3>We Get Africa</h3>
+                    <p>Deep understanding of how business actually works here, from Gaborone to Lagos to Nairobi. Combined with proven global frameworks that actually translate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="team-container">
+            <h2>Built for African Businesses</h2>
+            <p>We serve ambitious leaders across the continent who understand that success is systematic, not accidental.</p>
+
+            <div class="team-content">
+                <h3>Who We Work With</h3>
+                <p>Professional services firms building authority. Tech companies scaling across borders. Manufacturing and export businesses going continental. Financial services positioning for growth. E-commerce brands building presence.</p>
+                <p>From Botswana to South Africa, Nigeria to Kenya, Ghana to Zimbabwe—we partner with businesses ready to build, not just survive.</p>
+
+                <div class="team-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">African Markets Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">P500K+</div>
+                        <div class="stat-label">Minimum Revenue (Ideal Client)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Focus on Systems, Not Tactics</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Difference Section -->
+    <section class="difference-section">
+        <div class="difference-container">
+            <div class="difference-header">
+                <h2>What Makes Us Different</h2>
+            </div>
+
+            <div class="difference-grid">
+                <div class="difference-item">
+                    <h3>Systems Over Hype</h3>
+                    <p>While others chase viral moments, we're building things that compound month after month. Infrastructure that keeps working long after we've set it up.</p>
+                </div>
+
+                <div class="difference-item">
+                    <h3>Strategy + Tech + Execution</h3>
+                    <p>Most agencies just execute. Most consultants just strategize. We do both, together. From the boardroom to the browser.</p>
+                </div>
+
+                <div class="difference-item">
+                    <h3>Measured Progress</h3>
+                    <p>Every partnership starts with your GLIDE assessment. We track real progress. No vanity metrics. No BS. Just honest feedback and clear next steps.</p>
+                </div>
+
+                <div class="difference-item">
+                    <h3>Built for the Long Game</h3>
+                    <p>One-off campaigns get one-off results. Our systems deliver compounding returns over time. Month 12 should be easier than month 1.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Build Real Infrastructure?</h2>
+            <p>Let's turn your ambition into systematic advantage. Start with a free GLIDE assessment to see exactly where you stand.</p>
+            <div class="cta-buttons">
+                <a href="glide-assessment.html" class="btn-white">Get Your GLIDE Score</a>
+                <a href="contact.html" class="btn-white">Book a Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="https://i.imgur.com/YOUR_LOGO.png" alt="TSC">
+                <p>Building systematic business growth across Africa.</p>
+                <p><strong>Gaborone, Botswana</strong></p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html">Digital Presence</a></li>
+                    <li><a href="services.html">Content & Authority</a></li>
+                    <li><a href="services.html">Cross-Border Growth</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="glide-assessment.html">GLIDE Assessment</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The Social Connect</p>
+        </div>
+    </footer>
+</body>
+</html>
