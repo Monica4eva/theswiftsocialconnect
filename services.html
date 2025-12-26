@@ -619,6 +619,115 @@
             font-style: italic;
         }
 
+        .starter-packages-section {
+            padding: 140px 60px;
+            background: var(--white);
+        }
+
+        .starter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .starter-card {
+            background: var(--white);
+            border: 2px solid #E0E0E0;
+            transition: all 0.3s ease;
+        }
+
+        .starter-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .starter-header {
+            padding: 30px 30px 20px;
+            border-bottom: 1px solid #F0F0F0;
+        }
+
+        .starter-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--black);
+        }
+
+        .starter-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .price-type {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--gray);
+        }
+
+        .starter-usd {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+
+        .starter-body {
+            padding: 30px;
+        }
+
+        .starter-desc {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .starter-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .starter-features li {
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--gray);
+            position: relative;
+            padding-left: 24px;
+            line-height: 1.5;
+        }
+
+        .starter-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .starter-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--gold);
+            color: var(--white);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .starter-btn:hover {
+            background: var(--dark-gold);
+        }
+
         .cta-section {
             padding: 140px 60px;
             background: var(--gold);
@@ -1108,8 +1217,8 @@
                     <div class="package-header">
                         <span class="package-tag">Foundation</span>
                         <h3 class="package-name">Foundation</h3>
-                        <div class="package-price">P4,800<span>/month</span></div>
-                        <div class="package-usd">$345 USD</div>
+                        <div class="package-price">P6,000<span>/month</span></div>
+                        <div class="package-usd">$430 USD</div>
                         <p class="package-for">Perfect for: Emerging businesses ready to stop winging it and start building properly.</p>
                     </div>
                     <div class="package-body">
@@ -1150,7 +1259,7 @@
                             </ul>
                         </div>
                         <a href="contact.html" class="package-btn">Get Started</a>
-                        <a href="https://www.paypal.com/checkoutnow?token=FOUNDATION" class="paypal-link">💳 Pay with PayPal</a>
+                        <a href="https://www.paypal.com/ncp/payment/YZCVK5S3593MW" class="paypal-link">💳 Pay with PayPal</a>
                         <p class="package-tagline">This is where you start.</p>
                     </div>
                 </div>
@@ -1160,8 +1269,8 @@
                     <div class="package-header">
                         <span class="package-tag">Momentum</span>
                         <h3 class="package-name">Momentum</h3>
-                        <div class="package-price">P8,500<span>/month</span></div>
-                        <div class="package-usd">$610 USD</div>
+                        <div class="package-price">P10,000<span>/month</span></div>
+                        <div class="package-usd">$720 USD</div>
                         <p class="package-for">Perfect for: Established businesses ready to build serious momentum and scale smartly.</p>
                     </div>
                     <div class="package-body">
@@ -1204,7 +1313,7 @@
                             </ul>
                         </div>
                         <a href="contact.html" class="package-btn">Get Started</a>
-                        <a href="https://www.paypal.com/checkoutnow?token=MOMENTUM" class="paypal-link">💳 Pay with PayPal</a>
+                        <a href="https://www.paypal.com/ncp/payment/NBDT2QNZTFNUL" class="paypal-link">💳 Pay with PayPal</a>
                         <p class="package-tagline">This is where you pull ahead.</p>
                     </div>
                 </div>
@@ -1257,8 +1366,126 @@
                             </ul>
                         </div>
                         <a href="contact.html" class="package-btn">Get Started</a>
-                        <a href="https://www.paypal.com/checkoutnow?token=DOMINANCE" class="paypal-link">💳 Pay with PayPal</a>
+                        <a href="https://www.paypal.com/ncp/payment/FVQ7W7SGHAABA" class="paypal-link">💳 Pay with PayPal</a>
                         <p class="package-tagline">This is how you build an empire.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="starter-packages-section">
+        <div class="packages-container">
+            <div class="packages-header">
+                <h2>Starter Packages for Small Businesses</h2>
+                <p>Quick wins and essential foundations. Perfect for businesses just getting started.</p>
+            </div>
+            <div class="starter-grid">
+                <div class="starter-card">
+                    <div class="starter-header">
+                        <h3 class="starter-name">Social Setup</h3>
+                        <div class="starter-price">P500<span class="price-type">One-time</span></div>
+                        <div class="starter-usd">$36 USD</div>
+                    </div>
+                    <div class="starter-body">
+                        <p class="starter-desc">Get your business visible on social media with professional profile setup.</p>
+                        <ul class="starter-features">
+                            <li>LinkedIn profile optimization</li>
+                            <li>Instagram business account setup</li>
+                            <li>Brand colors and bio creation</li>
+                            <li>Content posting guide</li>
+                        </ul>
+                        <a href="contact.html" class="starter-btn">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="starter-card">
+                    <div class="starter-header">
+                        <h3 class="starter-name">Website Essentials</h3>
+                        <div class="starter-price">P1,500<span class="price-type">One-time</span></div>
+                        <div class="starter-usd">$108 USD</div>
+                    </div>
+                    <div class="starter-body">
+                        <p class="starter-desc">Professional single-page website that converts visitors into customers.</p>
+                        <ul class="starter-features">
+                            <li>Single-page responsive website</li>
+                            <li>Contact form integration</li>
+                            <li>Mobile-optimized design</li>
+                            <li>Basic SEO setup</li>
+                        </ul>
+                        <a href="contact.html" class="starter-btn">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="starter-card">
+                    <div class="starter-header">
+                        <h3 class="starter-name">Content Kickstart</h3>
+                        <div class="starter-price">P800<span class="price-type">/month</span></div>
+                        <div class="starter-usd">$57 USD</div>
+                    </div>
+                    <div class="starter-body">
+                        <p class="starter-desc">Consistent monthly content to keep your audience engaged.</p>
+                        <ul class="starter-features">
+                            <li>8 social media posts per month</li>
+                            <li>1 platform (LinkedIn or Instagram)</li>
+                            <li>Content calendar included</li>
+                            <li>Canva templates provided</li>
+                        </ul>
+                        <a href="contact.html" class="starter-btn">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="starter-card">
+                    <div class="starter-header">
+                        <h3 class="starter-name">SEO Basics</h3>
+                        <div class="starter-price">P1,200<span class="price-type">One-time</span></div>
+                        <div class="starter-usd">$86 USD</div>
+                    </div>
+                    <div class="starter-body">
+                        <p class="starter-desc">Get found on Google with essential SEO optimization.</p>
+                        <ul class="starter-features">
+                            <li>Google Business Profile setup</li>
+                            <li>Website SEO audit</li>
+                            <li>Keyword research (10 terms)</li>
+                            <li>Meta descriptions optimization</li>
+                        </ul>
+                        <a href="contact.html" class="starter-btn">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="starter-card">
+                    <div class="starter-header">
+                        <h3 class="starter-name">Email Automation</h3>
+                        <div class="starter-price">P1,800<span class="price-type">One-time</span></div>
+                        <div class="starter-usd">$129 USD</div>
+                    </div>
+                    <div class="starter-body">
+                        <p class="starter-desc">Automated email system that nurtures leads while you sleep.</p>
+                        <ul class="starter-features">
+                            <li>Email platform setup (Mailchimp/Brevo)</li>
+                            <li>3 automated email sequences</li>
+                            <li>Welcome series creation</li>
+                            <li>List building strategy guide</li>
+                        </ul>
+                        <a href="contact.html" class="starter-btn">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="starter-card">
+                    <div class="starter-header">
+                        <h3 class="starter-name">Social Growth</h3>
+                        <div class="starter-price">P2,500<span class="price-type">/month</span></div>
+                        <div class="starter-usd">$179 USD</div>
+                    </div>
+                    <div class="starter-body">
+                        <p class="starter-desc">Comprehensive social media management for growing businesses.</p>
+                        <ul class="starter-features">
+                            <li>15 posts across 2 platforms monthly</li>
+                            <li>2 short videos or reels</li>
+                            <li>Engagement monitoring</li>
+                            <li>Monthly performance report</li>
+                        </ul>
+                        <a href="contact.html" class="starter-btn">Get Started</a>
                     </div>
                 </div>
             </div>
