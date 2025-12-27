@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Social Connect | Digital Marketing & Business Growth That Actually Works</title>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMV2ZCE5PT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LMV2ZCE5PT');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LMV2ZCE5PT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LMV2ZCE5PT');
+    </script>
 
     <meta name="title" content="The Social Connect | Digital Marketing & Business Growth That Actually Works">
     <meta name="description" content="Build a business that works while you sleep. Three packages. Real results. Less hustle, more systems. GLIDE Framework™ for systematic growth across Africa.">
@@ -69,26 +68,11 @@
         "longitude": "25.9231"
       },
       "areaServed": [
-        {
-          "@type": "Country",
-          "name": "Botswana"
-        },
-        {
-          "@type": "Country",
-          "name": "South Africa"
-        },
-        {
-          "@type": "Country",
-          "name": "Nigeria"
-        },
-        {
-          "@type": "Country",
-          "name": "Kenya"
-        },
-        {
-          "@type": "Country",
-          "name": "Ghana"
-        }
+        {"@type": "Country", "name": "Botswana"},
+        {"@type": "Country", "name": "South Africa"},
+        {"@type": "Country", "name": "Nigeria"},
+        {"@type": "Country", "name": "Kenya"},
+        {"@type": "Country", "name": "Ghana"}
       ],
       "email": "hello@swiftsocialconnect.com",
       "priceRange": "P4,800 - P15,000/month",
@@ -100,7 +84,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-</head>
 
     <style>
         * {
@@ -117,15 +100,7 @@
             --gray: #999999;
             --light-gray: #F5F5F5;
         }
-.hero-visual {
-            width: 100%;
-            max-width: 600px;
-            height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
             color: var(--black);
@@ -182,12 +157,6 @@
             color: var(--gold);
         }
 
-        .nav-right {
-            color: var(--gold);
-            font-size: 14px;
-            font-weight: 500;
-        }
-
         /* Hero Section */
         .hero {
             margin-top: 73px;
@@ -216,16 +185,15 @@
 
         .hero-container {
             width: 100%;
-            margin: 0;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0;
+            gap: 80px;
             align-items: center;
             position: relative;
             z-index: 2;
             min-height: calc(100vh - 73px);
             max-width: 1600px;
-            margin: 0 auto;
             padding: 100px 80px;
         }
 
@@ -282,6 +250,67 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .hero-visual {
+            width: 100%;
+            max-width: 600px;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* SVG Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes rotate-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        .outer-ring {
+            animation: rotate-slow 120s linear infinite;
+            transform-origin: center;
+        }
+        
+        .inner-ring {
+            animation: rotate-reverse 80s linear infinite;
+            transform-origin: center;
+        }
+        
+        .pulse-element {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .glow-element {
+            animation: glow 4s ease-in-out infinite;
+        }
+        
+        .connection-line {
+            stroke-dasharray: 400;
+            stroke-dashoffset: 400;
+            animation: drawLine 3s ease-in-out forwards;
+        }
+        
+        @keyframes drawLine {
+            to {
+                stroke-dashoffset: 0;
+            }
         }
 
         /* Services Section */
@@ -761,11 +790,17 @@
         @media (max-width: 1200px) {
             .hero-container {
                 grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 80px 40px;
             }
 
-            .hero-left,
-            .hero-right {
-                min-height: 60vh;
+            .hero-content h1 {
+                font-size: 56px;
+            }
+
+            .hero-visual {
+                max-width: 500px;
+                height: 500px;
             }
 
             .cta-container,
@@ -781,95 +816,219 @@
 
             .case-study {
                 grid-template-columns: 1fr;
+                padding: 60px 40px;
             }
 
-            .hero-content h1,
             .cta-content h2 {
                 font-size: 56px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 24px;
+                font-size: 14px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-visual {
+                max-width: 100%;
+                height: 400px;
+            }
+
+            .section-header h2,
+            .glide-header h2,
+            .work-title h2 {
+                font-size: 36px;
+            }
+
+            .services,
+            .glide,
+            .work,
+            .research,
+            .cta-section {
+                padding: 80px 30px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="nav-left">
                 <ul class="nav-links">
-    <li><a href="about.html">What We Do</a></li>
-    <li><a href="work.html">Work</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="glide.html">GLIDE</a></li>
-    <li><a href="contact.html">Connect</a></li>
-</ul>
+                    <li><a href="about.html">What We Do</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="glide.html">GLIDE</a></li>
+                    <li><a href="contact.html">Connect</a></li>
+                </ul>
             </div>
             <img src="tselogo.png" alt="TSC Logo" class="logo">
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-left">
                 <div class="hero-content">
                     <h1>Systematic Growth for Africa.</h1>
                     <p>We help brands achieve <span>uncommon growth</span> by staying relentlessly relevant. From uncovering untapped value to delivering transformative strategies, we build systems that <span>work while you sleep</span>.</p>
-                    <a href="glide.html" class="hero-cta">
-                        Calculate Your GLIDE Score <span>→</span>
-                    </a>
+                    <a href="glide.html" class="hero-cta">Calculate Your GLIDE Score <span>→</span></a>
                 </div>
             </div>
             <div class="hero-right">
                 <div class="hero-visual">
-                    <svg viewBox="0 0 600 600" xmlns="">
+                    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <radialGradient id="heroGrad">
-                                <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.3" />
+                            <radialGradient id="centerGlow">
+                                <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.6" />
+                                <stop offset="50%" style="stop-color:#B8985F;stop-opacity:0.3" />
                                 <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0" />
                             </radialGradient>
+                            <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0.2" />
+                            </linearGradient>
+                            <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0.1" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                                <polygon points="0 0, 8 3, 0 6" fill="#B8985F" opacity="0.5"/>
+                            </marker>
                         </defs>
-                        <!-- Outer rings -->
-                        <g id="heroRings">
-                            <circle cx="300" cy="300" r="280" fill="none" stroke="rgba(184, 152, 95, 0.1)" stroke-width="1"/>
-                            <circle cx="300" cy="300" r="240" fill="none" stroke="rgba(184, 152, 95, 0.15)" stroke-width="1"/>
-                            <circle cx="300" cy="300" r="200" fill="none" stroke="rgba(184, 152, 95, 0.2)" stroke-width="2"/>
+                        
+                        <circle cx="300" cy="300" r="280" fill="url(#centerGlow)" class="glow-element"/>
+                        
+                        <g class="outer-ring">
+                            <circle cx="300" cy="300" r="270" fill="none" stroke="rgba(184, 152, 95, 0.08)" stroke-width="1" stroke-dasharray="8,12"/>
+                            <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(184, 152, 95, 0.12)" stroke-width="1" stroke-dasharray="5,8"/>
+                            <circle cx="300" cy="30" r="3" fill="#B8985F" opacity="0.4"/>
+                            <circle cx="520" cy="150" r="3" fill="#B8985F" opacity="0.4"/>
+                            <circle cx="520" cy="450" r="3" fill="#B8985F" opacity="0.4"/>
+                            <circle cx="300" cy="570" r="3" fill="#B8985F" opacity="0.4"/>
+                            <circle cx="80" cy="450" r="3" fill="#B8985F" opacity="0.4"/>
+                            <circle cx="80" cy="150" r="3" fill="#B8985F" opacity="0.4"/>
                         </g>
-                        <!-- Dot pattern -->
-                        <g id="heroDots"></g>
-                        <!-- Center circle -->
-                        <circle cx="300" cy="300" r="140" fill="url(#heroGrad)"/>
-                        <circle cx="300" cy="300" r="120" fill="#B8985F" opacity="0.9"/>
-                        <!-- TSC Text -->
-                        <text x="300" y="325" font-size="20" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">The Social Connect</text>
-                        <text x="300" y="355" font-size="12" font-weight="400" fill="rgba(255,255,255,0.8)" text-anchor="middle" font-family="Arial" letter-spacing="3">Plug into Digital Success</text>
+                        
+                        <g class="inner-ring">
+                            <circle cx="300" cy="300" r="220" fill="none" stroke="rgba(184, 152, 95, 0.15)" stroke-width="2" stroke-dasharray="3,5"/>
+                            <circle cx="300" cy="300" r="190" fill="none" stroke="rgba(184, 152, 95, 0.2)" stroke-width="1.5"/>
+                        </g>
+                        
+                        <g id="glidePentagon">
+                            <polygon points="300,120 430,220 390,370 210,370 170,220" fill="url(#nodeGradient)" stroke="#B8985F" stroke-width="2" opacity="0.9"/>
+                            <line x1="300" y1="300" x2="300" y2="120" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" class="connection-line"/>
+                            <line x1="300" y1="300" x2="430" y2="220" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" class="connection-line"/>
+                            <line x1="300" y1="300" x2="390" y2="370" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" class="connection-line"/>
+                            <line x1="300" y1="300" x2="210" y2="370" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" class="connection-line"/>
+                            <line x1="300" y1="300" x2="170" y2="220" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" class="connection-line"/>
+                            <path d="M 300 130 Q 365 170 420 215" fill="none" stroke="#B8985F" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.4"/>
+                            <path d="M 425 230 Q 410 300 385 360" fill="none" stroke="#B8985F" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.4"/>
+                            <path d="M 380 370 Q 300 375 220 370" fill="none" stroke="#B8985F" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.4"/>
+                            <path d="M 205 365 Q 185 290 175 230" fill="none" stroke="#B8985F" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.4"/>
+                            <path d="M 175 210 Q 235 160 290 125" fill="none" stroke="#B8985F" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.4"/>
+                        </g>
+                        
+                        <g id="nodeG">
+                            <circle cx="300" cy="120" r="32" fill="url(#nodeGradient)" stroke="#B8985F" stroke-width="2" filter="url(#glow)"/>
+                            <circle cx="300" cy="120" r="5" fill="#B8985F" class="pulse-element"/>
+                            <text x="300" y="128" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">G</text>
+                            <text x="300" y="95" font-size="9" font-weight="600" fill="rgba(184, 152, 95, 0.9)" text-anchor="middle">GROWTH</text>
+                        </g>
+                        
+                        <g id="nodeL">
+                            <circle cx="430" cy="220" r="32" fill="url(#nodeGradient)" stroke="#B8985F" stroke-width="2" filter="url(#glow)"/>
+                            <circle cx="430" cy="220" r="5" fill="#B8985F" class="pulse-element"/>
+                            <text x="430" y="228" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">L</text>
+                            <text x="478" y="225" font-size="9" font-weight="600" fill="rgba(184, 152, 95, 0.9)" text-anchor="middle">LEADERSHIP</text>
+                        </g>
+                        
+                        <g id="nodeI">
+                            <circle cx="390" cy="370" r="32" fill="url(#nodeGradient)" stroke="#B8985F" stroke-width="2" filter="url(#glow)"/>
+                            <circle cx="390" cy="370" r="5" fill="#B8985F" class="pulse-element"/>
+                            <text x="390" y="378" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">I</text>
+                            <text x="455" y="375" font-size="9" font-weight="600" fill="rgba(184, 152, 95, 0.9)" text-anchor="middle">INFRASTRUCTURE</text>
+                        </g>
+                        
+                        <g id="nodeD">
+                            <circle cx="210" cy="370" r="32" fill="url(#nodeGradient)" stroke="#B8985F" stroke-width="2" filter="url(#glow)"/>
+                            <circle cx="210" cy="370" r="5" fill="#B8985F" class="pulse-element"/>
+                            <text x="210" y="378" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">D</text>
+                            <text x="145" y="375" font-size="9" font-weight="600" fill="rgba(184, 152, 95, 0.9)" text-anchor="middle">DEMAND</text>
+                        </g>
+                        
+                        <g id="nodeE">
+                            <circle cx="170" cy="220" r="32" fill="url(#nodeGradient)" stroke="#B8985F" stroke-width="2" filter="url(#glow)"/>
+                            <circle cx="170" cy="220" r="5" fill="#B8985F" class="pulse-element"/>
+                            <text x="170" y="228" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">E</text>
+                            <text x="115" y="225" font-size="9" font-weight="600" fill="rgba(184, 152, 95, 0.9)" text-anchor="middle">EXPANSION</text>
+                        </g>
+                        
+                        <circle cx="300" cy="300" r="65" fill="url(#centerGlow)" opacity="0.6"/>
+                        <circle cx="300" cy="300" r="55" fill="rgba(184, 152, 95, 0.25)" stroke="#B8985F" stroke-width="2.5" filter="url(#glow)"/>
+                        
+                        <g id="centerMetrics">
+                            <circle cx="300" cy="300" r="40" fill="none" stroke="rgba(184, 152, 95, 0.15)" stroke-width="2"/>
+                            <circle cx="300" cy="300" r="40" fill="none" stroke="#B8985F" stroke-width="2" stroke-dasharray="180 251" stroke-linecap="round" transform="rotate(-90 300 300)"/>
+                            <circle cx="300" cy="300" r="30" fill="none" stroke="rgba(184, 152, 95, 0.15)" stroke-width="2"/>
+                            <circle cx="300" cy="300" r="30" fill="none" stroke="#B8985F" stroke-width="2" stroke-dasharray="140 188" stroke-linecap="round" transform="rotate(-90 300 300)"/>
+                        </g>
+                        
+                        <text x="300" y="295" font-size="13" font-weight="700" fill="#B8985F" text-anchor="middle">THE GLIDE</text>
+                        <text x="300" y="310" font-size="13" font-weight="700" fill="#B8985F" text-anchor="middle">FRAMEWORK</text>
+                        <text x="300" y="328" font-size="8" font-weight="500" fill="rgba(184, 152, 95, 0.7)" text-anchor="middle" letter-spacing="1.5">SYSTEMATIC GROWTH</text>
+                        
+                        <g opacity="0.3">
+                            <circle cx="300" cy="480" r="2" fill="#B8985F">
+                                <animateTransform attributeName="transform" type="rotate" from="0 300 300" to="360 300 300" dur="40s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="300" cy="120" r="2" fill="#B8985F">
+                                <animateTransform attributeName="transform" type="rotate" from="0 300 300" to="360 300 300" dur="30s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="480" cy="300" r="2" fill="#B8985F">
+                                <animateTransform attributeName="transform" type="rotate" from="0 300 300" to="360 300 300" dur="35s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                        
+                        <line x1="50" y1="50" x2="100" y2="50" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
+                        <line x1="50" y1="50" x2="50" y2="100" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
+                        <line x1="550" y1="50" x2="500" y2="50" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
+                        <line x1="550" y1="50" x2="550" y2="100" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
+                        <line x1="50" y1="550" x2="100" y2="550" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
+                        <line x1="50" y1="550" x2="50" y2="500" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
+                        <line x1="550" y1="550" x2="500" y2="550" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
+                        <line x1="550" y1="550" x2="550" y2="500" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
+                        
+                        <rect x="0" y="298" width="600" height="4" fill="url(#ringGradient)" opacity="0.1">
+                            <animate attributeName="y" from="-10" to="610" dur="8s" repeatCount="indefinite"/>
+                        </rect>
                     </svg>
                 </div>
             </div>
         </div>
     </section>
-    <script>
-        // Generate dots for hero
-        const heroDots = document.getElementById('heroDots');
-        if (heroDots) {
-            for(let ring = 0; ring < 10; ring++) {
-                const radius = 150 + ring * 15;
-                const numDots = 16 + ring * 2;
-                for(let i = 0; i < numDots; i++) {
-                    const angle = (i / numDots) * Math.PI * 2;
-                    const x = 300 + Math.cos(angle) * radius;
-                    const y = 300 + Math.sin(angle) * radius;
-                    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                    dot.setAttribute('cx', x);
-                    dot.setAttribute('cy', y);
-                    dot.setAttribute('r', 2);
-                    dot.setAttribute('fill', `rgba(184, 152, 95, ${0.3 - ring * 0.02})`);
-                    heroDots.appendChild(dot);
-                }
-            }
-        }
-    </script>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="services-container">
             <div class="section-header">
@@ -883,19 +1042,16 @@
                     <h3 class="service-title">Digital Presence</h3>
                     <p class="service-desc">Websites, automation, and systems that convert 24/7. Your digital infrastructure working while you focus on growth.</p>
                 </div>
-
                 <div class="service-card">
                     <div class="service-tag">02</div>
                     <h3 class="service-title">Content & Authority</h3>
                     <p class="service-desc">Strategic content that delivers impact. Marketing that positions you as the obvious choice in your market.</p>
                 </div>
-
                 <div class="service-card">
                     <div class="service-tag">03</div>
                     <h3 class="service-title">Growth Strategy</h3>
                     <p class="service-desc">In a world of uncertainty, systematic growth isn't optional—it's essential. Clear roadmaps that turn ambition into execution.</p>
                 </div>
-
                 <div class="service-card">
                     <div class="service-tag">04</div>
                     <h3 class="service-title">Cross-Border Expansion</h3>
@@ -905,7 +1061,6 @@
         </div>
     </section>
 
-    <!-- GLIDE Section -->
     <section class="glide" id="glide">
         <div class="glide-container">
             <div class="glide-header">
@@ -919,25 +1074,21 @@
                     <h4>Growth</h4>
                     <p>Strategic clarity that turns ambition into action</p>
                 </div>
-                
                 <div class="glide-item">
                     <div class="glide-letter">L</div>
                     <h4>Leadership</h4>
                     <p>Brand presence that makes you the obvious choice</p>
                 </div>
-                
                 <div class="glide-item">
                     <div class="glide-letter">I</div>
                     <h4>Infrastructure</h4>
                     <p>Digital systems that work while you sleep</p>
                 </div>
-                
                 <div class="glide-item">
                     <div class="glide-letter">D</div>
                     <h4>Demand</h4>
                     <p>Lead generation that fills your pipeline</p>
                 </div>
-                
                 <div class="glide-item">
                     <div class="glide-letter">E</div>
                     <h4>Expansion</h4>
@@ -947,7 +1098,6 @@
         </div>
     </section>
 
-    <!-- Work Section -->
     <section class="work" id="work">
         <div class="work-container">
             <div class="work-header">
@@ -955,9 +1105,8 @@
                     <h2>Our Work</h2>
                     <p>See how we've partnered with leading brands to deliver transformative strategies, sustainable growth and measurable results—proving why business leaders trust us to solve their most complex challenges.</p>
                 </div>
-                <a href="#" class="work-cta">View All</a>
+                <a href="work.html" class="work-cta">View All</a>
             </div>
-
             <div class="case-study">
                 <div class="case-info">
                     <div class="case-client">FEATURED ARTICLE</div>
@@ -971,33 +1120,25 @@
         </div>
     </section>
 
-    <!-- Research Section -->
     <section class="research">
         <div class="research-container">
             <div class="research-card">
                 <div class="research-content">
                     <div class="research-tag">NEW FRAMEWORK</div>
                     <h3 class="research-title">The GLIDE Framework: Systematic Business Growth for Africa</h3>
-                    <a href="glideframework.html" class="research-cta">
-                        Test your businesses ability to GLIDE <span>→</span>
-                    </a>
+                    <a href="glideframework.html" class="research-cta">Test your businesses ability to GLIDE <span>→</span></a>
                 </div>
                 <div class="research-visual">
                     <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <!-- GLIDE Pentagon -->
                         <defs>
                             <linearGradient id="glideGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.2" />
                                 <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0.05" />
                             </linearGradient>
                         </defs>
-                        <!-- Pentagon shape for GLIDE -->
                         <polygon points="200,50 350,150 300,320 100,320 50,150" fill="url(#glideGrad)" stroke="#B8985F" stroke-width="2"/>
-                        <!-- Inner pentagon -->
                         <polygon points="200,100 300,170 270,280 130,280 100,170" fill="none" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1"/>
-                        <!-- Center -->
                         <circle cx="200" cy="200" r="40" fill="#B8985F" opacity="0.3"/>
-                        <!-- GLIDE letters at each point -->
                         <text x="200" y="40" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">G</text>
                         <text x="360" y="155" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">L</text>
                         <text x="310" y="340" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">I</text>
@@ -1009,15 +1150,12 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section" id="contact">
         <div class="cta-container">
             <div class="cta-content">
                 <h2>Uncommon Impact.</h2>
                 <p>We deliver powerful <span>growth that is faster, smarter, more sustainable, more human and more actionable.</span> For every client. Every project. Every time.</p>
-                <a href="#" class="cta-link">
-                    Read more <span>→</span>
-                </a>
+                <a href="work.html" class="cta-link">Read more <span>→</span></a>
             </div>
             <div class="cta-visual">
                 <img src="tscimpact.png" alt="Growth" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
@@ -1025,7 +1163,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-top">
