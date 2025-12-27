@@ -39,6 +39,31 @@
             background: var(--white);
         }
 
+        /* SVG Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .rotating {
+            animation: rotate 20s linear infinite;
+            transform-origin: center;
+        }
+        
+        .pulsing {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .detail-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -727,11 +752,59 @@
             </div>
             <div class="hero-visual">
                 <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="250" cy="250" r="200" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
-                    <circle cx="250" cy="250" r="150" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
-                    <circle cx="250" cy="250" r="100" fill="none" stroke="#B8985F" stroke-width="3"/>
-                    <circle cx="250" cy="250" r="80" fill="#B8985F" opacity="0.2"/>
-                    <text x="250" y="275" font-size="56" font-weight="600" fill="#B8985F" text-anchor="middle">GLIDE</text>
+                    <defs>
+                        <radialGradient id="heroGlow">
+                            <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.4" />
+                            <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0" />
+                        </radialGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <circle cx="250" cy="250" r="220" fill="url(#heroGlow)"/>
+                    
+                    <g class="rotating">
+                        <circle cx="250" cy="250" r="210" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="5,5"/>
+                        <circle cx="250" cy="250" r="190" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3,3"/>
+                    </g>
+                    
+                    <polygon points="250,80 400,180 350,350 150,350 100,180" 
+                             fill="rgba(184, 152, 95, 0.1)" 
+                             stroke="#B8985F" 
+                             stroke-width="3"/>
+                    
+                    <line x1="250" y1="250" x2="250" y2="80" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="250" y1="250" x2="400" y2="180" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="250" y1="250" x2="350" y2="350" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="250" y1="250" x2="150" y2="350" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                    <line x1="250" y1="250" x2="100" y2="180" stroke="rgba(184, 152, 95, 0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                    
+                    <g filter="url(#glow)">
+                        <circle cx="250" cy="80" r="25" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2" class="pulsing"/>
+                        <text x="250" y="90" font-size="20" font-weight="700" fill="#B8985F" text-anchor="middle">G</text>
+                        
+                        <circle cx="400" cy="180" r="25" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2" class="pulsing"/>
+                        <text x="400" y="190" font-size="20" font-weight="700" fill="#B8985F" text-anchor="middle">L</text>
+                        
+                        <circle cx="350" cy="350" r="25" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2" class="pulsing"/>
+                        <text x="350" y="360" font-size="20" font-weight="700" fill="#B8985F" text-anchor="middle">I</text>
+                        
+                        <circle cx="150" cy="350" r="25" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2" class="pulsing"/>
+                        <text x="150" y="360" font-size="20" font-weight="700" fill="#B8985F" text-anchor="middle">D</text>
+                        
+                        <circle cx="100" cy="180" r="25" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2" class="pulsing"/>
+                        <text x="100" y="190" font-size="20" font-weight="700" fill="#B8985F" text-anchor="middle">E</text>
+                    </g>
+                    
+                    <circle cx="250" cy="250" r="60" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="3"/>
+                    <circle cx="250" cy="250" r="45" fill="#B8985F" opacity="0.3"/>
+                    <text x="250" y="260" font-size="24" font-weight="700" fill="#B8985F" text-anchor="middle">GLIDE</text>
+                    <text x="250" y="278" font-size="10" fill="rgba(184, 152, 95, 0.8)" text-anchor="middle">FRAMEWORK</text>
                 </svg>
             </div>
         </div>
@@ -832,12 +905,68 @@
             </div>
             <div class="detail-visual">
                 <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 50 350 L 150 250 L 250 200 L 350 100" stroke="#B8985F" stroke-width="4" fill="none"/>
-                    <circle cx="50" cy="350" r="12" fill="#B8985F"/>
-                    <circle cx="150" cy="250" r="12" fill="#B8985F"/>
-                    <circle cx="250" cy="200" r="12" fill="#B8985F"/>
-                    <circle cx="350" cy="100" r="12" fill="#B8985F"/>
-                    <path d="M 50 350 L 150 250 L 250 200 L 350 100" stroke="#B8985F" stroke-width="2" fill="none" opacity="0.3" stroke-dasharray="5,5"/>
+                    <defs>
+                        <linearGradient id="growthGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0.8" />
+                        </linearGradient>
+                        <marker id="arrowGrowth" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#B8985F"/>
+                        </marker>
+                    </defs>
+                    
+                    <g opacity="0.1">
+                        <line x1="0" y1="100" x2="400" y2="100" stroke="#999" stroke-width="1"/>
+                        <line x1="0" y1="200" x2="400" y2="200" stroke="#999" stroke-width="1"/>
+                        <line x1="0" y1="300" x2="400" y2="300" stroke="#999" stroke-width="1"/>
+                        <line x1="100" y1="0" x2="100" y2="400" stroke="#999" stroke-width="1"/>
+                        <line x1="200" y1="0" x2="200" y2="400" stroke="#999" stroke-width="1"/>
+                        <line x1="300" y1="0" x2="300" y2="400" stroke="#999" stroke-width="1"/>
+                    </g>
+                    
+                    <line x1="40" y1="360" x2="360" y2="360" stroke="#333" stroke-width="2" marker-end="url(#arrowGrowth)"/>
+                    <line x1="40" y1="360" x2="40" y2="40" stroke="#333" stroke-width="2" marker-end="url(#arrowGrowth)"/>
+                    
+                    <text x="380" y="370" font-size="12" fill="#666">Time</text>
+                    <text x="20" y="30" font-size="12" fill="#666">Growth</text>
+                    
+                    <path d="M 50 350 Q 120 320 180 280 T 280 180 T 350 100" 
+                          stroke="url(#growthGrad)" 
+                          stroke-width="4" 
+                          fill="none"/>
+                    
+                    <g>
+                        <circle cx="50" cy="350" r="8" fill="#B8985F"/>
+                        <text x="50" y="380" font-size="10" fill="#666" text-anchor="middle">Start</text>
+                        
+                        <circle cx="120" cy="310" r="8" fill="#B8985F"/>
+                        <text x="120" y="340" font-size="10" fill="#666" text-anchor="middle">Q1</text>
+                        <rect x="110" y="280" width="20" height="25" fill="rgba(184, 152, 95, 0.2)"/>
+                        
+                        <circle cx="180" cy="260" r="8" fill="#B8985F"/>
+                        <text x="180" y="290" font-size="10" fill="#666" text-anchor="middle">Q2</text>
+                        <rect x="170" y="230" width="20" height="25" fill="rgba(184, 152, 95, 0.3)"/>
+                        
+                        <circle cx="240" cy="200" r="8" fill="#B8985F"/>
+                        <text x="240" y="230" font-size="10" fill="#666" text-anchor="middle">Q3</text>
+                        <rect x="230" y="170" width="20" height="25" fill="rgba(184, 152, 95, 0.4)"/>
+                        
+                        <circle cx="300" cy="140" r="8" fill="#B8985F"/>
+                        <text x="300" y="170" font-size="10" fill="#666" text-anchor="middle">Q4</text>
+                        <rect x="290" y="110" width="20" height="25" fill="rgba(184, 152, 95, 0.5)"/>
+                        
+                        <circle cx="350" cy="100" r="10" fill="#B8985F"/>
+                        <text x="350" y="90" font-size="12" font-weight="700" fill="#B8985F" text-anchor="middle">Goal</text>
+                    </g>
+                    
+                    <rect x="280" y="80" width="80" height="80" fill="none" stroke="#B8985F" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
+                    <text x="320" y="125" font-size="10" fill="#B8985F" text-anchor="middle">Target</text>
+                    
+                    <g opacity="0.6">
+                        <line x1="120" y1="310" x2="160" y2="310" stroke="#B8985F" stroke-width="1" stroke-dasharray="2,2"/>
+                        <line x1="180" y1="260" x2="220" y2="260" stroke="#B8985F" stroke-width="1" stroke-dasharray="2,2"/>
+                        <line x1="240" y1="200" x2="280" y2="200" stroke="#B8985F" stroke-width="1" stroke-dasharray="2,2"/>
+                    </g>
                 </svg>
             </div>
         </div>
@@ -848,13 +977,64 @@
         <div class="detail-container">
             <div class="detail-visual">
                 <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="authGlow">
+                            <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.5" />
+                            <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0" />
+                        </radialGradient>
+                    </defs>
+                    
+                    <circle cx="200" cy="200" r="140" fill="url(#authGlow)"/>
                     <circle cx="200" cy="200" r="120" fill="none" stroke="#B8985F" stroke-width="3"/>
-                    <circle cx="200" cy="200" r="80" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <circle cx="200" cy="200" r="40" fill="#B8985F" opacity="0.2"/>
-                    <line x1="200" y1="80" x2="200" y2="120" stroke="#B8985F" stroke-width="2"/>
-                    <line x1="320" y1="200" x2="280" y2="200" stroke="#B8985F" stroke-width="2"/>
-                    <line x1="200" y1="320" x2="200" y2="280" stroke="#B8985F" stroke-width="2"/>
-                    <line x1="80" y1="200" x2="120" y2="200" stroke="#B8985F" stroke-width="2"/>
+                    <circle cx="200" cy="200" r="80" fill="none" stroke="rgba(184, 152, 95, 0.5)" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="200" cy="200" r="40" fill="rgba(184, 152, 95, 0.3)"/>
+                    
+                    <text x="200" y="205" font-size="16" font-weight="700" fill="#B8985F" text-anchor="middle">YOU</text>
+                    
+                    <g id="contentPillars">
+                        <line x1="200" y1="160" x2="200" y2="60" stroke="#B8985F" stroke-width="2"/>
+                        <circle cx="200" cy="60" r="20" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2"/>
+                        <text x="200" y="67" font-size="24" fill="#B8985F" text-anchor="middle">📝</text>
+                        <text x="200" y="40" font-size="10" font-weight="600" fill="#666" text-anchor="middle">Thought</text>
+                        <text x="200" y="52" font-size="10" font-weight="600" fill="#666" text-anchor="middle">Leadership</text>
+                        
+                        <line x1="228" y1="172" x2="310" y2="110" stroke="#B8985F" stroke-width="2"/>
+                        <circle cx="310" cy="110" r="20" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2"/>
+                        <text x="310" y="117" font-size="24" fill="#B8985F" text-anchor="middle">📱</text>
+                        <text x="340" y="110" font-size="10" font-weight="600" fill="#666">Social</text>
+                        <text x="340" y="122" font-size="10" font-weight="600" fill="#666">Media</text>
+                        
+                        <line x1="228" y1="228" x2="310" y2="290" stroke="#B8985F" stroke-width="2"/>
+                        <circle cx="310" cy="290" r="20" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2"/>
+                        <text x="310" y="297" font-size="24" fill="#B8985F" text-anchor="middle">🎤</text>
+                        <text x="340" y="295" font-size="10" font-weight="600" fill="#666">Speaking</text>
+                        
+                        <line x1="172" y1="228" x2="90" y2="290" stroke="#B8985F" stroke-width="2"/>
+                        <circle cx="90" cy="290" r="20" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2"/>
+                        <text x="90" y="297" font-size="24" fill="#B8985F" text-anchor="middle">📰</text>
+                        <text x="60" y="295" font-size="10" font-weight="600" fill="#666">PR/Media</text>
+                        
+                        <line x1="172" y1="172" x2="90" y2="110" stroke="#B8985F" stroke-width="2"/>
+                        <circle cx="90" cy="110" r="20" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2"/>
+                        <text x="90" y="117" font-size="24" fill="#B8985F" text-anchor="middle">✍️</text>
+                        <text x="60" y="110" font-size="10" font-weight="600" fill="#666">Content</text>
+                    </g>
+                    
+                    <g opacity="0.3">
+                        <circle cx="200" cy="200" r="160" fill="none" stroke="#B8985F" stroke-width="1" stroke-dasharray="3,3"/>
+                        <circle cx="200" cy="200" r="180" fill="none" stroke="#B8985F" stroke-width="1" stroke-dasharray="3,3"/>
+                    </g>
+                    
+                    <g opacity="0.6">
+                        <path d="M 200 320 Q 220 340 240 340" stroke="#B8985F" stroke-width="2" fill="none"/>
+                        <text x="250" y="345" font-size="10" fill="#666">Reach</text>
+                        
+                        <path d="M 320 200 Q 340 220 340 240" stroke="#B8985F" stroke-width="2" fill="none"/>
+                        <text x="345" y="245" font-size="10" fill="#666">Engage</text>
+                        
+                        <path d="M 200 80 Q 220 60 240 60" stroke="#B8985F" stroke-width="2" fill="none"/>
+                        <text x="250" y="65" font-size="10" fill="#666">Influence</text>
+                    </g>
                 </svg>
             </div>
             <div class="detail-content">
@@ -905,11 +1085,72 @@
             </div>
             <div class="detail-visual">
                 <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="80" y="100" width="240" height="200" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <rect x="120" y="140" width="80" height="60" fill="#F5F5F5"/>
-                    <rect x="220" y="140" width="80" height="60" fill="#B8985F" opacity="0.2"/>
-                    <rect x="120" y="220" width="180" height="40" fill="#F5F5F5"/>
-                    <circle cx="200" cy="340" r="30" fill="#B8985F" opacity="0.3"/>
+                    <defs>
+                        <linearGradient id="infraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.2" />
+                            <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0.5" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <rect x="80" y="80" width="240" height="60" rx="8" fill="url(#infraGrad)" stroke="#B8985F" stroke-width="2"/>
+                    <text x="200" y="105" font-size="14" font-weight="700" fill="#B8985F" text-anchor="middle">WEBSITE</text>
+                    <text x="200" y="125" font-size="11" fill="#666" text-anchor="middle">Digital Hub & Lead Capture</text>
+                    
+                    <rect x="80" y="160" width="240" height="60" rx="8" fill="url(#infraGrad)" stroke="#B8985F" stroke-width="2"/>
+                    <text x="200" y="185" font-size="14" font-weight="700" fill="#B8985F" text-anchor="middle">CRM / DATABASE</text>
+                    <text x="200" y="205" font-size="11" fill="#666" text-anchor="middle">Customer Intelligence</text>
+                    
+                    <rect x="80" y="240" width="240" height="60" rx="8" fill="url(#infraGrad)" stroke="#B8985F" stroke-width="2"/>
+                    <text x="200" y="265" font-size="14" font-weight="700" fill="#B8985F" text-anchor="middle">AUTOMATION</text>
+                    <text x="200" y="285" font-size="11" fill="#666" text-anchor="middle">Email, SMS & Workflows</text>
+                    
+                    <rect x="80" y="320" width="240" height="60" rx="8" fill="url(#infraGrad)" stroke="#B8985F" stroke-width="2"/>
+                    <text x="200" y="345" font-size="14" font-weight="700" fill="#B8985F" text-anchor="middle">ANALYTICS</text>
+                    <text x="200" y="365" font-size="11" fill="#666" text-anchor="middle">Performance & Insights</text>
+                    
+                    <g stroke="#B8985F" stroke-width="2" opacity="0.5">
+                        <line x1="200" y1="140" x2="200" y2="160"/>
+                        <line x1="200" y1="220" x2="200" y2="240"/>
+                        <line x1="200" y1="300" x2="200" y2="320"/>
+                        
+                        <polygon points="198,156 202,156 200,162" fill="#B8985F"/>
+                        <polygon points="198,236 202,236 200,242" fill="#B8985F"/>
+                        <polygon points="198,316 202,316 200,322" fill="#B8985F"/>
+                    </g>
+                    
+                    <g>
+                        <rect x="20" y="90" width="45" height="40" rx="4" fill="rgba(184, 152, 95, 0.15)" stroke="#B8985F" stroke-width="1"/>
+                        <text x="42" y="115" font-size="20" fill="#B8985F" text-anchor="middle">📱</text>
+                        <line x1="65" y1="110" x2="80" y2="110" stroke="#B8985F" stroke-width="1" stroke-dasharray="2,2"/>
+                        
+                        <rect x="20" y="170" width="45" height="40" rx="4" fill="rgba(184, 152, 95, 0.15)" stroke="#B8985F" stroke-width="1"/>
+                        <text x="42" y="195" font-size="20" fill="#B8985F" text-anchor="middle">📧</text>
+                        <line x1="65" y1="190" x2="80" y2="190" stroke="#B8985F" stroke-width="1" stroke-dasharray="2,2"/>
+                        
+                        <rect x="20" y="250" width="45" height="40" rx="4" fill="rgba(184, 152, 95, 0.15)" stroke="#B8985F" stroke-width="1"/>
+                        <text x="42" y="275" font-size="20" fill="#B8985F" text-anchor="middle">💳</text>
+                        <line x1="65" y1="270" x2="80" y2="270" stroke="#B8985F" stroke-width="1" stroke-dasharray="2,2"/>
+                        
+                        <rect x="335" y="90" width="45" height="40" rx="4" fill="rgba(184, 152, 95, 0.15)" stroke="#B8985F" stroke-width="1"/>
+                        <text x="357" y="115" font-size="20" fill="#B8985F" text-anchor="middle">📅</text>
+                        <line x1="320" y1="110" x2="335" y2="110" stroke="#B8985F" stroke-width="1" stroke-dasharray="2,2"/>
+                        
+                        <rect x="335" y="170" width="45" height="40" rx="4" fill="rgba(184, 152, 95, 0.15)" stroke="#B8985F" stroke-width="1"/>
+                        <text x="357" y="195" font-size="20" fill="#B8985F" text-anchor="middle">💬</text>
+                        <line x1="320" y1="190" x2="335" y2="190" stroke="#B8985F" stroke-width="1" stroke-dasharray="2,2"/>
+                    </g>
+                    
+                    <g>
+                        <circle cx="160" cy="150" r="3" fill="#B8985F" class="pulsing"/>
+                        <circle cx="200" cy="230" r="3" fill="#B8985F" class="pulsing"/>
+                        <circle cx="240" cy="310" r="3" fill="#B8985F" class="pulsing"/>
+                    </g>
+                    
+                    <g>
+                        <rect x="10" y="10" width="80" height="25" rx="12" fill="rgba(184, 152, 95, 0.2)"/>
+                        <circle cx="25" cy="22" r="5" fill="#4CAF50" class="pulsing"/>
+                        <text x="35" y="27" font-size="10" fill="#666">System Active</text>
+                    </g>
                 </svg>
             </div>
         </div>
@@ -920,12 +1161,63 @@
         <div class="detail-container">
             <div class="detail-visual">
                 <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 100 300 Q 150 200 200 200 T 300 100" stroke="#B8985F" stroke-width="3" fill="none"/>
-                    <circle cx="100" cy="300" r="8" fill="#B8985F"/>
-                    <circle cx="150" cy="240" r="8" fill="#B8985F"/>
-                    <circle cx="200" cy="200" r="8" fill="#B8985F"/>
-                    <circle cx="250" cy="160" r="8" fill="#B8985F"/>
-                    <circle cx="300" cy="100" r="8" fill="#B8985F"/>
+                    <defs>
+                        <linearGradient id="funnelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0.7" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <path d="M 80 60 L 320 60 L 300 120 L 100 120 Z" fill="url(#funnelGrad)" stroke="#B8985F" stroke-width="2"/>
+                    <text x="200" y="85" font-size="12" font-weight="700" fill="#B8985F" text-anchor="middle">AWARENESS</text>
+                    <text x="200" y="105" font-size="10" fill="#666" text-anchor="middle">10,000 visitors/month</text>
+                    
+                    <path d="M 100 120 L 300 120 L 270 180 L 130 180 Z" fill="url(#funnelGrad)" stroke="#B8985F" stroke-width="2"/>
+                    <text x="200" y="145" font-size="12" font-weight="700" fill="#B8985F" text-anchor="middle">INTEREST</text>
+                    <text x="200" y="165" font-size="10" fill="#666" text-anchor="middle">2,500 engaged</text>
+                    
+                    <path d="M 130 180 L 270 180 L 240 240 L 160 240 Z" fill="url(#funnelGrad)" stroke="#B8985F" stroke-width="2"/>
+                    <text x="200" y="205" font-size="12" font-weight="700" fill="#B8985F" text-anchor="middle">CONSIDERATION</text>
+                    <text x="200" y="225" font-size="10" fill="#666" text-anchor="middle">500 leads</text>
+                    
+                    <path d="M 160 240 L 240 240 L 220 300 L 180 300 Z" fill="url(#funnelGrad)" stroke="#B8985F" stroke-width="2"/>
+                    <text x="200" y="265" font-size="12" font-weight="700" fill="#B8985F" text-anchor="middle">DECISION</text>
+                    <text x="200" y="285" font-size="10" fill="#666" text-anchor="middle">150 qualified</text>
+                    
+                    <path d="M 180 300 L 220 300 L 210 350 L 190 350 Z" fill="url(#funnelGrad)" stroke="#B8985F" stroke-width="2"/>
+                    <text x="200" y="320" font-size="12" font-weight="700" fill="#B8985F" text-anchor="middle">ACTION</text>
+                    <text x="200" y="340" font-size="10" fill="#666" text-anchor="middle">50 customers</text>
+                    
+                    <g>
+                        <text x="340" y="90" font-size="10" font-weight="600" fill="#B8985F">25%</text>
+                        <line x1="320" y1="90" x2="335" y2="90" stroke="#B8985F" stroke-width="1"/>
+                        
+                        <text x="340" y="150" font-size="10" font-weight="600" fill="#B8985F">20%</text>
+                        <line x1="300" y1="150" x2="335" y2="150" stroke="#B8985F" stroke-width="1"/>
+                        
+                        <text x="340" y="210" font-size="10" font-weight="600" fill="#B8985F">30%</text>
+                        <line x1="270" y1="210" x2="335" y2="210" stroke="#B8985F" stroke-width="1"/>
+                        
+                        <text x="340" y="270" font-size="10" font-weight="600" fill="#B8985F">33%</text>
+                        <line x1="240" y1="270" x2="335" y2="270" stroke="#B8985F" stroke-width="1"/>
+                    </g>
+                    
+                    <g>
+                        <rect x="20" y="140" width="60" height="30" rx="4" fill="rgba(76, 175, 80, 0.2)" stroke="#4CAF50" stroke-width="1"/>
+                        <text x="50" y="160" font-size="10" font-weight="600" fill="#4CAF50" text-anchor="middle">Hot Leads</text>
+                        
+                        <rect x="20" y="200" width="60" height="30" rx="4" fill="rgba(255, 193, 7, 0.2)" stroke="#FFC107" stroke-width="1"/>
+                        <text x="50" y="220" font-size="10" font-weight="600" fill="#FF9800" text-anchor="middle">Warm Leads</text>
+                        
+                        <rect x="20" y="260" width="60" height="30" rx="4" fill="rgba(33, 150, 243, 0.2)" stroke="#2196F3" stroke-width="1"/>
+                        <text x="50" y="280" font-size="10" font-weight="600" fill="#2196F3" text-anchor="middle">Cold Leads</text>
+                    </g>
+                    
+                    <g>
+                        <text x="200" y="380" font-size="10" font-weight="700" fill="#B8985F" text-anchor="middle">PIPELINE VELOCITY: 30 DAYS</text>
+                        <rect x="120" y="385" width="160" height="8" rx="4" fill="rgba(184, 152, 95, 0.2)"/>
+                        <rect x="120" y="385" width="120" height="8" rx="4" fill="#B8985F"/>
+                    </g>
                 </svg>
             </div>
             <div class="detail-content">
@@ -976,13 +1268,78 @@
             </div>
             <div class="detail-visual">
                 <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="120" cy="150" r="50" fill="none" stroke="#B8985F" stroke-width="2"/>
-                    <circle cx="280" cy="150" r="50" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <circle cx="200" cy="280" r="50" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <line x1="150" y1="180" x2="180" y2="250" stroke="#B8985F" stroke-width="2"/>
-                    <line x1="250" y1="180" x2="220" y2="250" stroke="#B8985F" stroke-width="2"/>
-                    <line x1="170" y1="150" x2="230" y2="150" stroke="#B8985F" stroke-width="2"/>
-                    <circle cx="200" cy="200" r="15" fill="#B8985F" opacity="0.3"/>
+                    <defs>
+                        <radialGradient id="expansionGlow">
+                            <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.4" />
+                            <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0" />
+                        </radialGradient>
+                    </defs>
+                    
+                    <circle cx="200" cy="200" r="80" fill="url(#expansionGlow)" stroke="#B8985F" stroke-width="3"/>
+                    <circle cx="200" cy="200" r="60" fill="rgba(184, 152, 95, 0.3)"/>
+                    <text x="200" y="195" font-size="14" font-weight="700" fill="#B8985F" text-anchor="middle">HOME</text>
+                    <text x="200" y="210" font-size="10" fill="#666" text-anchor="middle">MARKET</text>
+                    <text x="200" y="225" font-size="12" font-weight="600" fill="#4CAF50" text-anchor="middle">100%</text>
+                    
+                    <circle cx="90" cy="110" r="50" fill="rgba(184, 152, 95, 0.15)" stroke="#B8985F" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="90" cy="110" r="35" fill="rgba(184, 152, 95, 0.1)"/>
+                    <text x="90" y="110" font-size="11" font-weight="600" fill="#B8985F" text-anchor="middle">Region 1</text>
+                    <text x="90" y="125" font-size="10" font-weight="600" fill="#FF9800" text-anchor="middle">45%</text>
+                    <line x1="140" y1="160" x2="150" y2="170" stroke="#B8985F" stroke-width="2" stroke-dasharray="3,3"/>
+                    
+                    <circle cx="310" cy="110" r="50" fill="rgba(184, 152, 95, 0.15)" stroke="#B8985F" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="310" cy="110" r="35" fill="rgba(184, 152, 95, 0.1)"/>
+                    <text x="310" y="110" font-size="11" font-weight="600" fill="#B8985F" text-anchor="middle">Region 2</text>
+                    <text x="310" y="125" font-size="10" font-weight="600" fill="#FF9800" text-anchor="middle">60%</text>
+                    <line x1="260" y1="160" x2="250" y2="170" stroke="#B8985F" stroke-width="2" stroke-dasharray="3,3"/>
+                    
+                    <circle cx="310" cy="290" r="50" fill="rgba(184, 152, 95, 0.15)" stroke="#B8985F" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="310" cy="290" r="35" fill="rgba(184, 152, 95, 0.1)"/>
+                    <text x="310" y="290" font-size="11" font-weight="600" fill="#B8985F" text-anchor="middle">Region 3</text>
+                    <text x="310" y="305" font-size="10" font-weight="600" fill="#2196F3" text-anchor="middle">25%</text>
+                    <line x1="260" y1="240" x2="250" y2="230" stroke="#B8985F" stroke-width="2" stroke-dasharray="3,3"/>
+                    
+                    <circle cx="90" cy="290" r="50" fill="rgba(184, 152, 95, 0.15)" stroke="#B8985F" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="90" cy="290" r="35" fill="rgba(184, 152, 95, 0.1)"/>
+                    <text x="90" y="290" font-size="11" font-weight="600" fill="#B8985F" text-anchor="middle">Region 4</text>
+                    <text x="90" y="305" font-size="10" font-weight="600" fill="#2196F3" text-anchor="middle">15%</text>
+                    <line x1="140" y1="240" x2="150" y2="230" stroke="#B8985F" stroke-width="2" stroke-dasharray="3,3"/>
+                    
+                    <g stroke="#B8985F" stroke-width="1.5" opacity="0.4">
+                        <line x1="140" y1="140" x2="160" y2="160"/>
+                        <line x1="260" y1="140" x2="240" y2="160"/>
+                        <line x1="260" y1="260" x2="240" y2="240"/>
+                        <line x1="140" y1="260" x2="160" y2="240"/>
+                    </g>
+                    
+                    <g stroke="#B8985F" stroke-width="2" opacity="0.3" stroke-dasharray="5,5">
+                        <path d="M 90 160 Q 100 200 90 240" fill="none"/>
+                        <path d="M 310 160 Q 300 200 310 240" fill="none"/>
+                        <path d="M 140 110 Q 200 90 260 110" fill="none"/>
+                        <path d="M 140 290 Q 200 310 260 290" fill="none"/>
+                    </g>
+                    
+                    <g>
+                        <rect x="20" y="20" width="100" height="60" rx="4" fill="rgba(255,255,255,0.9)" stroke="#E0E0E0" stroke-width="1"/>
+                        <text x="70" y="40" font-size="10" font-weight="700" fill="#333" text-anchor="middle">READINESS</text>
+                        <rect x="30" y="48" width="80" height="6" rx="3" fill="rgba(184, 152, 95, 0.2)"/>
+                        <rect x="30" y="48" width="60" height="6" rx="3" fill="#4CAF50"/>
+                        <text x="70" y="70" font-size="10" font-weight="600" fill="#4CAF50" text-anchor="middle">75% Ready</text>
+                    </g>
+                    
+                    <g>
+                        <rect x="280" y="20" width="100" height="60" rx="4" fill="rgba(255,255,255,0.9)" stroke="#E0E0E0" stroke-width="1"/>
+                        <text x="330" y="35" font-size="9" font-weight="600" fill="#666" text-anchor="middle">INFRASTRUCTURE</text>
+                        <circle cx="305" cy="53" r="4" fill="#4CAF50"/>
+                        <text x="315" y="56" font-size="8" fill="#666">Legal ✓</text>
+                        <circle cx="305" cy="65" r="4" fill="#4CAF50"/>
+                        <text x="315" y="68" font-size="8" fill="#666">Payment ✓</text>
+                    </g>
+                    
+                    <g>
+                        <text x="200" y="380" font-size="10" font-weight="700" fill="#B8985F" text-anchor="middle">TOTAL ADDRESSABLE MARKET</text>
+                        <text x="200" y="395" font-size="14" font-weight="700" fill="#4CAF50" text-anchor="middle">$2.5M → $8.5M</text>
+                    </g>
                 </svg>
             </div>
         </div>
@@ -998,7 +1355,7 @@
 
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <h3>Growing Businesses (P500K+ Revenue)</h3>
+                    <h3>Growing Businesses (500K+ Revenue)</h3>
                     <p>You've proven the concept. Now you need the infrastructure to scale without burning out.</p>
                     <ul>
                         <li>Stop guessing what to build next</li>
