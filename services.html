@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | The Social Connect</title>
+    <title>Services & Packages | The Social Connect</title>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMV2ZCE5PT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LMV2ZCE5PT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LMV2ZCE5PT');
+    </script>
 
-  gtag('config', 'G-LMV2ZCE5PT');
-</script>
+    <meta name="description" content="Three systematic growth packages for ambitious African businesses. Digital systems, brand authority, and cross-border expansion. From P6,000/month.">
+    <meta name="keywords" content="business growth packages Africa, digital marketing services Botswana, strategic consulting packages, AfCFTA expansion services, business automation Africa">
 
     <style>
         * {
@@ -24,6 +26,7 @@
 
         :root {
             --gold: #B8985F;
+            --gold-light: #D4B78D;
             --dark-gold: #8B7355;
             --white: #FFFFFF;
             --black: #000000;
@@ -32,7 +35,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             color: var(--black);
             line-height: 1.5;
             overflow-x: hidden;
@@ -43,13 +46,15 @@
             scroll-behavior: smooth;
         }
 
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--black);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(184, 152, 95, 0.1);
         }
 
         .nav-container {
@@ -69,7 +74,7 @@
 
         .nav-links {
             display: flex;
-            gap: 60px;
+            gap: 48px;
             list-style: none;
         }
 
@@ -78,349 +83,355 @@
             color: var(--white);
             font-weight: 400;
             font-size: 15px;
-            transition: color 0.2s ease;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--gold);
         }
 
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
         .logo {
             width: 50px;
             height: 50px;
+            transition: transform 0.3s ease;
         }
 
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
         .hero {
             margin-top: 97px;
-            padding: 120px 60px 40px;
+            padding: 100px 60px 80px;
             background: var(--black);
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1200px;
+            height: 1200px;
+            background: radial-gradient(circle, rgba(184, 152, 95, 0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-container {
-            max-width: 1600px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(184, 152, 95, 0.1);
+            border: 1px solid rgba(184, 152, 95, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
         }
 
         .hero h1 {
-            font-size: 72px;
+            font-size: 64px;
             font-weight: 300;
             letter-spacing: -2px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero h1 .highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            font-weight: 300;
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--gray);
             max-width: 700px;
             line-height: 1.7;
-            margin: 0 auto 50px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
         }
 
         .hero-cta {
-            display: inline-block;
-            padding: 18px 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
             background: var(--gold);
-            color: var(--white);
+            color: var(--black);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
+            font-weight: 600;
+            font-size: 15px;
             transition: all 0.3s ease;
             border-radius: 4px;
         }
 
         .hero-cta:hover {
-            background: var(--dark-gold);
+            background: var(--gold-light);
+            gap: 16px;
             transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(184, 152, 95, 0.3);
         }
 
-        .hero-summary {
-            max-width: 900px;
-            margin: 60px auto 0;
-            padding: 40px 60px;
-            background: rgba(255, 255, 255, 0.05);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .hero-summary p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.9);
-            margin: 0;
-        }
-
-        .hero-summary strong {
-            color: var(--gold);
-            font-weight: 600;
-        }
-
-        .services-overview {
-            padding: 140px 60px;
-            background: var(--white);
-        }
-
-        .overview-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 60px 50px;
-            transition: all 0.4s ease;
-            border: 2px solid #E0E0E0;
-        }
-
-        .service-card:hover {
-            background: var(--black);
-            color: var(--white);
-            border-color: var(--black);
-        }
-
-        .service-number {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 24px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .service-title {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .service-desc {
-            font-size: 16px;
-            color: var(--gray);
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
-
-        .service-card:hover .service-desc {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .service-features {
-            list-style: none;
-            margin-top: 24px;
-        }
-
-        .service-features li {
-            padding: 8px 0;
-            font-size: 14px;
-            color: var(--gray);
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .service-features li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-        }
-
-        .service-card:hover .service-features li {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .service-detail {
-            padding: 140px 60px;
-        }
-
-        .service-detail:nth-child(even) {
-            background: var(--light-gray);
-        }
-
-        .detail-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 100px;
+        .hero-cta-secondary {
+            display: inline-flex;
             align-items: center;
-        }
-
-        .detail-content h2 {
-            font-size: 48px;
-            font-weight: 300;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
-        }
-
-        .detail-tag {
-            font-size: 12px;
-            font-weight: 600;
+            gap: 12px;
+            padding: 16px 32px;
+            background: transparent;
             color: var(--gold);
+            border: 2px solid var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .hero-cta-secondary:hover {
+            background: var(--gold);
+            color: var(--black);
+            gap: 16px;
+        }
+
+        /* Three Core Systems */
+        .core-systems {
+            padding: 140px 60px;
+            background: var(--white);
+        }
+
+        .core-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(184, 152, 95, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            font-size: 11px;
+            font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .detail-content p {
-            font-size: 18px;
-            color: var(--gray);
-            line-height: 1.7;
-            margin-bottom: 40px;
-        }
-
-        .detail-list {
-            display: grid;
-            gap: 32px;
-        }
-
-        .detail-item h4 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .detail-item p {
-            font-size: 15px;
-            color: var(--gray);
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .detail-visual {
-            background: var(--white);
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
-        }
-
-        .service-detail:nth-child(even) .detail-visual {
-            background: var(--white);
-        }
-
-        .visual-label {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 600;
             color: var(--gold);
         }
 
-        .results-section {
-            padding: 140px 60px;
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .results-container {
-            max-width: 1600px;
-            margin: 0 auto;
+        .section-header {
             text-align: center;
-        }
-
-        .results-container h2 {
-            font-size: 56px;
-            font-weight: 300;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
-        }
-
-        .results-container > p {
-            font-size: 18px;
-            color: var(--gray);
             margin-bottom: 80px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 60px;
-            margin-top: 80px;
-        }
-
-        .result-item {
-            text-align: center;
-        }
-
-        .result-number {
-            font-size: 56px;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 12px;
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 24px;
             letter-spacing: -1px;
         }
 
-        .result-label {
-            font-size: 15px;
+        .section-header p {
+            font-size: 18px;
             color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
         }
 
-        .process-section {
-            padding: 140px 60px;
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: #E0E0E0;
+            border: 1px solid #E0E0E0;
+        }
+
+        .system-card {
             background: var(--white);
+            padding: 60px 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .process-container {
+        .system-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(184, 152, 95, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .system-card:hover::before {
+            left: 100%;
+        }
+
+        .system-card:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-8px);
+        }
+
+        .system-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        .system-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .system-desc {
+            font-size: 16px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .system-card:hover .system-desc {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .system-includes {
+            list-style: none;
+        }
+
+        .system-includes li {
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--gray);
+            position: relative;
+            padding-left: 24px;
+            line-height: 1.5;
+        }
+
+        .system-includes li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .system-card:hover .system-includes li {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 140px 60px;
+            background: var(--light-gray);
+        }
+
+        .how-container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .process-container h2 {
-            font-size: 48px;
-            font-weight: 300;
-            letter-spacing: -1.5px;
-            margin-bottom: 80px;
-            text-align: center;
-        }
-
-        .process-steps {
+        .process-grid {
             display: grid;
             gap: 60px;
+            margin-top: 60px;
         }
 
         .process-step {
             display: grid;
-            grid-template-columns: 100px 1fr;
+            grid-template-columns: 120px 1fr;
             gap: 40px;
+            align-items: start;
         }
 
         .step-number {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             background: var(--black);
             color: var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
-            font-weight: 600;
+            font-size: 42px;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .step-number {
+            background: var(--gold);
+            color: var(--black);
+            transform: scale(1.05);
         }
 
         .step-content h3 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 600;
             margin-bottom: 16px;
         }
 
         .step-content p {
-            font-size: 16px;
+            font-size: 17px;
             color: var(--gray);
             line-height: 1.7;
         }
 
-        .packages-section {
+        /* Packages Section */
+        .packages {
             padding: 140px 60px;
-            background: var(--light-gray);
+            background: var(--white);
         }
 
         .packages-container {
@@ -428,42 +439,30 @@
             margin: 0 auto;
         }
 
-        .packages-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .packages-header h2 {
-            font-size: 56px;
-            font-weight: 300;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-        }
-
-        .packages-header p {
-            font-size: 18px;
-            color: var(--gray);
-        }
-
         .packages-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
+            margin-top: 60px;
         }
 
         .package-card {
             background: var(--white);
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            overflow: hidden;
             transition: all 0.4s ease;
             position: relative;
         }
 
         .package-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--gold);
         }
 
         .package-card.featured {
-            border: 2px solid var(--gold);
+            border: 3px solid var(--gold);
         }
 
         .popular-badge {
@@ -472,11 +471,12 @@
             right: -10px;
             background: var(--gold);
             color: var(--white);
-            padding: 6px 20px;
+            padding: 8px 24px;
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(184, 152, 95, 0.4);
         }
 
         .package-header {
@@ -493,20 +493,20 @@
         }
 
         .package-name {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 600;
-            margin: 12px 0;
+            margin: 16px 0;
         }
 
         .package-price {
-            font-size: 48px;
-            font-weight: 600;
-            margin: 16px 0 4px;
+            font-size: 52px;
+            font-weight: 700;
+            margin: 20px 0 8px;
             letter-spacing: -1px;
         }
 
         .package-price span {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 400;
             color: var(--gray);
         }
@@ -514,13 +514,17 @@
         .package-usd {
             font-size: 16px;
             color: var(--gray);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .package-for {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--gray);
             line-height: 1.6;
+            padding: 20px;
+            background: var(--light-gray);
+            border-radius: 4px;
+            margin-top: 16px;
         }
 
         .package-body {
@@ -533,9 +537,11 @@
 
         .feature-group h4 {
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 16px;
             color: var(--black);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .feature-group ul {
@@ -543,12 +549,12 @@
         }
 
         .feature-group ul li {
-            padding: 8px 0;
-            font-size: 14px;
+            padding: 10px 0;
+            font-size: 15px;
             color: var(--gray);
             line-height: 1.6;
             position: relative;
-            padding-left: 20px;
+            padding-left: 28px;
         }
 
         .feature-group ul li::before {
@@ -557,18 +563,21 @@
             left: 0;
             color: var(--gold);
             font-weight: 700;
+            font-size: 18px;
         }
 
         .results-box {
-            background: var(--light-gray);
+            background: rgba(184, 152, 95, 0.1);
             padding: 24px;
             margin: 32px 0;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
         }
 
         .results-box strong {
             display: block;
-            font-size: 14px;
-            margin-bottom: 12px;
+            font-size: 15px;
+            margin-bottom: 16px;
             color: var(--black);
         }
 
@@ -577,11 +586,11 @@
         }
 
         .results-box ul li {
-            padding: 6px 0;
-            font-size: 13px;
+            padding: 8px 0;
+            font-size: 14px;
             color: var(--gray);
             position: relative;
-            padding-left: 20px;
+            padding-left: 24px;
         }
 
         .results-box ul li::before {
@@ -589,87 +598,87 @@
             position: absolute;
             left: 0;
             color: var(--gold);
+            font-weight: 700;
         }
 
         .package-btn {
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             background: var(--black);
             color: var(--white);
             text-align: center;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
+            font-weight: 600;
+            font-size: 16px;
             transition: all 0.3s ease;
             display: block;
             margin-bottom: 12px;
+            border-radius: 4px;
         }
 
         .package-btn:hover {
             background: var(--gold);
+            color: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(184, 152, 95, 0.3);
         }
 
         .paypal-link {
             display: block;
             text-align: center;
             margin-bottom: 16px;
-            font-size: 13px;
+            font-size: 14px;
             color: var(--gold);
             text-decoration: none;
             transition: opacity 0.3s ease;
+            font-weight: 500;
         }
 
         .paypal-link:hover {
             opacity: 0.7;
         }
 
-        .package-tagline {
-            text-align: center;
-            font-size: 14px;
-            color: var(--gray);
-            font-style: italic;
-        }
-
-        .starter-packages-section {
+        /* Quick Wins Section */
+        .quick-wins {
             padding: 140px 60px;
-            background: var(--white);
+            background: var(--light-gray);
         }
 
-        .starter-grid {
+        .quick-wins-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 60px;
         }
 
-        .starter-card {
+        .quick-win-card {
             background: var(--white);
             border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .starter-card:hover {
+        .quick-win-card:hover {
             border-color: var(--gold);
             transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .starter-header {
-            padding: 30px 30px 20px;
+        .quick-win-header {
+            padding: 32px 32px 24px;
             border-bottom: 1px solid #F0F0F0;
         }
 
-        .starter-name {
-            font-size: 24px;
+        .quick-win-name {
+            font-size: 26px;
             font-weight: 600;
             margin-bottom: 16px;
-            color: var(--black);
         }
 
-        .starter-price {
-            font-size: 36px;
+        .quick-win-price {
+            font-size: 40px;
             font-weight: 700;
-            color: var(--black);
             margin-bottom: 8px;
             display: flex;
             align-items: baseline;
@@ -682,29 +691,28 @@
             color: var(--gray);
         }
 
-        .starter-usd {
+        .quick-win-usd {
             font-size: 14px;
             color: var(--gray);
-            margin-bottom: 12px;
         }
 
-        .starter-body {
-            padding: 30px;
+        .quick-win-body {
+            padding: 32px;
         }
 
-        .starter-desc {
+        .quick-win-desc {
             font-size: 15px;
             color: var(--gray);
             line-height: 1.6;
             margin-bottom: 24px;
         }
 
-        .starter-features {
+        .quick-win-features {
             list-style: none;
             margin-bottom: 30px;
         }
 
-        .starter-features li {
+        .quick-win-features li {
             padding: 10px 0;
             font-size: 14px;
             color: var(--gray);
@@ -713,7 +721,7 @@
             line-height: 1.5;
         }
 
-        .starter-features li::before {
+        .quick-win-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
@@ -722,23 +730,26 @@
             font-size: 16px;
         }
 
-        .starter-btn {
+        .quick-win-btn {
             width: 100%;
             padding: 14px;
             background: var(--gold);
             color: var(--white);
             text-align: center;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 15px;
             transition: all 0.3s ease;
             display: block;
+            border-radius: 4px;
         }
 
-        .starter-btn:hover {
+        .quick-win-btn:hover {
             background: var(--dark-gold);
+            transform: translateY(-2px);
         }
 
+        /* CTA Section */
         .cta-section {
             padding: 140px 60px;
             background: var(--gold);
@@ -776,22 +787,25 @@
             color: var(--black);
             padding: 18px 40px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
             transition: all 0.3s ease;
             display: inline-block;
+            border-radius: 4px;
         }
 
         .btn-white:hover {
             background: var(--black);
             color: var(--white);
+            transform: translateY(-2px);
         }
 
+        /* Footer */
         footer {
             background: var(--black);
             color: var(--white);
             padding: 80px 60px 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(184, 152, 95, 0.1);
         }
 
         .footer-container {
@@ -806,11 +820,10 @@
         .footer-brand img {
             width: 50px;
             margin-bottom: 24px;
-            filter: brightness(0) invert(1);
         }
 
         .footer-brand p {
-            opacity: 0.6;
+            color: var(--gray);
             margin-bottom: 16px;
             font-size: 15px;
         }
@@ -821,7 +834,7 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0.5;
+            color: var(--gray);
         }
 
         .footer-section ul {
@@ -844,27 +857,24 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 40px;
             text-align: center;
-            opacity: 0.5;
+            color: var(--gray);
             font-size: 14px;
         }
 
+        /* Responsive */
         @media (max-width: 1200px) {
-            .overview-container,
-            .results-grid,
-            .packages-grid {
+            .systems-grid,
+            .packages-grid,
+            .quick-wins-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .detail-container {
-                grid-template-columns: 1fr;
-                gap: 60px;
             }
 
             .process-step {
                 grid-template-columns: 1fr;
+                text-align: center;
             }
 
             .step-number {
@@ -882,22 +892,24 @@
             .footer-container {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .nav-container,
+        @media (max-width: 768px) {
+            .hero-cta-group,
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            nav,
             .hero,
-            .services-overview,
-            .service-detail,
-            .results-section,
-            .process-section,
-            .packages-section,
+            .core-systems,
+            .how-it-works,
+            .packages,
+            .quick-wins,
             .cta-section,
             footer {
                 padding-left: 24px;
                 padding-right: 24px;
-            }
-
-            .hero-summary {
-                padding: 30px 24px;
             }
         }
     </style>
@@ -910,593 +922,429 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="index.html#glide">GLIDE</a></li>
-                    <li><a href="index.html#packages">Packages</a></li>
+                    <li><a href="#packages">Packages</a></li>
                     <li><a href="contact.html">Connect</a></li>
                 </ul>
             </div>
-            <img src="https://i.imgur.com/YOUR_LOGO.png" alt="TSC Logo" class="logo">
+            <img src="tselogo.png" alt="TSC Logo" class="logo">
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-container">
-            <h1>Three Systems That Turn Growth From Exhausting to Inevitable</h1>
-            <p>While competitors chase viral moments, we build infrastructure that compounds. Digital systems that work 24/7. Content that builds authority. Expansion strategies that open continental doors.</p>
-            <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 60px;">
-                <a href="#services-overview" class="hero-cta">Explore Our Services</a>
-                <a href="#packages" class="hero-cta">View Packages</a>
-            </div>
-            
-            <div class="hero-summary">
-                <p>We offer three integrated systems: <strong>Digital Presence</strong> (conversion-optimized websites, marketing automation, CRM integration, and sales funnels that work 24/7), <strong>Content & Authority</strong> (strategic content systems, thought leadership, and brand positioning that build lasting market authority), and <strong>Cross-Border Growth</strong> (AfCFTA-compliant market entry strategies, partnership development, and localization that opens doors across African markets).</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="services-overview" class="services-overview">
-        <div class="overview-container">
-            <div class="service-card">
-                <div class="service-number">01</div>
-                <h3 class="service-title">Digital Presence</h3>
-                <p class="service-desc">Your 24/7 sales team that never calls in sick. Websites, automation, and systems that convert while you sleep.</p>
-                <ul class="service-features">
-                    <li>High-converting websites</li>
-                    <li>Marketing automation</li>
-                    <li>CRM integration</li>
-                    <li>Sales funnels</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <div class="service-number">02</div>
-                <h3 class="service-title">Content & Authority</h3>
-                <p class="service-desc">Become the obvious choice in your market. Strategic content and positioning that builds lasting authority.</p>
-                <ul class="service-features">
-                    <li>Strategic content systems</li>
-                    <li>Thought leadership</li>
-                    <li>Brand positioning</li>
-                    <li>Multi-channel presence</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <div class="service-number">03</div>
-                <h3 class="service-title">Cross-Border Growth</h3>
-                <p class="service-desc">Go continental without losing your mind. AfCFTA-ready expansion strategies that open doors across Africa.</p>
-                <ul class="service-features">
-                    <li>Market entry strategy</li>
-                    <li>AfCFTA compliance</li>
-                    <li>Partnership development</li>
-                    <li>Localization</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="service-detail">
-        <div class="detail-container">
-            <div class="detail-content">
-                <span class="detail-tag">Digital Presence</span>
-                <h2>Infrastructure That Converts 24/7</h2>
-                <p>Your website should be your hardest-working employee. We build digital systems that generate leads, nurture prospects, and close deals while you focus on running your business.</p>
-                
-                <div class="detail-list">
-                    <div class="detail-item">
-                        <h4>Conversion-Optimized Websites</h4>
-                        <p>Sites designed around how real people browse and buy. Not just pretty—profitable. With clear CTAs, optimized user journeys, and analytics that tell you what's working.</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Marketing Automation</h4>
-                        <p>Email sequences, lead nurturing, CRM integration that runs on autopilot. Automated follow-ups that feel personal, not robotic. Systems that scale without adding headcount.</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Sales Funnels That Work</h4>
-                        <p>Clear paths from awareness to purchase. Landing pages that convert. Checkout processes that don't lose people. A/B testing so you keep getting better.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="detail-visual">
-                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="50" y="80" width="400" height="300" fill="none" stroke="#E0E0E0" stroke-width="3" rx="8"/>
-                    <rect x="50" y="80" width="400" height="40" fill="#F5F5F5"/>
-                    <circle cx="70" cy="100" r="6" fill="#FF5F56"/>
-                    <circle cx="90" cy="100" r="6" fill="#FFBD2E"/>
-                    <circle cx="110" cy="100" r="6" fill="#27C93F"/>
-                    
-                    <rect x="80" y="150" width="160" height="100" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="2"/>
-                    <text x="160" y="190" font-size="12" fill="#999" text-anchor="middle" font-weight="600">WEBSITE</text>
-                    <text x="160" y="210" font-size="10" fill="#999" text-anchor="middle">Lead Capture</text>
-                    
-                    <rect x="260" y="150" width="160" height="100" fill="rgba(184, 152, 95, 0.1)" stroke="#B8985F" stroke-width="2"/>
-                    <text x="340" y="190" font-size="12" fill="#B8985F" text-anchor="middle" font-weight="600">CRM</text>
-                    <text x="340" y="210" font-size="10" fill="#999" text-anchor="middle">Automation</text>
-                    
-                    <rect x="80" y="270" width="340" height="80" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="2"/>
-                    <text x="250" y="305" font-size="12" fill="#999" text-anchor="middle" font-weight="600">SALES FUNNEL</text>
-                    <text x="250" y="325" font-size="10" fill="#999" text-anchor="middle">Lead → Prospect → Customer</text>
-                    
-                    <path d="M 160 250 L 160 270" stroke="#B8985F" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                    <path d="M 340 250 L 340 270" stroke="#B8985F" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                    
-                    <circle cx="250" cy="420" r="50" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2"/>
-                    <text x="250" y="420" font-size="20" fill="#B8985F" text-anchor="middle" font-weight="700">24/7</text>
-                    <text x="250" y="438" font-size="11" fill="#999" text-anchor="middle">Always Working</text>
-                    
-                    <defs>
-                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-                            <polygon points="0 0, 10 5, 0 10" fill="#B8985F"/>
-                        </marker>
-                    </defs>
+            <div class="hero-badge">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="6" cy="6" r="6" fill="currentColor"/>
                 </svg>
-                <div class="visual-label">Automated Systems Working 24/7</div>
+                Three Systems. One Clear Path.
+            </div>
+            <h1>From <span class="highlight">Hustle</span> to <span class="highlight">Systems</span>.</h1>
+            <p class="hero-subtitle">Stop trading time for money. Start building infrastructure.</p>
+            <p>While others chase viral moments, we build systematic infrastructure that compounds. Digital systems that work 24/7. Content that builds authority. Expansion strategies that open continental doors.</p>
+            <div class="hero-cta-group">
+                <a href="#core-systems" class="hero-cta">See How It Works <span>→</span></a>
+                <a href="#packages" class="hero-cta-secondary">View Packages <span>→</span></a>
             </div>
         </div>
     </section>
 
-    <section class="service-detail">
-        <div class="detail-container">
-            <div class="detail-visual">
-                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="250" cy="250" r="70" fill="#B8985F" opacity="0.2"/>
-                    <text x="250" y="245" font-size="14" fill="#B8985F" text-anchor="middle" font-weight="700">YOUR</text>
-                    <text x="250" y="263" font-size="14" fill="#B8985F" text-anchor="middle" font-weight="700">AUTHORITY</text>
-                    
-                    <circle cx="250" cy="120" r="50" fill="none" stroke="#B8985F" stroke-width="2"/>
-                    <text x="250" y="118" font-size="11" fill="#999" text-anchor="middle" font-weight="600">LinkedIn</text>
-                    <text x="250" y="132" font-size="9" fill="#999" text-anchor="middle">Thought Leadership</text>
-                    
-                    <circle cx="390" cy="250" r="50" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <text x="390" y="248" font-size="11" fill="#999" text-anchor="middle" font-weight="600">Blog</text>
-                    <text x="390" y="262" font-size="9" fill="#999" text-anchor="middle">SEO Content</text>
-                    
-                    <circle cx="250" cy="380" r="50" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <text x="250" y="378" font-size="11" fill="#999" text-anchor="middle" font-weight="600">Social</text>
-                    <text x="250" y="392" font-size="9" fill="#999" text-anchor="middle">Multi-Channel</text>
-                    
-                    <circle cx="110" cy="250" r="50" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <text x="110" y="248" font-size="11" fill="#999" text-anchor="middle" font-weight="600">Media</text>
-                    <text x="110" y="262" font-size="9" fill="#999" text-anchor="middle">Press & Speaking</text>
-                    
-                    <line x1="250" y1="180" x2="250" y2="170" stroke="#B8985F" stroke-width="2"/>
-                    <line x1="340" y1="250" x2="330" y2="250" stroke="#B8985F" stroke-width="2"/>
-                    <line x1="250" y1="320" x2="250" y2="330" stroke="#B8985F" stroke-width="2"/>
-                    <line x1="160" y1="250" x2="170" y2="250" stroke="#B8985F" stroke-width="2"/>
-                    
-                    <path d="M 100 450 Q 250 400 400 450" stroke="#B8985F" stroke-width="2" fill="none"/>
-                    <text x="250" y="440" font-size="11" fill="#B8985F" text-anchor="middle" font-weight="600">Authority Compounds Over Time</text>
-                </svg>
-                <div class="visual-label">Authority Compounds Over Time Through Multi-Channel Content Distribution</div>
+    <section id="core-systems" class="core-systems">
+        <div class="core-container">
+            <div class="section-header">
+                <div class="section-badge">THREE INTEGRATED SYSTEMS</div>
+                <h2>What You Actually Get</h2>
+                <p>Not random tactics. Three proven systems that work together to build sustainable, scalable growth.</p>
             </div>
-            <div class="detail-content">
-                <span class="detail-tag">Content & Authority</span>
-                <h2>Become the Obvious Choice</h2>
-                <p>Strategic content isn't about posting more—it's about building authority that compounds. We help you position yourself as the go-to expert in your market.</p>
-                
-                <div class="detail-list">
-                    <div class="detail-item">
-                        <h4>Strategic Content Systems</h4>
-                        <p>90-day content plans. Multi-channel distribution. Reuse strategies that amplify everything you create. Consistent visibility without burning out.</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Thought Leadership</h4>
-                        <p>Long-form content that establishes expertise. Strategic partnerships that expand reach. Speaking opportunities and media placement that build credibility.</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Brand Positioning</h4>
-                        <p>Clear differentiation from competitors. Messaging that resonates. Category-defining positioning that makes you the obvious choice in your market.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="service-detail">
-        <div class="detail-container">
-            <div class="detail-content">
-                <span class="detail-tag">Cross-Border Growth</span>
-                <h2>Go Continental Without the Chaos</h2>
-                <p>AfCFTA opens unprecedented opportunities across Africa. We help you expand strategically—with compliance frameworks, partnership strategies, and localization that works.</p>
-                
-                <div class="detail-list">
-                    <div class="detail-item">
-                        <h4>Market Entry Strategy</h4>
-                        <p>Research-backed market selection. Competitive analysis. Risk assessment. Entry strategies that set you up for success, not just activity.</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>AfCFTA Navigation</h4>
-                        <p>Trade agreement compliance. Cross-border logistics. Payment systems. Legal frameworks. Documentation that actually works across borders.</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Partnership Development</h4>
-                        <p>Strategic partner identification. Outreach frameworks. Co-marketing programs. Distribution partnerships that accelerate market entry.</p>
-                    </div>
+            <div class="systems-grid">
+                <div class="system-card">
+                    <div class="system-number">01</div>
+                    <h3 class="system-title">Digital Revenue Systems</h3>
+                    <p class="system-desc">Your 24/7 sales team. Websites, automation, and funnels that convert while you sleep.</p>
+                    <ul class="system-includes">
+                        <li>Conversion-optimized website</li>
+                        <li>Marketing automation & CRM</li>
+                        <li>Email sequences that nurture</li>
+                        <li>Sales funnels that close</li>
+                        <li>Analytics that guide decisions</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="detail-visual">
-                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 250 100 L 280 130 L 300 180 L 290 240 L 270 300 L 240 340 L 200 340 L 180 300 L 170 240 L 180 180 L 210 130 Z" fill="none" stroke="#E0E0E0" stroke-width="3"/>
-                    
-                    <circle cx="220" cy="160" r="25" fill="rgba(184, 152, 95, 0.3)" stroke="#B8985F" stroke-width="2"/>
-                    <text x="220" y="165" font-size="10" fill="#B8985F" text-anchor="middle" font-weight="600">Home</text>
-                    
-                    <circle cx="270" cy="200" r="25" fill="none" stroke="#B8985F" stroke-width="2"/>
-                    <text x="270" y="205" font-size="9" fill="#999" text-anchor="middle" font-weight="600">Market 1</text>
-                    
-                    <circle cx="250" cy="270" r="25" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <text x="250" y="275" font-size="9" fill="#999" text-anchor="middle" font-weight="600">Market 2</text>
-                    
-                    <circle cx="190" cy="240" r="25" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <text x="190" y="245" font-size="9" fill="#999" text-anchor="middle" font-weight="600">Market 3</text>
-                    
-                    <line x1="235" y1="175" x2="255" y2="185" stroke="#B8985F" stroke-width="2" stroke-dasharray="4"/>
-                    <line x1="260" y1="220" x2="255" y2="250" stroke="#B8985F" stroke-width="2" stroke-dasharray="4"/>
-                    <line x1="225" y1="255" x2="210" y2="250" stroke="#B8985F" stroke-width="2" stroke-dasharray="4"/>
-                    
-                    <rect x="140" y="380" width="220" height="50" fill="rgba(184, 152, 95, 0.2)" stroke="#B8985F" stroke-width="2" rx="4"/>
-                    <text x="250" y="402" font-size="13" fill="#B8985F" text-anchor="middle" font-weight="700">AfCFTA COMPLIANT</text>
-                    <text x="250" y="418" font-size="9" fill="#999" text-anchor="middle">Cross-Border Trade Ready</text>
-                    
-                    <path d="M 350 180 L 380 180" stroke="#B8985F" stroke-width="2" marker-end="url(#arrow2)"/>
-                    <text x="420" y="185" font-size="10" fill="#999" font-weight="600">Partners</text>
-                    
-                    <path d="M 350 220 L 380 220" stroke="#B8985F" stroke-width="2" marker-end="url(#arrow2)"/>
-                    <text x="420" y="225" font-size="10" fill="#999" font-weight="600">Logistics</text>
-                    
-                    <path d="M 350 260 L 380 260" stroke="#B8985F" stroke-width="2" marker-end="url(#arrow2)"/>
-                    <text x="420" y="265" font-size="10" fill="#999" font-weight="600">Local Teams</text>
-                    
-                    <defs>
-                        <marker id="arrow2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                            <polygon points="0 0, 8 4, 0 8" fill="#B8985F"/>
-                        </marker>
-                    </defs>
-                </svg>
-                <div class="visual-label">AfCFTA-Compliant Cross-Border Trade with Strategic Partners and Local Teams</div>
-            </div>
-        </div>
-    </section>
 
-    <section class="results-section">
-        <div class="results-container">
-            <h2>Results That Matter</h2>
-            <p>These aren't vanity metrics. This is what happens when you build systematic infrastructure instead of chasing tactics.</p>
-            <div class="results-grid">
-                <div class="result-item">
-                    <div class="result-number">4x</div>
-                    <div class="result-label">More qualified leads</div>
+                <div class="system-card">
+                    <div class="system-number">02</div>
+                    <h3 class="system-title">Brand Authority</h3>
+                    <p class="system-desc">Become the obvious choice. Strategic content that builds lasting market leadership.</p>
+                    <ul class="system-includes">
+                        <li>Strategic content systems</li>
+                        <li>Thought leadership positioning</li>
+                        <li>Multi-channel distribution</li>
+                        <li>SEO content that ranks</li>
+                        <li>Video & social presence</li>
+                    </ul>
                 </div>
-                <div class="result-item">
-                    <div class="result-number">200%</div>
-                    <div class="result-label">Better marketing ROI</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-number">60%</div>
-                    <div class="result-label">Higher conversion rates</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-number">24/7</div>
-                    <div class="result-label">Systems working</div>
+
+                <div class="system-card">
+                    <div class="system-number">03</div>
+                    <h3 class="system-title">Cross-Border Growth</h3>
+                    <p class="system-desc">Go continental without chaos. AfCFTA-ready expansion across African markets.</p>
+                    <ul class="system-includes">
+                        <li>Market entry strategy</li>
+                        <li>AfCFTA compliance frameworks</li>
+                        <li>Partnership development</li>
+                        <li>Brand localization</li>
+                        <li>Distribution networks</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="process-section">
-        <div class="process-container">
-            <h2>How We Work</h2>
-            <div class="process-steps">
+    <section class="how-it-works">
+        <div class="how-container">
+            <div class="section-header">
+                <div class="section-badge">OUR PROCESS</div>
+                <h2>How We Build Your Infrastructure</h2>
+                <p>Four clear phases. No guesswork. Just systematic execution.</p>
+            </div>
+
+            <div class="process-grid">
                 <div class="process-step">
                     <div class="step-number">01</div>
                     <div class="step-content">
                         <h3>GLIDE Assessment</h3>
-                        <p>We start by understanding where you are. Complete evaluation across Growth, Leadership, Infrastructure, Demand, and Expansion. Your score tells us exactly what to build first.</p>
+                        <p>We evaluate where you are across Growth, Leadership, Infrastructure, Demand, and Expansion. Your score tells us exactly what to build first.</p>
                     </div>
                 </div>
+
                 <div class="process-step">
                     <div class="step-number">02</div>
                     <div class="step-content">
-                        <h3>Strategic Roadmap</h3>
-                        <p>Based on your GLIDE score, we create a custom 90-day roadmap. Priority gaps. Clear milestones. Realistic timelines. You know exactly what we're building and why.</p>
+                        <h3>90-Day Roadmap</h3>
+                        <p>Based on your GLIDE score, we create a custom roadmap. Priority gaps. Clear milestones. Realistic timelines. You know exactly what we're building.</p>
                     </div>
                 </div>
+
                 <div class="process-step">
                     <div class="step-number">03</div>
                     <div class="step-content">
-                        <h3>Systematic Execution</h3>
+                        <h3>Systematic Build</h3>
                         <p>We build your infrastructure piece by piece. Monthly check-ins. Quarterly GLIDE reassessments. Continuous optimization. You see progress every month.</p>
                     </div>
                 </div>
+
                 <div class="process-step">
                     <div class="step-number">04</div>
                     <div class="step-content">
                         <h3>Compounding Results</h3>
-                        <p>This is where it gets good. Your systems start working together. Results compound. Growth becomes predictable. You're not working harder—you're working smarter.</p>
+                        <p>Your systems start working together. Results compound. Growth becomes predictable. You're not working harder—you're working smarter.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="packages-section" id="packages">
+    <section id="packages" class="packages">
         <div class="packages-container">
-            <div class="packages-header">
-                <h2>Our Three Packages</h2>
-                <p>Real Investment. Real Results. Real Talk.</p>
+            <div class="section-header">
+                <div class="section-badge">CHOOSE YOUR LEVEL</div>
+                <h2>Three Packages. Real Investment.</h2>
+                <p>Choose based on where you are and where you want to go. All packages include GLIDE assessment and systematic execution.</p>
             </div>
+
             <div class="packages-grid">
+                <!-- Foundation Package -->
                 <div class="package-card">
                     <div class="package-header">
-                        <span class="package-tag">Foundation</span>
+                        <span class="package-tag">STARTER</span>
                         <h3 class="package-name">Foundation</h3>
                         <div class="package-price">P6,000<span>/month</span></div>
-                        <div class="package-usd">$430 USD</div>
-                        <p class="package-for">Perfect for: Emerging businesses ready to stop winging it and start building properly.</p>
+                        <div class="package-usd">$430 USD/month</div>
+                        <div class="package-for">
+                            For emerging businesses ready to stop winging it and start building properly.
+                        </div>
                     </div>
                     <div class="package-body">
                         <div class="feature-group">
-                            <h4>Your GLIDE Assessment</h4>
+                            <h4>Foundation Building</h4>
                             <ul>
-                                <li>Complete evaluation across all 5 areas</li>
-                                <li>Quarterly check-ins to track progress</li>
-                                <li>Custom roadmap for your business</li>
-                            </ul>
-                        </div>
-                        <div class="feature-group">
-                            <h4>Content & Visibility</h4>
-                            <ul>
-                                <li>Presence on 2 key platforms (LinkedIn + your choice)</li>
-                                <li>20 strategic posts monthly</li>
-                                <li>3 video pieces optimized for reach</li>
-                                <li>3 SEO articles (1,200+ words) that rank</li>
-                                <li>Content calendar with tracking</li>
-                            </ul>
-                        </div>
-                        <div class="feature-group">
-                            <h4>Digital Setup Support</h4>
-                            <ul>
-                                <li>Website audit and optimization roadmap</li>
-                                <li>Automation setup guidance</li>
-                                <li>Analytics dashboards that make sense</li>
-                                <li>Basic CRM help</li>
+                                <li>GLIDE Assessment (quarterly)</li>
+                                <li>Custom 90-day roadmap</li>
                                 <li>Monthly strategy calls</li>
                             </ul>
                         </div>
-                        <div class="results-box">
-                            <strong>What to Expect in 90 Days:</strong>
+
+                        <div class="feature-group">
+                            <h4>Content & Visibility</h4>
                             <ul>
-                                <li>GLIDE score jumps 15-22 points</li>
-                                <li>50-70% better engagement</li>
-                                <li>Real organic growth</li>
+                                <li>20 posts/month (2 platforms)</li>
+                                <li>3 video pieces monthly</li>
+                                <li>3 SEO articles (1,200+ words)</li>
+                                <li>Content calendar & tracking</li>
                             </ul>
                         </div>
+
+                        <div class="feature-group">
+                            <h4>Digital Setup</h4>
+                            <ul>
+                                <li>Website audit & optimization plan</li>
+                                <li>Automation setup guidance</li>
+                                <li>Basic CRM configuration</li>
+                                <li>Analytics dashboards</li>
+                            </ul>
+                        </div>
+
+                        <div class="results-box">
+                            <strong>Expected in 90 Days:</strong>
+                            <ul>
+                                <li>GLIDE score +15-22 points</li>
+                                <li>50-70% better engagement</li>
+                                <li>Clear growth infrastructure</li>
+                            </ul>
+                        </div>
+
                         <a href="contact.html" class="package-btn">Get Started</a>
-                        <a href="https://www.paypal.com/ncp/payment/YZCVK5S3593MW" class="paypal-link">💳 Pay with PayPal</a>
-                        <p class="package-tagline">This is where you start.</p>
+                        <a href="https://www.paypal.com/ncp/payment/YZCVK5S3593MW" class="paypal-link" target="_blank" rel="noopener">💳 Pay with PayPal</a>
                     </div>
                 </div>
 
+                <!-- Momentum Package -->
                 <div class="package-card featured">
                     <div class="popular-badge">Most Popular</div>
                     <div class="package-header">
-                        <span class="package-tag">Momentum</span>
+                        <span class="package-tag">GROWTH</span>
                         <h3 class="package-name">Momentum</h3>
                         <div class="package-price">P10,000<span>/month</span></div>
-                        <div class="package-usd">$720 USD</div>
-                        <p class="package-for">Perfect for: Established businesses ready to build serious momentum and scale smartly.</p>
+                        <div class="package-usd">$720 USD/month</div>
+                        <div class="package-for">
+                            For established businesses ready to build serious momentum and scale smartly.
+                        </div>
                     </div>
                     <div class="package-body">
                         <div class="feature-group">
                             <h4>Everything in Foundation, Plus:</h4>
                         </div>
+
                         <div class="feature-group">
-                            <h4>Complete Content Game</h4>
+                            <h4>Advanced Content</h4>
                             <ul>
-                                <li>3 platforms (LinkedIn, Instagram/X, + emerging)</li>
-                                <li>40 posts + 6 videos monthly</li>
+                                <li>40 posts/month (3 platforms)</li>
+                                <li>6 video pieces monthly</li>
                                 <li>5 thought leadership articles</li>
                                 <li>Personal brand content for founders</li>
-                                <li>Paid campaigns (Meta, LinkedIn, Google)</li>
+                                <li>Paid campaign management</li>
                             </ul>
                         </div>
+
                         <div class="feature-group">
-                            <h4>Complete Digital Setup</h4>
+                            <h4>Complete Digital Build</h4>
                             <ul>
-                                <li>Full automation (up to 1,000 contacts)</li>
-                                <li>Complete CRM setup and management</li>
-                                <li>Conversion optimization with testing</li>
-                                <li>Sales funnel setup</li>
+                                <li>Full automation (1,000 contacts)</li>
+                                <li>Complete CRM setup & management</li>
+                                <li>Conversion optimization & A/B testing</li>
+                                <li>Sales funnel architecture</li>
                             </ul>
                         </div>
+
                         <div class="feature-group">
-                            <h4>Market Intel</h4>
+                            <h4>Strategic Intelligence</h4>
                             <ul>
                                 <li>Competitive analysis</li>
-                                <li>Monthly strategy reports</li>
-                                <li>Direct strategic team contact</li>
+                                <li>Monthly performance reports</li>
+                                <li>Direct team access</li>
                             </ul>
                         </div>
+
                         <div class="results-box">
-                            <strong>What to Expect in 6 Months:</strong>
+                            <strong>Expected in 6 Months:</strong>
                             <ul>
-                                <li>GLIDE score up 30-40 points</li>
+                                <li>GLIDE score +30-40 points</li>
                                 <li>4x more qualified leads</li>
-                                <li>150-200% better marketing ROI</li>
+                                <li>150-200% better ROI</li>
                             </ul>
                         </div>
+
                         <a href="contact.html" class="package-btn">Get Started</a>
-                        <a href="https://www.paypal.com/ncp/payment/NBDT2QNZTFNUL" class="paypal-link">💳 Pay with PayPal</a>
-                        <p class="package-tagline">This is where you pull ahead.</p>
+                        <a href="https://www.paypal.com/ncp/payment/NBDT2QNZTFNUL" class="paypal-link" target="_blank" rel="noopener">💳 Pay with PayPal</a>
                     </div>
                 </div>
 
+                <!-- Dominance Package -->
                 <div class="package-card">
                     <div class="package-header">
-                        <span class="package-tag">Dominance</span>
+                        <span class="package-tag">SCALE</span>
                         <h3 class="package-name">Dominance</h3>
                         <div class="package-price">P15,000<span>/month</span></div>
-                        <div class="package-usd">$1,075 USD</div>
-                        <p class="package-for">Perfect for: Visionary businesses building for continental leadership.</p>
+                        <div class="package-usd">$1,075 USD/month</div>
+                        <div class="package-for">
+                            For visionary businesses building for continental leadership.
+                        </div>
                     </div>
                     <div class="package-body">
                         <div class="feature-group">
                             <h4>Everything in Momentum, Plus:</h4>
                         </div>
+
                         <div class="feature-group">
                             <h4>Maximum Visibility</h4>
                             <ul>
-                                <li>4+ platforms (everywhere that matters)</li>
-                                <li>60+ posts + 10 videos monthly</li>
+                                <li>60+ posts/month (4+ platforms)</li>
+                                <li>10 video pieces monthly</li>
                                 <li>8 premium articles + industry reports</li>
                                 <li>Premium brand evolution</li>
                             </ul>
                         </div>
+
                         <div class="feature-group">
-                            <h4>Complete Business Systems</h4>
+                            <h4>Enterprise Systems</h4>
                             <ul>
                                 <li>Full automation (3,000 contacts)</li>
-                                <li>Advanced CRM with custom workflows</li>
+                                <li>Advanced CRM workflows</li>
                                 <li>E-commerce setup (if needed)</li>
-                                <li>Enterprise analytics</li>
+                                <li>Enterprise analytics suite</li>
                             </ul>
                         </div>
+
                         <div class="feature-group">
                             <h4>Cross-Border Expansion</h4>
                             <ul>
-                                <li>AfCFTA compliance sorted</li>
-                                <li>Market entry strategy</li>
+                                <li>AfCFTA compliance implementation</li>
+                                <li>Market entry execution</li>
                                 <li>Partnership development</li>
-                                <li>Brand localization</li>
+                                <li>Multi-market localization</li>
                             </ul>
                         </div>
+
                         <div class="results-box">
-                            <strong>What to Expect in 12 Months:</strong>
+                            <strong>Expected in 12 Months:</strong>
                             <ul>
-                                <li>GLIDE score up 45-55 points</li>
+                                <li>GLIDE score +45-55 points</li>
                                 <li>5-8x more qualified leads</li>
-                                <li>Continental positioning</li>
+                                <li>Continental market presence</li>
                             </ul>
                         </div>
+
                         <a href="contact.html" class="package-btn">Get Started</a>
-                        <a href="https://www.paypal.com/ncp/payment/FVQ7W7SGHAABA" class="paypal-link">💳 Pay with PayPal</a>
-                        <p class="package-tagline">This is how you build an empire.</p>
+                        <a href="https://www.paypal.com/ncp/payment/FVQ7W7SGHAABA" class="paypal-link" target="_blank" rel="noopener">💳 Pay with PayPal</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="starter-packages-section">
+    <section class="quick-wins">
         <div class="packages-container">
-            <div class="packages-header">
-                <h2>Starter Packages for Small Businesses</h2>
-                <p>Quick wins and essential foundations. Perfect for businesses just getting started.</p>
+            <div class="section-header">
+                <div class="section-badge">QUICK WINS</div>
+                <h2>Start Small. Build Momentum.</h2>
+                <p>One-time services and starter packages for businesses just getting started.</p>
             </div>
-            <div class="starter-grid">
-                <div class="starter-card">
-                    <div class="starter-header">
-                        <h3 class="starter-name">Social Setup</h3>
-                        <div class="starter-price">P500<span class="price-type">One-time</span></div>
-                        <div class="starter-usd">$36 USD</div>
+
+            <div class="quick-wins-grid">
+                <div class="quick-win-card">
+                    <div class="quick-win-header">
+                        <h3 class="quick-win-name">Social Setup</h3>
+                        <div class="quick-win-price">P500<span class="price-type">one-time</span></div>
+                        <div class="quick-win-usd">$36 USD</div>
                     </div>
-                    <div class="starter-body">
-                        <p class="starter-desc">Get your business visible on social media with professional profile setup.</p>
-                        <ul class="starter-features">
+                    <div class="quick-win-body">
+                        <p class="quick-win-desc">Get your business visible on social media with professional profile setup.</p>
+                        <ul class="quick-win-features">
                             <li>LinkedIn profile optimization</li>
-                            <li>Instagram business account setup</li>
-                            <li>Brand colors and bio creation</li>
+                            <li>Instagram business setup</li>
+                            <li>Brand colors & bio creation</li>
                             <li>Content posting guide</li>
                         </ul>
-                        <a href="contact.html" class="starter-btn">Get Started</a>
+                        <a href="contact.html" class="quick-win-btn">Get Started</a>
                     </div>
                 </div>
 
-                <div class="starter-card">
-                    <div class="starter-header">
-                        <h3 class="starter-name">Website Essentials</h3>
-                        <div class="starter-price">P1,500<span class="price-type">One-time</span></div>
-                        <div class="starter-usd">$108 USD</div>
+                <div class="quick-win-card">
+                    <div class="quick-win-header">
+                        <h3 class="quick-win-name">Website Essentials</h3>
+                        <div class="quick-win-price">P1,500<span class="price-type">one-time</span></div>
+                        <div class="quick-win-usd">$108 USD</div>
                     </div>
-                    <div class="starter-body">
-                        <p class="starter-desc">Professional single-page website that converts visitors into customers.</p>
-                        <ul class="starter-features">
-                            <li>Single-page responsive website</li>
+                    <div class="quick-win-body">
+                        <p class="quick-win-desc">Professional single-page website that converts visitors into customers.</p>
+                        <ul class="quick-win-features">
+                            <li>Single-page responsive site</li>
                             <li>Contact form integration</li>
                             <li>Mobile-optimized design</li>
                             <li>Basic SEO setup</li>
                         </ul>
-                        <a href="contact.html" class="starter-btn">Get Started</a>
+                        <a href="contact.html" class="quick-win-btn">Get Started</a>
                     </div>
                 </div>
 
-                <div class="starter-card">
-                    <div class="starter-header">
-                        <h3 class="starter-name">Content Kickstart</h3>
-                        <div class="starter-price">P800<span class="price-type">/month</span></div>
-                        <div class="starter-usd">$57 USD</div>
+                <div class="quick-win-card">
+                    <div class="quick-win-header">
+                        <h3 class="quick-win-name">Content Kickstart</h3>
+                        <div class="quick-win-price">P800<span class="price-type">/month</span></div>
+                        <div class="quick-win-usd">$57 USD/month</div>
                     </div>
-                    <div class="starter-body">
-                        <p class="starter-desc">Consistent monthly content to keep your audience engaged.</p>
-                        <ul class="starter-features">
-                            <li>8 social media posts per month</li>
-                            <li>1 platform (LinkedIn or Instagram)</li>
+                    <div class="quick-win-body">
+                        <p class="quick-win-desc">Consistent monthly content to keep your audience engaged.</p>
+                        <ul class="quick-win-features">
+                            <li>8 social posts per month</li>
+                            <li>1 platform (your choice)</li>
                             <li>Content calendar included</li>
                             <li>Canva templates provided</li>
                         </ul>
-                        <a href="contact.html" class="starter-btn">Get Started</a>
+                        <a href="contact.html" class="quick-win-btn">Get Started</a>
                     </div>
                 </div>
 
-                <div class="starter-card">
-                    <div class="starter-header">
-                        <h3 class="starter-name">SEO Basics</h3>
-                        <div class="starter-price">P1,200<span class="price-type">One-time</span></div>
-                        <div class="starter-usd">$86 USD</div>
+                <div class="quick-win-card">
+                    <div class="quick-win-header">
+                        <h3 class="quick-win-name">SEO Basics</h3>
+                        <div class="quick-win-price">P1,200<span class="price-type">one-time</span></div>
+                        <div class="quick-win-usd">$86 USD</div>
                     </div>
-                    <div class="starter-body">
-                        <p class="starter-desc">Get found on Google with essential SEO optimization.</p>
-                        <ul class="starter-features">
+                    <div class="quick-win-body">
+                        <p class="quick-win-desc">Get found on Google with essential SEO optimization.</p>
+                        <ul class="quick-win-features">
                             <li>Google Business Profile setup</li>
                             <li>Website SEO audit</li>
                             <li>Keyword research (10 terms)</li>
                             <li>Meta descriptions optimization</li>
                         </ul>
-                        <a href="contact.html" class="starter-btn">Get Started</a>
+                        <a href="contact.html" class="quick-win-btn">Get Started</a>
                     </div>
                 </div>
 
-                <div class="starter-card">
-                    <div class="starter-header">
-                        <h3 class="starter-name">Email Automation</h3>
-                        <div class="starter-price">P1,800<span class="price-type">One-time</span></div>
-                        <div class="starter-usd">$129 USD</div>
+                <div class="quick-win-card">
+                    <div class="quick-win-header">
+                        <h3 class="quick-win-name">Email Automation</h3>
+                        <div class="quick-win-price">P1,800<span class="price-type">one-time</span></div>
+                        <div class="quick-win-usd">$129 USD</div>
                     </div>
-                    <div class="starter-body">
-                        <p class="starter-desc">Automated email system that nurtures leads while you sleep.</p>
-                        <ul class="starter-features">
-                            <li>Email platform setup (Mailchimp/Brevo)</li>
-                            <li>3 automated email sequences</li>
+                    <div class="quick-win-body">
+                        <p class="quick-win-desc">Automated email system that nurtures leads while you sleep.</p>
+                        <ul class="quick-win-features">
+                            <li>Email platform setup</li>
+                            <li>3 automated sequences</li>
                             <li>Welcome series creation</li>
-                            <li>List building strategy guide</li>
+                            <li>List building strategy</li>
                         </ul>
-                        <a href="contact.html" class="starter-btn">Get Started</a>
+                        <a href="contact.html" class="quick-win-btn">Get Started</a>
                     </div>
                 </div>
 
-                <div class="starter-card">
-                    <div class="starter-header">
-                        <h3 class="starter-name">Social Growth</h3>
-                        <div class="starter-price">P2,500<span class="price-type">/month</span></div>
-                        <div class="starter-usd">$179 USD</div>
+                <div class="quick-win-card">
+                    <div class="quick-win-header">
+                        <h3 class="quick-win-name">Social Growth</h3>
+                        <div class="quick-win-price">P2,500<span class="price-type">/month</span></div>
+                        <div class="quick-win-usd">$179 USD/month</div>
                     </div>
-                    <div class="starter-body">
-                        <p class="starter-desc">Comprehensive social media management for growing businesses.</p>
-                        <ul class="starter-features">
-                            <li>15 posts across 2 platforms monthly</li>
+                    <div class="quick-win-body">
+                        <p class="quick-win-desc">Comprehensive social media management for growing businesses.</p>
+                        <ul class="quick-win-features">
+                            <li>15 posts across 2 platforms</li>
                             <li>2 short videos or reels</li>
                             <li>Engagement monitoring</li>
                             <li>Monthly performance report</li>
                         </ul>
-                        <a href="contact.html" class="starter-btn">Get Started</a>
+                        <a href="contact.html" class="quick-win-btn">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -1508,8 +1356,8 @@
             <h2>Ready to Build Systems That Scale?</h2>
             <p>Stop trading time for money. Start building infrastructure that works 24/7. Let's turn your growth from exhausting to inevitable.</p>
             <div class="cta-buttons">
-                <a href="glide-assessment.html" class="btn-white">Get Your GLIDE Score</a>
-                <a href="contact.html" class="btn-white">Book a Call</a>
+                <a href="glideframework.html" class="btn-white">Get Your GLIDE Score</a>
+                <a href="contact.html" class="btn-white">Book Strategy Call</a>
             </div>
         </div>
     </section>
@@ -1517,16 +1365,16 @@
     <footer>
         <div class="footer-container">
             <div class="footer-brand">
-                <img src="https://i.imgur.com/YOUR_LOGO.png" alt="TSC">
+                <img src="tselogo.png" alt="TSC">
                 <p>Building systematic business growth across Africa.</p>
                 <p><strong>Gaborone, Botswana</strong></p>
             </div>
             <div class="footer-section">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="work.html">Digital Presence</a></li>
-                    <li><a href="work.html">Content & Authority</a></li>
-                    <li><a href="work.html">Cross-Border Growth</a></li>
+                    <li><a href="#core-systems">Digital Systems</a></li>
+                    <li><a href="#core-systems">Brand Authority</a></li>
+                    <li><a href="#core-systems">Cross-Border Growth</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1534,7 +1382,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services</a></li>
-                    <li><a href="glide-assessment.html">GLIDE Assessment</a></li>
+                    <li><a href="glideframework.html">GLIDE Assessment</a></li>
                     <li><a href="privacypolicy.html">Privacy Policy</a></li>
                 </ul>
             </div>

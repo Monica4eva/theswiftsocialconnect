@@ -3,26 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | The Social Connect</title>
+    <title>About Us | The Social Connect</title>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMV2ZCE5PT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LMV2ZCE5PT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LMV2ZCE5PT');
+    </script>
 
-  gtag('config', 'G-LMV2ZCE5PT');
-</script>
+    <meta name="description" content="We build systematic growth infrastructure for ambitious African businesses. Not campaigns—systems that compound. Learn about our GLIDE Framework approach.">
+    <meta name="keywords" content="strategic business consulting Africa, GLIDE framework, systematic business growth, African business expansion, digital transformation Africa">
 
-    <meta name="description" content="Founded by Monica Dube-Sekhwela, The Social Connect builds systems, not just campaigns. Learn about our mission, values, and approach to systematic business growth.">
-    <meta name="keywords" content="Monica Dube-Sekhwela, The Social Connect team, about us, company mission, business philosophy, systematic growth">
-    <link rel="canonical" href="https://swiftsocialconnect.com/absolute/about">
-
-    <meta property="og:title" content="About | The Social Connect">
-    <meta property="og:description" content="We build systems, not just campaigns. Founded by Monica Dube-Sekhwela to help African businesses scale systematically.">
-    <meta property="og:url" content="https://swiftsocialconnect.com/about">
-</head>
     <style>
         * {
             margin: 0;
@@ -32,6 +26,7 @@
 
         :root {
             --gold: #B8985F;
+            --gold-light: #D4B78D;
             --dark-gold: #8B7355;
             --white: #FFFFFF;
             --black: #000000;
@@ -40,11 +35,36 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             color: var(--black);
             line-height: 1.5;
             overflow-x: hidden;
             background: var(--white);
+        }
+
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes draw-path {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(184, 152, 95, 0.5)); }
+            50% { filter: drop-shadow(0 0 15px rgba(184, 152, 95, 0.8)); }
         }
 
         /* Navigation */
@@ -52,9 +72,10 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--black);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(184, 152, 95, 0.1);
         }
 
         .nav-container {
@@ -75,11 +96,16 @@
         .logo {
             width: 50px;
             height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
-            gap: 60px;
+            gap: 48px;
             list-style: none;
         }
 
@@ -88,50 +114,103 @@
             color: var(--white);
             font-weight: 400;
             font-size: 15px;
-            transition: color 0.2s ease;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--gold);
         }
 
-        /* Hero Section */
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
         .hero {
             margin-top: 97px;
-            padding: 140px 60px;
+            padding: 100px 60px 80px;
             background: var(--black);
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1200px;
+            height: 1200px;
+            background: radial-gradient(circle, rgba(184, 152, 95, 0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(184, 152, 95, 0.1);
+            border: 1px solid rgba(184, 152, 95, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
         }
 
         .hero h1 {
-            font-size: 72px;
+            font-size: 64px;
             font-weight: 300;
             letter-spacing: -2px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero h1 .highlight {
+            color: var(--gold);
         }
 
         .hero p {
             font-size: 20px;
             color: var(--gray);
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
             line-height: 1.7;
         }
 
         /* Mission Section */
-        .mission-section {
+        .mission {
             padding: 140px 60px;
             background: var(--white);
         }
 
         .mission-container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -142,8 +221,8 @@
         .mission-content h2 {
             font-size: 48px;
             font-weight: 300;
-            letter-spacing: -1.5px;
             margin-bottom: 32px;
+            letter-spacing: -1px;
         }
 
         .mission-content p {
@@ -155,37 +234,40 @@
 
         .mission-visual {
             background: var(--light-gray);
-            padding: 80px;
+            padding: 60px;
+            border-radius: 8px;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 500px;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Values Section */
-        .values-section {
+        /* Values Grid */
+        .values {
             padding: 140px 60px;
             background: var(--light-gray);
         }
 
         .values-container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .values-header {
+        .section-header {
             text-align: center;
             margin-bottom: 80px;
         }
 
-        .values-header h2 {
-            font-size: 56px;
+        .section-header h2 {
+            font-size: 48px;
             font-weight: 300;
-            letter-spacing: -1.5px;
             margin-bottom: 24px;
+            letter-spacing: -1px;
         }
 
-        .values-header p {
+        .section-header p {
             font-size: 18px;
             color: var(--gray);
             max-width: 700px;
@@ -201,17 +283,39 @@
         .value-card {
             background: var(--white);
             padding: 50px 40px;
+            border-radius: 8px;
             transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(184, 152, 95, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .value-card:hover::before {
+            left: 100%;
         }
 
         .value-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
 
         .value-icon {
-            font-size: 48px;
+            width: 80px;
+            height: 80px;
             margin-bottom: 24px;
+            color: var(--gold);
         }
 
         .value-card h3 {
@@ -221,195 +325,159 @@
         }
 
         .value-card p {
-            font-size: 15px;
+            font-size: 16px;
             color: var(--gray);
             line-height: 1.7;
         }
 
-        /* Approach Section */
-        .approach-section {
-            padding: 140px 60px;
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .approach-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .approach-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .approach-header h2 {
-            font-size: 56px;
-            font-weight: 300;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
-        }
-
-        .approach-header p {
-            font-size: 18px;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .approach-list {
-            display: grid;
-            gap: 48px;
-        }
-
-        .approach-item {
-            border-left: 3px solid var(--gold);
-            padding-left: 40px;
-        }
-
-        .approach-item h3 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .approach-item p {
-            font-size: 16px;
-            color: var(--gray);
-            line-height: 1.8;
-        }
-
-        /* Team Section */
-        .team-section {
+        /* Difference Section */
+        .difference {
             padding: 140px 60px;
             background: var(--white);
         }
 
-        .team-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .team-container h2 {
-            font-size: 56px;
-            font-weight: 300;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
-        }
-
-        .team-container > p {
-            font-size: 18px;
-            color: var(--gray);
-            margin-bottom: 80px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .team-content {
-            background: var(--light-gray);
-            padding: 60px;
-            text-align: left;
-        }
-
-        .team-content h3 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .team-content p {
-            font-size: 16px;
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .team-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 60px;
-            padding-top: 60px;
-            border-top: 1px solid #E0E0E0;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--gray);
-        }
-
-        /* Difference Section */
-        .difference-section {
-            padding: 140px 60px;
-            background: var(--light-gray);
-        }
-
         .difference-container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .difference-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .difference-header h2 {
-            font-size: 56px;
-            font-weight: 300;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
         }
 
         .difference-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: #E0E0E0;
-            border: 1px solid #E0E0E0;
+            gap: 60px;
+            margin-top: 60px;
         }
 
         .difference-item {
-            background: var(--white);
-            padding: 50px 40px;
-            transition: all 0.4s ease;
+            display: flex;
+            gap: 30px;
         }
 
-        .difference-item:hover {
-            background: var(--black);
-            color: var(--white);
+        .difference-number {
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.2;
+            line-height: 1;
+            flex-shrink: 0;
         }
 
-        .difference-item h3 {
-            font-size: 24px;
+        .difference-content h3 {
+            font-size: 28px;
             font-weight: 600;
             margin-bottom: 16px;
         }
 
-        .difference-item p {
-            font-size: 15px;
+        .difference-content p {
+            font-size: 16px;
             color: var(--gray);
             line-height: 1.7;
         }
 
-        .difference-item:hover p {
-            color: rgba(255,255,255,0.7);
+        /* Stats Section */
+        .stats {
+            padding: 140px 60px;
+            background: var(--black);
+            color: var(--white);
+            position: relative;
         }
 
-        /* CTA Section */
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stats-container h2 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 80px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .stat-item {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(184, 152, 95, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(184, 152, 95, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: var(--gray);
+        }
+
+        /* Who We Serve */
+        .serve {
+            padding: 140px 60px;
+            background: var(--light-gray);
+        }
+
+        .serve-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .serve-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+            align-items: center;
+        }
+
+        .serve-list {
+            list-style: none;
+        }
+
+        .serve-list li {
+            padding: 20px 0;
+            border-bottom: 1px solid #E0E0E0;
+            font-size: 18px;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .serve-list li::before {
+            content: '→';
+            color: var(--gold);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .serve-visual {
+            background: var(--white);
+            padding: 60px;
+            border-radius: 8px;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CTA */
         .cta-section {
             padding: 140px 60px;
             background: var(--gold);
@@ -447,15 +515,17 @@
             color: var(--black);
             padding: 18px 40px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
             transition: all 0.3s ease;
             display: inline-block;
+            border-radius: 4px;
         }
 
         .btn-white:hover {
             background: var(--black);
             color: var(--white);
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -463,7 +533,7 @@
             background: var(--black);
             color: var(--white);
             padding: 80px 60px 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(184, 152, 95, 0.1);
         }
 
         .footer-container {
@@ -478,11 +548,10 @@
         .footer-brand img {
             width: 50px;
             margin-bottom: 24px;
-            filter: brightness(0) invert(1);
         }
 
         .footer-brand p {
-            opacity: 0.6;
+            color: var(--gray);
             margin-bottom: 16px;
             font-size: 15px;
         }
@@ -493,7 +562,7 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0.5;
+            color: var(--gray);
         }
 
         .footer-section ul {
@@ -516,22 +585,26 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 40px;
             text-align: center;
-            opacity: 0.5;
+            color: var(--gray);
             font-size: 14px;
         }
 
         /* Responsive */
         @media (max-width: 1200px) {
             .mission-container,
-            .values-grid,
+            .serve-content,
             .difference-grid {
                 grid-template-columns: 1fr;
             }
 
-            .team-stats {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -546,14 +619,20 @@
             .footer-container {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .nav-container,
+        @media (max-width: 768px) {
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            nav,
             .hero,
-            .mission-section,
-            .values-section,
-            .approach-section,
-            .team-section,
-            .difference-section,
+            .mission,
+            .values,
+            .difference,
+            .stats,
+            .serve,
             .cta-section,
             footer {
                 padding-left: 24px;
@@ -563,13 +642,13 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="nav-left">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services</a></li>
+                    <li><a href="work.html">Work</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Connect</a></li>
                 </ul>
@@ -578,16 +657,20 @@
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-container">
-            <h1>We Build Systems, Not Just Campaigns</h1>
+            <div class="hero-badge">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="6" cy="6" r="6" fill="currentColor"/>
+                </svg>
+                Our Philosophy
+            </div>
+            <h1>We Build <span class="highlight">Systems</span>, Not Just Campaigns.</h1>
             <p>While everyone's chasing viral moments, market leaders are building infrastructure. Real systems that keep working even when you're not. That's what we do at The Social Connect.</p>
         </div>
     </section>
 
-    <!-- Mission Section -->
-    <section class="mission-section">
+    <section class="mission">
         <div class="mission-container">
             <div class="mission-content">
                 <h2>Our Mission</h2>
@@ -596,57 +679,145 @@
                 <p>AfCFTA is opening doors, digital is essential, but most businesses don't have the bandwidth to do it all. That's where we come in. We help you build three core systems that actually work together, measured through our GLIDE Framework™.</p>
             </div>
             <div class="mission-visual">
-                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="200" cy="200" r="150" fill="none" stroke="#E0E0E0" stroke-width="2"/>
-                    <circle cx="200" cy="200" r="100" fill="none" stroke="#B8985F" stroke-width="3"/>
-                    <circle cx="200" cy="200" r="50" fill="#B8985F" opacity="0.2"/>
-                    <text x="200" y="215" font-size="32" font-weight="600" fill="#B8985F" text-anchor="middle">GLIDE</text>
+                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="centerGlow">
+                            <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.4" />
+                            <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0" />
+                        </radialGradient>
+                        <filter id="glow-filter">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Central core -->
+                    <circle cx="250" cy="250" r="100" fill="url(#centerGlow)"/>
+                    <circle cx="250" cy="250" r="50" fill="#B8985F" filter="url(#glow-filter)">
+                        <animate attributeName="r" values="50;55;50" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    
+                    <!-- Rotating ring -->
+                    <circle cx="250" cy="250" r="120" fill="none" stroke="#B8985F" stroke-width="2" opacity="0.3">
+                        <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="20s" repeatCount="indefinite"/>
+                    </circle>
+                    
+                    <!-- Orbiting systems (3 core systems) -->
+                    <g>
+                        <circle cx="250" cy="130" r="25" fill="#B8985F" opacity="0.7">
+                            <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="10s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="250" y="135" font-size="12" font-weight="600" fill="white" text-anchor="middle">01</text>
+                    </g>
+                    
+                    <g>
+                        <circle cx="353" cy="310" r="25" fill="#B8985F" opacity="0.7">
+                            <animateTransform attributeName="transform" type="rotate" from="120 250 250" to="480 250 250" dur="10s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="353" y="315" font-size="12" font-weight="600" fill="white" text-anchor="middle">02</text>
+                    </g>
+                    
+                    <g>
+                        <circle cx="147" cy="310" r="25" fill="#B8985F" opacity="0.7">
+                            <animateTransform attributeName="transform" type="rotate" from="240 250 250" to="600 250 250" dur="10s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="147" y="315" font-size="12" font-weight="600" fill="white" text-anchor="middle">03</text>
+                    </g>
+                    
+                    <!-- Outer pulse rings -->
+                    <circle cx="250" cy="250" r="180" fill="none" stroke="#B8985F" stroke-width="1" opacity="0.2">
+                        <animate attributeName="r" values="180;200;180" dur="4s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.2;0;0.2" dur="4s" repeatCount="indefinite"/>
+                    </circle>
+                    
+                    <text x="250" y="460" font-size="16" font-weight="600" fill="#999" text-anchor="middle">Three Integrated Systems</text>
                 </svg>
             </div>
         </div>
     </section>
 
-    <!-- Values Section -->
-    <section class="values-section">
+    <section class="values">
         <div class="values-container">
-            <div class="values-header">
+            <div class="section-header">
                 <h2>What We Believe</h2>
                 <p>Our core values shape everything we do—from how we work with clients to the systems we build.</p>
             </div>
 
             <div class="values-grid">
                 <div class="value-card">
-                    <div class="value-icon"></div>
+                    <svg class="value-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="30" width="60" height="40" stroke="currentColor" stroke-width="3" rx="4"/>
+                        <path d="M20 40 L30 50 L25 55 L15 45 Z" fill="currentColor"/>
+                        <path d="M35 40 L45 50 L40 55 L30 45 Z" fill="currentColor"/>
+                        <path d="M50 40 L60 50 L55 55 L45 45 Z" fill="currentColor"/>
+                        <circle cx="40" cy="20" r="8" stroke="currentColor" stroke-width="3"/>
+                        <line x1="40" y1="28" x2="40" y2="30" stroke="currentColor" stroke-width="3"/>
+                    </svg>
                     <h3>Systems Over Hustle</h3>
                     <p>Working smarter beats working harder. We build infrastructure that compounds, not tactics that expire.</p>
                 </div>
 
                 <div class="value-card">
-                    <div class="value-icon"></div>
+                    <svg class="value-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="15" y="15" width="50" height="50" stroke="currentColor" stroke-width="3" rx="4"/>
+                        <line x1="30" y1="30" x2="50" y2="30" stroke="currentColor" stroke-width="3"/>
+                        <line x1="30" y1="40" x2="50" y2="40" stroke="currentColor" stroke-width="3"/>
+                        <line x1="30" y1="50" x2="45" y2="50" stroke="currentColor" stroke-width="3"/>
+                        <path d="M25 30 L28 35 L25 40" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
                     <h3>Measurement Matters</h3>
                     <p>No vanity metrics. No BS. We track real progress through the GLIDE Framework and actual revenue impact.</p>
                 </div>
 
                 <div class="value-card">
-                    <div class="value-icon"></div>
+                    <svg class="value-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="40" cy="40" r="25" stroke="currentColor" stroke-width="3"/>
+                        <path d="M40 20 C30 25, 25 30, 25 40 C25 50, 30 55, 40 60 C50 55, 55 50, 55 40 C55 30, 50 25, 40 20" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <circle cx="40" cy="30" r="3" fill="currentColor"/>
+                        <circle cx="33" cy="42" r="3" fill="currentColor"/>
+                        <circle cx="47" cy="42" r="3" fill="currentColor"/>
+                        <circle cx="40" cy="50" r="3" fill="currentColor"/>
+                    </svg>
                     <h3>Africa First</h3>
                     <p>We understand how business actually works across Africa. Local expertise meets global best practices.</p>
                 </div>
 
                 <div class="value-card">
-                    <div class="value-icon">⚡</div>
+                    <svg class="value-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 50 L25 35 L35 45 L45 30 L55 40 L65 25" stroke="currentColor" stroke-width="3" fill="none"/>
+                        <circle cx="25" cy="35" r="4" fill="currentColor"/>
+                        <circle cx="35" cy="45" r="4" fill="currentColor"/>
+                        <circle cx="45" cy="30" r="4" fill="currentColor"/>
+                        <circle cx="55" cy="40" r="4" fill="currentColor"/>
+                        <circle cx="65" cy="25" r="4" fill="currentColor"/>
+                        <text x="40" y="68" font-size="10" fill="currentColor" text-anchor="middle">TIME</text>
+                    </svg>
                     <h3>Long-Term Thinking</h3>
                     <p>One-off campaigns get one-off results. We build for compounding returns over time.</p>
                 </div>
 
                 <div class="value-card">
-                    <div class="value-icon"></div>
+                    <svg class="value-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="15" stroke="currentColor" stroke-width="3"/>
+                        <circle cx="50" cy="50" r="15" stroke="currentColor" stroke-width="3"/>
+                        <path d="M38 38 L42 42" stroke="currentColor" stroke-width="3"/>
+                        <circle cx="30" cy="30" r="5" fill="currentColor"/>
+                        <circle cx="50" cy="50" r="5" fill="currentColor"/>
+                    </svg>
                     <h3>True Partnership</h3>
                     <p>We're invested in your success. Your wins are our wins. We grow when you grow.</p>
                 </div>
 
                 <div class="value-card">
-                    <div class="value-icon"></div>
+                    <svg class="value-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="20" width="40" height="40" stroke="currentColor" stroke-width="3" rx="4"/>
+                        <line x1="35" y1="30" x2="45" y2="50" stroke="currentColor" stroke-width="3"/>
+                        <circle cx="40" cy="40" r="12" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M38 42 L40 44 L44 38" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
                     <h3>Execution Excellence</h3>
                     <p>Strategy without execution is just theory. We combine strategic thinking with hands-on implementation.</p>
                 </div>
@@ -654,111 +825,147 @@
         </div>
     </section>
 
-    <!-- Approach Section -->
-    <section class="approach-section">
-        <div class="approach-container">
-            <div class="approach-header">
+    <section class="difference">
+        <div class="difference-container">
+            <div class="section-header">
                 <h2>How We're Different</h2>
                 <p>Most agencies just execute. Most consultants just strategize. We do both, together.</p>
             </div>
 
-            <div class="approach-list">
-                <div class="approach-item">
-                    <h3>We Start With Measurement</h3>
-                    <p>Every partnership begins with your GLIDE assessment. We need to know where you stand before we can show you where to go. No guessing. No assumptions. Just honest evaluation.</p>
-                </div>
-
-                <div class="approach-item">
-                    <h3>We Build for Compounding</h3>
-                    <p>While others chase quick wins, we're building systems that deliver compounding returns month after month. Your second year should be easier than your first, not harder.</p>
-                </div>
-
-                <div class="approach-item">
-                    <h3>We Stay Ahead</h3>
-                    <p>We're constantly evolving our approaches so you're positioned for tomorrow's opportunities, not yesterday's tactics. What works today won't work forever—we make sure you're ready.</p>
-                </div>
-
-                <div class="approach-item">
-                    <h3>We Get Africa</h3>
-                    <p>Deep understanding of how business actually works here, from Gaborone to Lagos to Nairobi. Combined with proven global frameworks that actually translate.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="team-container">
-            <h2>Built for African Businesses</h2>
-            <p>We serve ambitious leaders across the continent who understand that success is systematic, not accidental.</p>
-
-            <div class="team-content">
-                <h3>Who We Work With</h3>
-                <p>Professional services firms building authority. Tech companies scaling across borders. Manufacturing and export businesses going continental. Financial services positioning for growth. E-commerce brands building presence.</p>
-                <p>From Botswana to South Africa, Nigeria to Kenya, Ghana to Zimbabwe—we partner with businesses ready to build, not just survive.</p>
-
-                <div class="team-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">8+</div>
-                        <div class="stat-label">African Markets Served</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">P500K+</div>
-                        <div class="stat-label">Minimum Revenue (Ideal Client)</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Focus on Systems, Not Tactics</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Difference Section -->
-    <section class="difference-section">
-        <div class="difference-container">
-            <div class="difference-header">
-                <h2>What Makes Us Different</h2>
-            </div>
-
             <div class="difference-grid">
                 <div class="difference-item">
-                    <h3>Systems Over Hype</h3>
-                    <p>While others chase viral moments, we're building things that compound month after month. Infrastructure that keeps working long after we've set it up.</p>
+                    <div class="difference-number">01</div>
+                    <div class="difference-content">
+                        <h3>We Start With Measurement</h3>
+                        <p>Every partnership begins with your GLIDE assessment. We need to know where you stand before we can show you where to go. No guessing. No assumptions. Just honest evaluation.</p>
+                    </div>
                 </div>
 
                 <div class="difference-item">
-                    <h3>Strategy + Tech + Execution</h3>
-                    <p>Most agencies just execute. Most consultants just strategize. We do both, together. From the boardroom to the browser.</p>
+                    <div class="difference-number">02</div>
+                    <div class="difference-content">
+                        <h3>We Build for Compounding</h3>
+                        <p>While others chase quick wins, we're building systems that deliver compounding returns month after month. Your second year should be easier than your first, not harder.</p>
+                    </div>
                 </div>
 
                 <div class="difference-item">
-                    <h3>Measured Progress</h3>
-                    <p>Every partnership starts with your GLIDE assessment. We track real progress. No vanity metrics. No BS. Just honest feedback and clear next steps.</p>
+                    <div class="difference-number">03</div>
+                    <div class="difference-content">
+                        <h3>We Stay Ahead</h3>
+                        <p>We're constantly evolving our approaches so you're positioned for tomorrow's opportunities, not yesterday's tactics. What works today won't work forever—we make sure you're ready.</p>
+                    </div>
                 </div>
 
                 <div class="difference-item">
-                    <h3>Built for the Long Game</h3>
-                    <p>One-off campaigns get one-off results. Our systems deliver compounding returns over time. Month 12 should be easier than month 1.</p>
+                    <div class="difference-number">04</div>
+                    <div class="difference-content">
+                        <h3>We Get Africa</h3>
+                        <p>Deep understanding of how business actually works here, from Gaborone to Lagos to Nairobi. Combined with proven global frameworks that actually translate.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <section class="stats">
+        <div class="stats-container">
+            <h2>Built for African Businesses</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">African Markets Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">P500K+</div>
+                    <div class="stat-label">Minimum Revenue (Ideal Client)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Focus on Systems, Not Tactics</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="serve">
+        <div class="serve-container">
+            <div class="section-header">
+                <h2>Who We Work With</h2>
+                <p>We serve ambitious leaders across the continent who understand that success is systematic, not accidental.</p>
+            </div>
+
+            <div class="serve-content">
+                <div>
+                    <ul class="serve-list">
+                        <li>Professional services firms building authority</li>
+                        <li>Tech companies scaling across borders</li>
+                        <li>Manufacturing and export businesses going continental</li>
+                        <li>Financial services positioning for growth</li>
+                        <li>E-commerce brands building presence</li>
+                    </ul>
+                    <p style="margin-top: 40px; font-size: 16px; color: var(--gray);">From Botswana to South Africa, Nigeria to Kenya, Ghana to Zimbabwe—we partner with businesses ready to build, not just survive.</p>
+                </div>
+                
+                <div class="serve-visual">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="mapGlow">
+                                <stop offset="0%" style="stop-color:#B8985F;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#B8985F;stop-opacity:0" />
+                            </radialGradient>
+                        </defs>
+                        
+                        <!-- Map outline (simplified Africa) -->
+                        <path d="M200 50 L220 70 L240 60 L260 80 L280 90 L300 110 L310 140 L320 170 L315 200 L305 230 L290 260 L270 290 L240 310 L210 320 L180 315 L150 300 L130 280 L110 250 L100 220 L90 190 L95 160 L110 130 L130 100 L150 80 L170 65 L200 50 Z" 
+                              stroke="#B8985F" stroke-width="2" fill="none" opacity="0.3"/>
+                        
+                        <!-- Market dots (8+ markets) -->
+                        <circle cx="180" cy="250" r="8" fill="#B8985F">
+                            <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="240" cy="200" r="8" fill="#B8985F">
+                            <animate attributeName="r" values="8;12;8" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="270" cy="160" r="8" fill="#B8985F">
+                            <animate attributeName="r" values="8;12;8" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="150" cy="180" r="8" fill="#B8985F">
+                            <animate attributeName="r" values="8;12;8" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="200" cy="230" r="8" fill="#B8985F">
+                            <animate attributeName="r" values="8;12;8" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Connection lines -->
+                        <line x1="180" y1="250" x2="240" y2="200" stroke="#B8985F" stroke-width="1" opacity="0.3" stroke-dasharray="5,5">
+                            <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="240" y1="200" x2="270" y2="160" stroke="#B8985F" stroke-width="1" opacity="0.3" stroke-dasharray="5,5">
+                            <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="150" y1="180" x2="200" y2="230" stroke="#B8985F" stroke-width="1" opacity="0.3" stroke-dasharray="5,5">
+                            <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite"/>
+                        </line>
+                        
+                        <text x="200" y="380" font-size="16" font-weight="600" fill="#999" text-anchor="middle">Pan-African Reach</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="cta-section">
         <div class="cta-container">
             <h2>Ready to Build Real Infrastructure?</h2>
             <p>Let's turn your ambition into systematic advantage. Start with a free GLIDE assessment to see exactly where you stand.</p>
             <div class="cta-buttons">
-                <a href="glide-assessment.html" class="btn-white">Get Your GLIDE Score</a>
+                <a href="glideframework.html" class="btn-white">Get Your GLIDE Score</a>
                 <a href="contact.html" class="btn-white">Book a Call</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-brand">
@@ -769,8 +976,8 @@
             <div class="footer-section">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="services.html">Digital Presence</a></li>
-                    <li><a href="services.html">Content & Authority</a></li>
+                    <li><a href="services.html">Digital Systems</a></li>
+                    <li><a href="services.html">Brand Authority</a></li>
                     <li><a href="services.html">Cross-Border Growth</a></li>
                 </ul>
             </div>
@@ -778,8 +985,8 @@
                 <h4>Company</h4>
                 <ul>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="glide-assessment.html">GLIDE Assessment</a></li>
+                    <li><a href="work.html">Our Work</a></li>
+                    <li><a href="glideframework.html">GLIDE Framework</a></li>
                     <li><a href="privacypolicy.html">Privacy Policy</a></li>
                 </ul>
             </div>
