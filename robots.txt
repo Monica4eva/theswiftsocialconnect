@@ -1,0 +1,22 @@
+<!-- ========================================
+     ROBOTS.TXT
+     ======================================== -->
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /404.html
+
+# Sitemap location
+Sitemap: https://swiftsocialconnect.com/sitemap.xml
+
+# Crawl delay (optional - helps manage server load)
+Crawl-delay: 10
+
+# Block specific bots if needed
+User-agent: AhrefsBot
+Crawl-delay: 30
+
+User-agent: SemrushBot
+Crawl-delay: 30
